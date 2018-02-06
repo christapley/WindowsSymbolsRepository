@@ -1,0 +1,1368 @@
+Opened log file 'C:\Users\ctapley\Downloads\w3wp.exe.3808.dmp.log'
+
+Microsoft (R) Windows Debugger Version 10.0.14321.1024 AMD64
+Copyright (c) Microsoft Corporation. All rights reserved.
+
+
+Loading Dump File [C:\Users\ctapley\Downloads\w3wp.exe.3808.dmp]
+User Mini Dump File: Only registers, stack and portions of memory are available
+
+Symbol search path is: srv*
+Executable search path is: 
+Windows 10 Version 14393 MP (16 procs) Free x64
+Product: Server, suite: TerminalServer SingleUserTS
+Built by: 10.0.14393.1715 (rs1_release_inmarket.170906-1810)
+Machine Name:
+Debug session time: Fri Feb  2 12:49:23.000 2018 (UTC + 8:00)
+System Uptime: not available
+Process Uptime: 0 days 0:21:29.000
+................................................................
+................................................................
+................................................................
+................................................................
+............................
+This dump file has an exception of interest stored in it.
+The stored exception information can be accessed via .ecxr.
+(ee0.770): Access violation - code c0000005 (first/second chance not available)
+ntdll!NtWaitForMultipleObjects+0x14:
+00007ffa`00286bf4 c3              ret
+0:019> $<\\echidnas.ap.ingrnet.com\Symbols\windbgCrashDiagScript.txt
+0:019> .sympath srv*http://symbols-public.ingrnet.com;srv*http://symbols-nightlybuilds.ingrnet.com;srv*http://msdl.microsoft.com/download/symbols
+Symbol search path is: srv*http://symbols-public.ingrnet.com;srv*http://symbols-nightlybuilds.ingrnet.com;srv*http://msdl.microsoft.com/download/symbols
+Expanded Symbol search path is: srv*http://symbols-public.ingrnet.com;srv*http://symbols-nightlybuilds.ingrnet.com;srv*http://msdl.microsoft.com/download/symbols
+
+************* Symbol Path validation summary **************
+Response                         Time (ms)     Location
+Deferred                                       srv*http://symbols-public.ingrnet.com
+Deferred                                       srv*http://symbols-nightlybuilds.ingrnet.com
+Deferred                                       srv*http://msdl.microsoft.com/download/symbols
+0:019> !sym
+!sym <noisy/quiet - prompts/prompts off> - quiet mode - symbol prompts on
+0:019> .reload
+................................................................
+................................................................
+................................................................
+................................................................
+............................
+0:019> .expr /s c++
+Current expression evaluator: C++ - C++ source expressions
+0:019> .ecxr
+rax=000000ccd22f6aa8 rbx=0000000000000000 rcx=0000000000000000
+rdx=000000ccd22f6a60 rsi=0000000000000000 rdi=00000262fcd5e0f0
+rip=00007ff9dff40586 rsp=000000ccd22f69c0 rbp=000000ccd22f6a80
+ r8=00000262ecb02880  r9=0000000000008000 r10=000000000000000b
+r11=000000ccd22f6a80 r12=0000000000000000 r13=0000000000000001
+r14=000000ccd22f7250 r15=000000ccd22f6bd8
+iopl=0         nv up ei pl nz na po nc
+cs=0033  ss=002b  ds=002b  es=002b  fs=0053  gs=002b             efl=00010206
+sblib!HexGeo::SpatialModeler::Port::GetOperator+0x6:
+00007ff9`dff40586 488b4918        mov     rcx,qword ptr [rcx+18h] ds:00000000`00000018=????????????????
+0:019> !analyze -v -f
+*******************************************************************************
+*                                                                             *
+*                        Exception Analysis                                   *
+*                                                                             *
+*******************************************************************************
+
+*** ERROR: Symbol file could not be found.  Defaulted to export symbols for NCSSpatialModel.dll - 
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+*** WARNING: Unable to verify checksum for QTCore4.dll
+*** ERROR: Symbol file could not be found.  Defaulted to export symbols for QTCore4.dll - 
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+*** ERROR: Symbol file could not be found.  Defaulted to export symbols for requestRouter.dll - 
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+Type information missing error for gThreadTLSIndex
+!ip2md 7ff9dff40586
+
+Failed to request MethodData, not in JIT code range
+GetUrlPageData2 (WinHttp) failed: 12002.
+
+DUMP_CLASS: 2
+
+DUMP_QUALIFIER: 400
+
+CONTEXT:  (.ecxr)
+.ecxr
+rax=000000ccd22f6aa8 rbx=0000000000000000 rcx=0000000000000000
+rdx=000000ccd22f6a60 rsi=0000000000000000 rdi=00000262fcd5e0f0
+rip=00007ff9dff40586 rsp=000000ccd22f69c0 rbp=000000ccd22f6a80
+ r8=00000262ecb02880  r9=0000000000008000 r10=000000000000000b
+r11=000000ccd22f6a80 r12=0000000000000000 r13=0000000000000001
+r14=000000ccd22f7250 r15=000000ccd22f6bd8
+iopl=0         nv up ei pl nz na po nc
+cs=0033  ss=002b  ds=002b  es=002b  fs=0053  gs=002b             efl=00010206
+sblib!HexGeo::SpatialModeler::Port::GetOperator+0x6:
+00007ff9`dff40586 488b4918        mov     rcx,qword ptr [rcx+18h] ds:00000000`00000018=????????????????
+.cxr
+Resetting default scope
+
+FAULTING_IP: 
+sblib!HexGeo::SpatialModeler::Port::GetOperator+6 [c:\work\jenkins-home\workspace\v16.5-smsdk-x64release\sources_modeler\sblib\port.cpp @ 476]
+00007ff9`dff40586 488b4918        mov     rcx,qword ptr [rcx+18h]
+
+EXCEPTION_RECORD:  (.exr -1)
+.exr -1
+ExceptionAddress: 00007ff9dff40586 (sblib!HexGeo::SpatialModeler::Port::GetOperator+0x0000000000000006)
+   ExceptionCode: c0000005 (Access violation)
+  ExceptionFlags: 00000000
+NumberParameters: 2
+   Parameter[0]: 0000000000000000
+   Parameter[1]: 0000000000000018
+Attempt to read from address 0000000000000018
+
+DEFAULT_BUCKET_ID:  NULL_CLASS_PTR_READ
+
+PROCESS_NAME:  w3wp.exe
+
+ERROR_CODE: (NTSTATUS) 0xc0000005 - The instruction at 0x%p referenced memory at 0x%p. The memory could not be %s.
+
+EXCEPTION_CODE: (NTSTATUS) 0xc0000005 - The instruction at 0x%p referenced memory at 0x%p. The memory could not be %s.
+
+EXCEPTION_CODE_STR:  c0000005
+
+EXCEPTION_PARAMETER1:  0000000000000000
+
+EXCEPTION_PARAMETER2:  0000000000000018
+
+FOLLOWUP_IP: 
+sblib!HexGeo::SpatialModeler::Port::GetOperator+6 [c:\work\jenkins-home\workspace\v16.5-smsdk-x64release\sources_modeler\sblib\port.cpp @ 476]
+00007ff9`dff40586 488b4918        mov     rcx,qword ptr [rcx+18h]
+
+READ_ADDRESS:  0000000000000018 
+
+BUGCHECK_STR:  NULL_CLASS_PTR_READ
+
+WATSON_BKT_PROCSTAMP:  57899b8a
+
+WATSON_BKT_PROCVER:  10.0.14393.0
+
+PROCESS_VER_PRODUCT:  Internet Information Services
+
+WATSON_BKT_MODULE:  sblib.dll
+
+WATSON_BKT_MODSTAMP:  5a62f8c3
+
+WATSON_BKT_MODOFFSET:  80586
+
+WATSON_BKT_MODVER:  16.5.0.169
+
+MODULE_VER_PRODUCT:  ERDAS IMAGINE 2018 
+
+BUILD_VERSION_STRING:  10.0.14393.1198 (rs1_release_sec.170427-1353)
+
+MODLIST_WITH_TSCHKSUM_HASH:  25a668b353ed1333bc2c9f123a90176070da5c9a
+
+MODLIST_SHA1_HASH:  e9da2a1f424628422b0450a53bc3a45a5ec70b19
+
+DUMP_FLAGS:  8
+
+DUMP_TYPE:  1
+
+MISSING_CLR_SYMBOL: 0
+
+ANALYSIS_SESSION_HOST:  HEAPCORRUPTION
+
+ANALYSIS_SESSION_TIME:  02-02-2018 14:39:48.0438
+
+ANALYSIS_VERSION: 10.0.14321.1024 amd64fre
+
+MANAGED_CODE: 1
+
+MANAGED_ENGINE_MODULE:  clr
+
+MANAGED_ANALYSIS_PROVIDER:  SOS
+
+THREAD_ATTRIBUTES: 
+PROBLEM_CLASSES: 
+
+
+
+NULL_CLASS_PTR_READ
+    Tid    [0x770]
+    Frame  [0x00]: sblib!HexGeo::SpatialModeler::Port::GetOperator
+
+
+LAST_CONTROL_TRANSFER:  from 00007ff9dff405ef to 00007ff9dff40586
+
+STACK_TEXT:  
+000000cc`d22f69c0 00007ff9`dff405ef : 00000262`00000000 ffffffff`fffffffe 00000262`fcea1640 00000000`00000000 : sblib!HexGeo::SpatialModeler::Port::GetOperator+0x6
+000000cc`d22f6a00 00007ff9`e2b2d335 : 000000cc`d22f6b90 000000cc`d22f6bd8 00000000`00000000 000000cc`d22f6bb0 : sblib!HexGeo::SpatialModeler::Port::GetParentPort+0x3f
+000000cc`d22f6ab0 00007ff9`e2b2d7f0 : 00000000`00000000 00000000`00000000 00000000`00000000 000000cc`d22f7650 : NCSSpatialModel!NCS::IWS::SpatialModel::CModel::OpenInternal+0x865
+000000cc`d22f7010 00007ff9`dc9d1a88 : 00000262`f9b4cab0 00000000`00000001 00000000`00000001 00000000`00000000 : NCSSpatialModel!NCS::IWS::SpatialModel::CModel::Open+0x140
+000000cc`d22f7160 00007ff9`dcd21ac2 : 000000cc`d22f7c00 00007ff9`00000000 00000000`00000000 00000000`0000000f : NCSServerUtil!NCS::IWS::Metadata::CombinedMetadataReader::GetFileMetadata+0xb08
+000000cc`d22f7c10 00007ff9`dcd21067 : 00000262`edd022a8 00000000`fffffffe 00000262`edd022a8 00000262`fccaf500 : NCSServerUtil!NCS::IWS::ServerDatastore::CPhysicalFile::UpdateFromPhysicalFile+0x42
+000000cc`d22f7c70 00007ff9`dcd14747 : 00000262`fccaf500 00000262`edd022a8 00000262`edd022a8 00000000`fffffffe : NCSServerUtil!NCS::IWS::ServerDatastore::CPhysicalFile::Init+0xb7
+000000cc`d22f7d30 00007ff9`dcd2ad21 : 000000cc`d22f7f80 000000cc`d22f85e8 000000cc`d22f7eb0 000000cc`00000000 : NCSServerUtil!NCS::IWS::ServerDatastore::CServerDatastore::GetPhysicalFile+0xf7
+000000cc`d22f7e30 00007ff9`dcd2a78a : 00000000`00000000 00000000`00000001 00000000`00000001 000000cc`d22f8690 : NCSServerUtil!NCS::IWS::ServerDatastore::CService::CreateDataset+0x311
+000000cc`d22f8590 00007ff9`dcd2bbbb : 00000161`54d8f03a 000000cc`d22f9760 000000cc`d22f9760 000000cc`d22fb7d0 : NCSServerUtil!NCS::IWS::ServerDatastore::CService::Crawl+0x1fa
+000000cc`d22f9050 00007ff9`eac54b9e : 00000000`00000001 000000cc`d22fe740 00000000`00000001 00000000`000000c8 : NCSServerUtil!NCS::IWS::ServerDatastore::CService::CreateFolder+0x75b
+000000cc`d22f96f0 00007ff9`eac5f13a : 00000000`00000001 00000000`00000001 00000000`00000001 00000262`fcc80b80 : ecwpmgr!NCS::IWS::AdminAPI::CNCSEcwpMgrRequest::ProcessFilesRequest+0x19be
+000000cc`d22fe640 00007ff9`eac5ebe5 : ffffffff`ffffffff 00000000`000000e5 000000cc`d22fe7b8 00000000`0000000f : ecwpmgr!NCS::IWS::AdminAPI::CNCSEcwpMgrRequest::ProcessRequest+0x27a
+000000cc`d22fe7f0 00007ff9`eac72fa2 : 000000cc`d22fea50 00000262`f2acd380 00007ff9`eac97940 00000262`edce8330 : ecwpmgr!NCS::IWS::AdminAPI::CNCSEcwpMgrRequest::ProcessRequest+0x235
+000000cc`d22fea20 00007ff9`eac72eed : 00000000`00000000 00000000`00000000 00000262`f2acd380 000000cc`d22ff259 : ecwpmgr!NCS::IWS::AdminAPI::CNCSISAPIEcwpMgr::ProcessRequest+0x92
+000000cc`d22feb60 00007ff9`dc9d640c : 00000262`edc3f058 00007ff9`eb0d8ebd 00000000`00000016 00000262`edc3da50 : ecwpmgr!NCS::IWS::AdminAPI::NCSHttpExtensionProc+0x12d
+000000cc`d22feff0 00007ff9`dc9d6345 : 00003e6e`8ea13ed7 00000262`edc3ee40 000000cc`d22ff2c8 00000262`edc3ce20 : NCSServerUtil!NCS::IWS::CIsapiExtensionHelper::HttpExtensionProcCppException+0x3c
+000000cc`d22ff0c0 00007ff9`eb062c1d : 00000262`edc3f0b8 00000262`edc3f0b8 00007ff9`eac97940 00007ff9`eac8dec0 : NCSServerUtil!NCS::IWS::CIsapiExtensionHelper::HttpExtensionProc+0x55
+000000cc`d22ff130 00007ff9`eb06aebf : 00000262`edc3f0b8 00000262`edc3eda0 00000262`edc3da88 00000000`00000000 : isapi!ProcessIsapiRequest+0x151
+000000cc`d22ff190 00007ff9`eb06187f : 00000262`ed7915d0 000000cc`00000000 00000262`edc3da50 00000000`00000000 : isapi!W3_ISAPI_HANDLER::DoWork+0x593
+000000cc`d22ff2c0 00007ff9`eb061d3a : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : isapi!RequestDoWork+0x517
+000000cc`d22ff360 00007ff9`eb0dd3d9 : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : isapi!CIISHttpModule::OnExecuteRequestHandler+0x1a
+000000cc`d22ff3a0 00007ff9`eb0dcd7c : 00000262`ed7d6c40 000000cc`d22ff4b1 00000000`0000000b 00000262`edc3da60 : iiscore!NOTIFICATION_CONTEXT::RequestDoWork+0xb9
+000000cc`d22ff3f0 00007ff9`eb0dcbc6 : 00000262`ed728530 00000000`00000000 00000262`ed7d6c40 00000000`00000000 : iiscore!NOTIFICATION_CONTEXT::CallModulesInternal+0x19c
+000000cc`d22ff500 00007ff9`eb0dde08 : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : iiscore!NOTIFICATION_CONTEXT::CallModules+0x36
+000000cc`d22ff560 00007ff9`eb0e1be6 : 00000262`edc3ce20 00000000`00000000 00000000`00000000 00000262`ed7d6c40 : iiscore!NOTIFICATION_MAIN::DoWork+0x3d8
+000000cc`d22ff880 00007ff9`f0cb4c95 : 00007ff9`f90f0000 00000262`edc3ce00 00000000`00000528 00000000`00000528 : iiscore!W3_MAIN_CONTEXT::OnNewRequest+0x286
+000000cc`d22ff8c0 00007ff9`f90f1853 : 00000262`ed29e370 00000000`00000000 00000000`00000000 00007ff9`fcf7484f : w3dt!WP_CONTEXT::OnCompletion+0xb5
+000000cc`d22ff900 00007ff9`f90f17a3 : 00000000`00000528 00000262`edc3da20 00007ff9`f0cb4be0 00007ff9`f90f8600 : w3tp!THREAD_POOL_DATA::ThreadPoolThread+0x73
+000000cc`d22ff950 00007ff9`f90f16f9 : 00000000`00000000 00000262`ed2866f0 00000000`00000000 00007ff9`f90f0000 : w3tp!THREAD_POOL_DATA::ThreadPoolThread+0x33
+000000cc`d22ff990 00007ff9`fd7d8364 : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : w3tp!THREAD_MANAGER::ThreadManagerThread+0x49
+000000cc`d22ff9d0 00007ffa`00247091 : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : kernel32!BaseThreadInitThunk+0x14
+000000cc`d22ffa00 00000000`00000000 : 00000000`00000000 00000000`00000000 00000000`00000000 00000000`00000000 : ntdll!RtlUserThreadStart+0x21
+
+
+THREAD_SHA1_HASH_MOD_FUNC:  9f7a4d78c173cc0d038bb2e03be8f826e7e81760
+
+THREAD_SHA1_HASH_MOD_FUNC_OFFSET:  4b4d3b8c48f832a2716d24615fcf67b1918d6a0b
+
+THREAD_SHA1_HASH_MOD:  b6cd6b581f9127fae6b3a90a4d6e724ba566381d
+
+FAULT_INSTR_CODE:  18498b48
+
+FAULTING_SOURCE_LINE:  c:\work\jenkins-home\workspace\v16.5-smsdk-x64release\sources_modeler\sblib\port.cpp
+
+FAULTING_SOURCE_FILE:  c:\work\jenkins-home\workspace\v16.5-smsdk-x64release\sources_modeler\sblib\port.cpp
+
+FAULTING_SOURCE_LINE_NUMBER:  476
+
+SYMBOL_STACK_INDEX:  0
+
+SYMBOL_NAME:  sblib!HexGeo::SpatialModeler::Port::GetOperator+6
+
+FOLLOWUP_NAME:  MachineOwner
+
+MODULE_NAME: sblib
+
+IMAGE_NAME:  sblib.dll
+
+DEBUG_FLR_IMAGE_TIMESTAMP:  5a62f8c3
+
+STACK_COMMAND:  .ecxr ; kb
+
+BUCKET_ID:  NULL_CLASS_PTR_READ_sblib!HexGeo::SpatialModeler::Port::GetOperator+6
+
+PRIMARY_PROBLEM_CLASS:  NULL_CLASS_PTR_READ_sblib!HexGeo::SpatialModeler::Port::GetOperator+6
+
+FAILURE_EXCEPTION_CODE:  c0000005
+
+FAILURE_IMAGE_NAME:  sblib.dll
+
+BUCKET_ID_IMAGE_STR:  sblib.dll
+
+FAILURE_MODULE_NAME:  sblib
+
+BUCKET_ID_MODULE_STR:  sblib
+
+FAILURE_FUNCTION_NAME:  HexGeo::SpatialModeler::Port::GetOperator
+
+BUCKET_ID_FUNCTION_STR:  HexGeo::SpatialModeler::Port::GetOperator
+
+BUCKET_ID_OFFSET:  6
+
+BUCKET_ID_MODTIMEDATESTAMP:  5a62f8c3
+
+BUCKET_ID_MODCHECKSUM:  152928
+
+BUCKET_ID_MODVER_STR:  16.5.0.169
+
+BUCKET_ID_PREFIX_STR:  NULL_CLASS_PTR_READ_
+
+FAILURE_PROBLEM_CLASS:  NULL_CLASS_PTR_READ
+
+FAILURE_SYMBOL_NAME:  sblib.dll!HexGeo::SpatialModeler::Port::GetOperator
+
+FAILURE_BUCKET_ID:  NULL_CLASS_PTR_READ_c0000005_sblib.dll!HexGeo::SpatialModeler::Port::GetOperator
+
+WATSON_STAGEONE_URL:  http://watson.microsoft.com/StageOne/w3wp.exe/10.0.14393.0/57899b8a/sblib.dll/16.5.0.169/5a62f8c3/c0000005/00080586.htm?Retriage=1
+
+TARGET_TIME:  2018-02-02T04:49:23.000Z
+
+OSBUILD:  14393
+
+OSSERVICEPACK:  1198
+
+SERVICEPACK_NUMBER: 0
+
+OS_REVISION: 0
+
+SUITE_MASK:  272
+
+PRODUCT_TYPE:  3
+
+OSPLATFORM_TYPE:  x64
+
+OSNAME:  Windows 10
+
+OSEDITION:  Windows 10 Server TerminalServer SingleUserTS
+
+OS_LOCALE:  
+
+USER_LCID:  0
+
+OSBUILD_TIMESTAMP:  2017-04-28 07:48:56
+
+BUILDDATESTAMP_STR:  170427-1353
+
+BUILDLAB_STR:  rs1_release_sec
+
+BUILDOSVER_STR:  10.0.14393.1198
+
+ANALYSIS_SESSION_ELAPSED_TIME: 3cb51
+
+ANALYSIS_SOURCE:  UM
+
+FAILURE_ID_HASH_STRING:  um:null_class_ptr_read_c0000005_sblib.dll!hexgeo::spatialmodeler::port::getoperator
+
+FAILURE_ID_HASH:  {fe4fe18e-def9-3cf9-08a6-37a8f1eac608}
+
+Followup:     MachineOwner
+---------
+
+0:019> ~*k 0
+
+   0  Id: ee0.21d0 Suspend: 0 Teb: 000000cc`d1668000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d156f9d8 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d156f9e0 00007ff9`f2a918ac KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d156fa80 00007ff6`6d60156e w3wphost!AppHostInitialize+0x14c
+03 000000cc`d156fac0 00007ff6`6d602dcd w3wp!wmain+0x412
+04 000000cc`d156fc60 00007ff9`fd7d8364 w3wp!ParseCommandLine+0xbf5
+05 000000cc`d156fca0 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+06 000000cc`d156fcd0 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+   1  Id: ee0.1e34 Suspend: 0 Teb: 000000cc`d1670000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d197f6f8 00007ff9`fcf9ac2f ntdll!NtRemoveIoCompletion+0x14
+01 000000cc`d197f700 00007ff9`f0575918 KERNELBASE!GetQueuedCompletionStatus+0x3f
+02 000000cc`d197f760 00007ff9`fd7d8364 nativerd!NOTIFICATION_THREAD::ThreadProc+0x58
+03 000000cc`d197f7e0 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+04 000000cc`d197f810 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+   2  Id: ee0.20e8 Suspend: 0 Teb: 000000cc`d1672000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d19ff418 00007ffa`0021354e ntdll!NtWaitForWorkViaWorkerFactory+0x14
+01 000000cc`d19ff420 00007ff9`fd7d8364 ntdll!TppWorkerThread+0x76e
+02 000000cc`d19ff820 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+03 000000cc`d19ff850 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+   3  Id: ee0.1ec8 Suspend: 0 Teb: 000000cc`d1674000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d1a7f458 00007ffa`0021354e ntdll!NtWaitForWorkViaWorkerFactory+0x14
+01 000000cc`d1a7f460 00007ff9`fd7d8364 ntdll!TppWorkerThread+0x76e
+02 000000cc`d1a7f860 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+03 000000cc`d1a7f890 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+   4  Id: ee0.29c Suspend: 0 Teb: 000000cc`d1678000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d1b7fc28 00007ff9`fcf9ac2f ntdll!NtRemoveIoCompletion+0x14
+01 000000cc`d1b7fc30 00007ff9`f90f181a KERNELBASE!GetQueuedCompletionStatus+0x3f
+02 000000cc`d1b7fc90 00007ff9`f90f17a3 w3tp!THREAD_POOL_DATA::ThreadPoolThread+0x3a
+03 000000cc`d1b7fce0 00007ff9`f90f16f9 w3tp!THREAD_POOL_DATA::ThreadPoolThread+0x33
+04 000000cc`d1b7fd20 00007ff9`fd7d8364 w3tp!THREAD_MANAGER::ThreadManagerThread+0x49
+05 000000cc`d1b7fd60 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+06 000000cc`d1b7fd90 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+   5  Id: ee0.19c0 Suspend: 0 Teb: 000000cc`d167a000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d1bffd58 00007ff9`fcf9ac2f ntdll!NtRemoveIoCompletion+0x14
+01 000000cc`d1bffd60 00007ff9`f90f181a KERNELBASE!GetQueuedCompletionStatus+0x3f
+02 000000cc`d1bffdc0 00007ff9`f90f17a3 w3tp!THREAD_POOL_DATA::ThreadPoolThread+0x3a
+03 000000cc`d1bffe10 00007ff9`f90f16f9 w3tp!THREAD_POOL_DATA::ThreadPoolThread+0x33
+04 000000cc`d1bffe50 00007ff9`fd7d8364 w3tp!THREAD_MANAGER::ThreadManagerThread+0x49
+05 000000cc`d1bffe90 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+06 000000cc`d1bffec0 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+   6  Id: ee0.2380 Suspend: 0 Teb: 000000cc`d167c000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d1c7fbc8 00007ff9`fcf9ac2f ntdll!NtRemoveIoCompletion+0x14
+01 000000cc`d1c7fbd0 00007ff9`f90f181a KERNELBASE!GetQueuedCompletionStatus+0x3f
+02 000000cc`d1c7fc30 00007ff9`f90f17a3 w3tp!THREAD_POOL_DATA::ThreadPoolThread+0x3a
+03 000000cc`d1c7fc80 00007ff9`f90f16f9 w3tp!THREAD_POOL_DATA::ThreadPoolThread+0x33
+04 000000cc`d1c7fcc0 00007ff9`fd7d8364 w3tp!THREAD_MANAGER::ThreadManagerThread+0x49
+05 000000cc`d1c7fd00 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+06 000000cc`d1c7fd30 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+   7  Id: ee0.24d0 Suspend: 0 Teb: 000000cc`d167e000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d1cff6c8 00007ff9`fcf9ac2f ntdll!NtRemoveIoCompletion+0x14
+01 000000cc`d1cff6d0 00007ff9`f90f181a KERNELBASE!GetQueuedCompletionStatus+0x3f
+02 000000cc`d1cff730 00007ff9`f90f17a3 w3tp!THREAD_POOL_DATA::ThreadPoolThread+0x3a
+03 000000cc`d1cff780 00007ff9`f90f16f9 w3tp!THREAD_POOL_DATA::ThreadPoolThread+0x33
+04 000000cc`d1cff7c0 00007ff9`fd7d8364 w3tp!THREAD_MANAGER::ThreadManagerThread+0x49
+05 000000cc`d1cff800 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+06 000000cc`d1cff830 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+   8  Id: ee0.2540 Suspend: 0 Teb: 000000cc`d1680000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d1d7f878 00007ff9`fcf9ac2f ntdll!NtRemoveIoCompletion+0x14
+01 000000cc`d1d7f880 00007ff9`f90f181a KERNELBASE!GetQueuedCompletionStatus+0x3f
+02 000000cc`d1d7f8e0 00007ff9`f90f17a3 w3tp!THREAD_POOL_DATA::ThreadPoolThread+0x3a
+03 000000cc`d1d7f930 00007ff9`f90f16f9 w3tp!THREAD_POOL_DATA::ThreadPoolThread+0x33
+04 000000cc`d1d7f970 00007ff9`fd7d8364 w3tp!THREAD_MANAGER::ThreadManagerThread+0x49
+05 000000cc`d1d7f9b0 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+06 000000cc`d1d7f9e0 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+   9  Id: ee0.253c Suspend: 0 Teb: 000000cc`d1682000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d1dffad8 00007ff9`fcf9ac2f ntdll!NtRemoveIoCompletion+0x14
+01 000000cc`d1dffae0 00007ff9`f90f181a KERNELBASE!GetQueuedCompletionStatus+0x3f
+02 000000cc`d1dffb40 00007ff9`f90f17a3 w3tp!THREAD_POOL_DATA::ThreadPoolThread+0x3a
+03 000000cc`d1dffb90 00007ff9`f90f16f9 w3tp!THREAD_POOL_DATA::ThreadPoolThread+0x33
+04 000000cc`d1dffbd0 00007ff9`fd7d8364 w3tp!THREAD_MANAGER::ThreadManagerThread+0x49
+05 000000cc`d1dffc10 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+06 000000cc`d1dffc40 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  10  Id: ee0.1284 Suspend: 0 Teb: 000000cc`d1684000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d1e7f768 00007ff9`fcf9ac2f ntdll!NtRemoveIoCompletion+0x14
+01 000000cc`d1e7f770 00007ff9`f90f181a KERNELBASE!GetQueuedCompletionStatus+0x3f
+02 000000cc`d1e7f7d0 00007ff9`f90f17a3 w3tp!THREAD_POOL_DATA::ThreadPoolThread+0x3a
+03 000000cc`d1e7f820 00007ff9`f90f16f9 w3tp!THREAD_POOL_DATA::ThreadPoolThread+0x33
+04 000000cc`d1e7f860 00007ff9`fd7d8364 w3tp!THREAD_MANAGER::ThreadManagerThread+0x49
+05 000000cc`d1e7f8a0 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+06 000000cc`d1e7f8d0 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  11  Id: ee0.1794 Suspend: 0 Teb: 000000cc`d1686000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d1eff728 00007ff9`fcf9ac2f ntdll!NtRemoveIoCompletion+0x14
+01 000000cc`d1eff730 00007ff9`f90f181a KERNELBASE!GetQueuedCompletionStatus+0x3f
+02 000000cc`d1eff790 00007ff9`f90f17a3 w3tp!THREAD_POOL_DATA::ThreadPoolThread+0x3a
+03 000000cc`d1eff7e0 00007ff9`f90f16f9 w3tp!THREAD_POOL_DATA::ThreadPoolThread+0x33
+04 000000cc`d1eff820 00007ff9`fd7d8364 w3tp!THREAD_MANAGER::ThreadManagerThread+0x49
+05 000000cc`d1eff860 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+06 000000cc`d1eff890 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  12  Id: ee0.1668 Suspend: 0 Teb: 000000cc`d1688000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d1f7fa98 00007ff9`fcf9ac2f ntdll!NtRemoveIoCompletion+0x14
+01 000000cc`d1f7faa0 00007ff9`f90f181a KERNELBASE!GetQueuedCompletionStatus+0x3f
+02 000000cc`d1f7fb00 00007ff9`f90f17a3 w3tp!THREAD_POOL_DATA::ThreadPoolThread+0x3a
+03 000000cc`d1f7fb50 00007ff9`f90f16f9 w3tp!THREAD_POOL_DATA::ThreadPoolThread+0x33
+04 000000cc`d1f7fb90 00007ff9`fd7d8364 w3tp!THREAD_MANAGER::ThreadManagerThread+0x49
+05 000000cc`d1f7fbd0 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+06 000000cc`d1f7fc00 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  13  Id: ee0.1888 Suspend: 0 Teb: 000000cc`d168a000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d1fff698 00007ff9`fcf9ac2f ntdll!NtRemoveIoCompletion+0x14
+01 000000cc`d1fff6a0 00007ff9`f90f181a KERNELBASE!GetQueuedCompletionStatus+0x3f
+02 000000cc`d1fff700 00007ff9`f90f17a3 w3tp!THREAD_POOL_DATA::ThreadPoolThread+0x3a
+03 000000cc`d1fff750 00007ff9`f90f16f9 w3tp!THREAD_POOL_DATA::ThreadPoolThread+0x33
+04 000000cc`d1fff790 00007ff9`fd7d8364 w3tp!THREAD_MANAGER::ThreadManagerThread+0x49
+05 000000cc`d1fff7d0 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+06 000000cc`d1fff800 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  14  Id: ee0.1ea8 Suspend: 0 Teb: 000000cc`d168c000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d207f6d8 00007ff9`fcf9ac2f ntdll!NtRemoveIoCompletion+0x14
+01 000000cc`d207f6e0 00007ff9`f90f181a KERNELBASE!GetQueuedCompletionStatus+0x3f
+02 000000cc`d207f740 00007ff9`f90f17a3 w3tp!THREAD_POOL_DATA::ThreadPoolThread+0x3a
+03 000000cc`d207f790 00007ff9`f90f16f9 w3tp!THREAD_POOL_DATA::ThreadPoolThread+0x33
+04 000000cc`d207f7d0 00007ff9`fd7d8364 w3tp!THREAD_MANAGER::ThreadManagerThread+0x49
+05 000000cc`d207f810 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+06 000000cc`d207f840 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  15  Id: ee0.a34 Suspend: 0 Teb: 000000cc`d168e000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d20ff788 00007ff9`fcf9ac2f ntdll!NtRemoveIoCompletion+0x14
+01 000000cc`d20ff790 00007ff9`f90f181a KERNELBASE!GetQueuedCompletionStatus+0x3f
+02 000000cc`d20ff7f0 00007ff9`f90f17a3 w3tp!THREAD_POOL_DATA::ThreadPoolThread+0x3a
+03 000000cc`d20ff840 00007ff9`f90f16f9 w3tp!THREAD_POOL_DATA::ThreadPoolThread+0x33
+04 000000cc`d20ff880 00007ff9`fd7d8364 w3tp!THREAD_MANAGER::ThreadManagerThread+0x49
+05 000000cc`d20ff8c0 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+06 000000cc`d20ff8f0 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  16  Id: ee0.2554 Suspend: 0 Teb: 000000cc`d1690000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d217fb58 00007ff9`fcf9ac2f ntdll!NtRemoveIoCompletion+0x14
+01 000000cc`d217fb60 00007ff9`f90f181a KERNELBASE!GetQueuedCompletionStatus+0x3f
+02 000000cc`d217fbc0 00007ff9`f90f17a3 w3tp!THREAD_POOL_DATA::ThreadPoolThread+0x3a
+03 000000cc`d217fc10 00007ff9`f90f16f9 w3tp!THREAD_POOL_DATA::ThreadPoolThread+0x33
+04 000000cc`d217fc50 00007ff9`fd7d8364 w3tp!THREAD_MANAGER::ThreadManagerThread+0x49
+05 000000cc`d217fc90 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+06 000000cc`d217fcc0 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  17  Id: ee0.88c Suspend: 0 Teb: 000000cc`d1692000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d21ff918 00007ff9`fcf9ac2f ntdll!NtRemoveIoCompletion+0x14
+01 000000cc`d21ff920 00007ff9`f90f181a KERNELBASE!GetQueuedCompletionStatus+0x3f
+02 000000cc`d21ff980 00007ff9`f90f17a3 w3tp!THREAD_POOL_DATA::ThreadPoolThread+0x3a
+03 000000cc`d21ff9d0 00007ff9`f90f16f9 w3tp!THREAD_POOL_DATA::ThreadPoolThread+0x33
+04 000000cc`d21ffa10 00007ff9`fd7d8364 w3tp!THREAD_MANAGER::ThreadManagerThread+0x49
+05 000000cc`d21ffa50 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+06 000000cc`d21ffa80 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  18  Id: ee0.2570 Suspend: 0 Teb: 000000cc`d1694000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d227f8a8 00007ff9`fcf9ac2f ntdll!NtRemoveIoCompletion+0x14
+01 000000cc`d227f8b0 00007ff9`f90f181a KERNELBASE!GetQueuedCompletionStatus+0x3f
+02 000000cc`d227f910 00007ff9`f90f17a3 w3tp!THREAD_POOL_DATA::ThreadPoolThread+0x3a
+03 000000cc`d227f960 00007ff9`f90f16f9 w3tp!THREAD_POOL_DATA::ThreadPoolThread+0x33
+04 000000cc`d227f9a0 00007ff9`fd7d8364 w3tp!THREAD_MANAGER::ThreadManagerThread+0x49
+05 000000cc`d227f9e0 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+06 000000cc`d227fa10 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+# 19  Id: ee0.770 Suspend: 0 Teb: 000000cc`d1696000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d22f4f48 00007ff9`fcf9796f ntdll!NtWaitForMultipleObjects+0x14
+01 000000cc`d22f4f50 00007ff9`fcf9786e KERNELBASE!WaitForMultipleObjectsEx+0xef
+02 000000cc`d22f5250 00007ff9`eb78c503 KERNELBASE!WaitForMultipleObjects+0xe
+03 000000cc`d22f5290 00007ff9`eb78c7e9 Faultrep!WerpReportFaultInternal+0x65f
+04 000000cc`d22f5840 00007ff9`eb0fb1e7 Faultrep!WerpReportFault+0xb1
+05 000000cc`d22f5880 00007ff9`eb0e8fd1 iiscore!NOTIFICATION_CONTEXT::TryReportFault+0x9f
+06 000000cc`d22f5ad0 00007ffa`00276b96 iiscore!`NOTIFICATION_CONTEXT::CallModules'::`1'::filt$0+0x11
+07 000000cc`d22f5b20 00007ffa`0028ab6d ntdll!_C_specific_handler+0x96
+08 000000cc`d22f5b90 00007ffa`00229933 ntdll!RtlpExecuteHandlerForException+0xd
+09 000000cc`d22f5bc0 00007ffa`00289c8a ntdll!RtlDispatchException+0x373
+0a 000000cc`d22f62c0 00007ff9`dff40586 ntdll!KiUserExceptionDispatch+0x3a
+0b 000000cc`d22f69c0 00007ff9`dff405ef sblib!HexGeo::SpatialModeler::Port::GetOperator+0x6 [c:\work\jenkins-home\workspace\v16.5-smsdk-x64release\sources_modeler\sblib\port.cpp @ 476]
+0c 000000cc`d22f6a00 00007ff9`e2b2d335 sblib!HexGeo::SpatialModeler::Port::GetParentPort+0x3f [c:\work\jenkins-home\workspace\v16.5-smsdk-x64release\sources_modeler\sblib\port.cpp @ 1081]
+0d 000000cc`d22f6ab0 00007ff9`e2b2d7f0 NCSSpatialModel!NCS::IWS::SpatialModel::CModel::OpenInternal+0x865
+0e 000000cc`d22f7010 00007ff9`dc9d1a88 NCSSpatialModel!NCS::IWS::SpatialModel::CModel::Open+0x140
+0f 000000cc`d22f7160 00007ff9`dcd21ac2 NCSServerUtil!NCS::IWS::Metadata::CombinedMetadataReader::GetFileMetadata+0xb08 [c:\jenkins\workspace\rl_2018_apollocore_windows\release\image_web_server_2018\sources_iws\source\c\ncsserverutil\combinedmetadatareader.cpp @ 761]
+10 000000cc`d22f7c10 00007ff9`dcd21067 NCSServerUtil!NCS::IWS::ServerDatastore::CPhysicalFile::UpdateFromPhysicalFile+0x42 [c:\jenkins\workspace\rl_2018_apollocore_windows\release\image_web_server_2018\sources_iws\source\c\serverdatastore\cphysicalfile.cpp @ 141]
+11 000000cc`d22f7c70 00007ff9`dcd14747 NCSServerUtil!NCS::IWS::ServerDatastore::CPhysicalFile::Init+0xb7 [c:\jenkins\workspace\rl_2018_apollocore_windows\release\image_web_server_2018\sources_iws\source\c\serverdatastore\cphysicalfile.cpp @ 117]
+12 000000cc`d22f7d30 00007ff9`dcd2ad21 NCSServerUtil!NCS::IWS::ServerDatastore::CServerDatastore::GetPhysicalFile+0xf7 [c:\jenkins\workspace\rl_2018_apollocore_windows\release\image_web_server_2018\sources_iws\source\c\serverdatastore\ncsserverdatastore.cpp @ 1246]
+13 000000cc`d22f7e30 00007ff9`dcd2a78a NCSServerUtil!NCS::IWS::ServerDatastore::CService::CreateDataset+0x311 [c:\jenkins\workspace\rl_2018_apollocore_windows\release\image_web_server_2018\sources_iws\source\c\serverdatastore\cservice.cpp @ 1483]
+14 000000cc`d22f8590 00007ff9`dcd2bbbb NCSServerUtil!NCS::IWS::ServerDatastore::CService::Crawl+0x1fa [c:\jenkins\workspace\rl_2018_apollocore_windows\release\image_web_server_2018\sources_iws\source\c\serverdatastore\cservice.cpp @ 986]
+15 000000cc`d22f9050 00007ff9`eac54b9e NCSServerUtil!NCS::IWS::ServerDatastore::CService::CreateFolder+0x75b [c:\jenkins\workspace\rl_2018_apollocore_windows\release\image_web_server_2018\sources_iws\source\c\serverdatastore\cservice.cpp @ 945]
+16 000000cc`d22f96f0 00007ff9`eac5f13a ecwpmgr!NCS::IWS::AdminAPI::CNCSEcwpMgrRequest::ProcessFilesRequest+0x19be [c:\jenkins\workspace\rl_2018_apollocore_windows\release\image_web_server_2018\sources_iws\source\c\ncsecwpmgr2\ncsecwpmgrrequest.cpp @ 1773]
+17 000000cc`d22fe640 00007ff9`eac5ebe5 ecwpmgr!NCS::IWS::AdminAPI::CNCSEcwpMgrRequest::ProcessRequest+0x27a [c:\jenkins\workspace\rl_2018_apollocore_windows\release\image_web_server_2018\sources_iws\source\c\ncsecwpmgr2\ncsecwpmgrrequest.cpp @ 304]
+18 000000cc`d22fe7f0 00007ff9`eac72fa2 ecwpmgr!NCS::IWS::AdminAPI::CNCSEcwpMgrRequest::ProcessRequest+0x235 [c:\jenkins\workspace\rl_2018_apollocore_windows\release\image_web_server_2018\sources_iws\source\c\ncsecwpmgr2\ncsecwpmgrrequest.cpp @ 154]
+19 000000cc`d22fea20 00007ff9`eac72eed ecwpmgr!NCS::IWS::AdminAPI::CNCSISAPIEcwpMgr::ProcessRequest+0x92 [c:\jenkins\workspace\rl_2018_apollocore_windows\release\image_web_server_2018\sources_iws\source\c\ncsecwpmgr2\ncsisapiecwpmgr.cpp @ 153]
+1a 000000cc`d22feb60 00007ff9`dc9d640c ecwpmgr!NCS::IWS::AdminAPI::NCSHttpExtensionProc+0x12d [c:\jenkins\workspace\rl_2018_apollocore_windows\release\image_web_server_2018\sources_iws\source\c\ncsecwpmgr2\ncsisapiecwpmgr.cpp @ 82]
+1b 000000cc`d22feff0 00007ff9`dc9d6345 NCSServerUtil!NCS::IWS::CIsapiExtensionHelper::HttpExtensionProcCppException+0x3c [c:\jenkins\workspace\rl_2018_apollocore_windows\release\image_web_server_2018\sources_iws\source\c\ncsserverutil\isapiextensionhelper.cpp @ 14]
+1c 000000cc`d22ff0c0 00007ff9`eb062c1d NCSServerUtil!NCS::IWS::CIsapiExtensionHelper::HttpExtensionProc+0x55 [c:\jenkins\workspace\rl_2018_apollocore_windows\release\image_web_server_2018\sources_iws\source\c\ncsserverutil\isapiextensionhelper.cpp @ 33]
+1d 000000cc`d22ff130 00007ff9`eb06aebf isapi!ProcessIsapiRequest+0x151
+1e 000000cc`d22ff190 00007ff9`eb06187f isapi!W3_ISAPI_HANDLER::DoWork+0x593
+1f 000000cc`d22ff2c0 00007ff9`eb061d3a isapi!RequestDoWork+0x517
+20 000000cc`d22ff360 00007ff9`eb0dd3d9 isapi!CIISHttpModule::OnExecuteRequestHandler+0x1a
+21 000000cc`d22ff3a0 00007ff9`eb0dcd7c iiscore!NOTIFICATION_CONTEXT::RequestDoWork+0xb9
+22 000000cc`d22ff3f0 00007ff9`eb0dcbc6 iiscore!NOTIFICATION_CONTEXT::CallModulesInternal+0x19c
+23 000000cc`d22ff500 00007ff9`eb0dde08 iiscore!NOTIFICATION_CONTEXT::CallModules+0x36
+24 000000cc`d22ff560 00007ff9`eb0e1be6 iiscore!NOTIFICATION_MAIN::DoWork+0x3d8
+25 000000cc`d22ff880 00007ff9`f0cb4c95 iiscore!W3_MAIN_CONTEXT::OnNewRequest+0x286
+26 000000cc`d22ff8c0 00007ff9`f90f1853 w3dt!WP_CONTEXT::OnCompletion+0xb5
+27 000000cc`d22ff900 00007ff9`f90f17a3 w3tp!THREAD_POOL_DATA::ThreadPoolThread+0x73
+28 000000cc`d22ff950 00007ff9`f90f16f9 w3tp!THREAD_POOL_DATA::ThreadPoolThread+0x33
+29 000000cc`d22ff990 00007ff9`fd7d8364 w3tp!THREAD_MANAGER::ThreadManagerThread+0x49
+2a 000000cc`d22ff9d0 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+2b 000000cc`d22ffa00 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  20  Id: ee0.10c8 Suspend: 0 Teb: 000000cc`d1698000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d237f9d8 00007ffa`0021354e ntdll!NtWaitForWorkViaWorkerFactory+0x14
+01 000000cc`d237f9e0 00007ff9`fd7d8364 ntdll!TppWorkerThread+0x76e
+02 000000cc`d237fde0 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+03 000000cc`d237fe10 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  21  Id: ee0.928 Suspend: 0 Teb: 000000cc`d169a000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d23f7748 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d23f7750 00007ff9`dd1184ce KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d23f77f0 00007ff9`dd130eef NCSEcw!NCS::CEvent::Wait+0xe [c:\jenkins\workspace\rl_2018_ecwjp2sdk_windows_vc120\release\image_web_server_2018\sources_ecwjp2v4\source\c\ncsutil\ncsevent.cpp @ 277]
+03 000000cc`d23f7820 00007ff9`dcd03e11 NCSEcw!NCS::CThread::Wait+0x2f [c:\jenkins\workspace\rl_2018_ecwjp2sdk_windows_vc120\release\image_web_server_2018\sources_ecwjp2v4\source\c\ncsutil\ncsthread.cpp @ 682]
+04 000000cc`d23f7850 00007ff9`dd1312d6 NCSServerUtil!NCS::IWS::CNCSConfigFile::Work+0x41 [c:\jenkins\workspace\rl_2018_apollocore_windows\release\image_web_server_2018\sources_iws\source\c\servercoreutils\ncsconfigfile.cpp @ 157]
+05 000000cc`d23f7880 00007ff9`ef914f7f NCSEcw!NCS::CThread::sThreadFunc+0x36 [c:\jenkins\workspace\rl_2018_ecwjp2sdk_windows_vc120\release\image_web_server_2018\sources_ecwjp2v4\source\c\ncsutil\ncsthread.cpp @ 755]
+06 000000cc`d23ffaf0 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+07 000000cc`d23ffb20 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+08 000000cc`d23ffb50 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+09 000000cc`d23ffb80 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  22  Id: ee0.273c Suspend: 0 Teb: 000000cc`d169e000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d24ff828 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d24ff830 00007ff9`da634c28 KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d24ff8d0 00007ff9`ef914dbb acCOTS!mokGVs2WLMDc2_K+0x38
+03 000000cc`d24ff910 00007ff9`ef914e74 msvcr120!_callthreadstart+0x17 [f:\dd\vctools\crt\crtw32\startup\thread.c @ 257]
+04 000000cc`d24ff940 00007ff9`fd7d8364 msvcr120!_threadstart+0x70 [f:\dd\vctools\crt\crtw32\startup\thread.c @ 237]
+05 000000cc`d24ff970 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+06 000000cc`d24ff9a0 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  23  Id: ee0.247c Suspend: 0 Teb: 000000cc`d16a0000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d2577978 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d2577980 00007ff9`dd1184ce KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d2577a20 00007ff9`dd130eef NCSEcw!NCS::CEvent::Wait+0xe [c:\jenkins\workspace\rl_2018_ecwjp2sdk_windows_vc120\release\image_web_server_2018\sources_ecwjp2v4\source\c\ncsutil\ncsevent.cpp @ 277]
+03 000000cc`d2577a50 00007ff9`dca3f0fc NCSEcw!NCS::CThread::Wait+0x2f [c:\jenkins\workspace\rl_2018_ecwjp2sdk_windows_vc120\release\image_web_server_2018\sources_ecwjp2v4\source\c\ncsutil\ncsthread.cpp @ 682]
+04 000000cc`d2577a80 00007ff9`dd1312d6 NCSServerUtil!NCS::IWS::CDatasetFactory::Work+0x40c [c:\jenkins\workspace\rl_2018_apollocore_windows\release\image_web_server_2018\sources_iws\source\c\ncsserverutil\ncsdatasetfactory.cpp @ 551]
+05 000000cc`d2577b30 00007ff9`ef914f7f NCSEcw!NCS::CThread::sThreadFunc+0x36 [c:\jenkins\workspace\rl_2018_ecwjp2sdk_windows_vc120\release\image_web_server_2018\sources_ecwjp2v4\source\c\ncsutil\ncsthread.cpp @ 755]
+06 000000cc`d257fda0 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+07 000000cc`d257fdd0 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+08 000000cc`d257fe00 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+09 000000cc`d257fe30 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  24  Id: ee0.2110 Suspend: 0 Teb: 000000cc`d16a2000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d25ffb18 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d25ffb20 00007ff9`ef8f744f KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d25ffbc0 00007ff9`ef8f4f92 msvcr120!Concurrency::details::ExternalContextBase::Block+0x4b [f:\dd\vctools\crt\crtw32\concrt\externalcontextbase.cpp @ 151]
+03 (Inline Function) --------`-------- msvcr120!Concurrency::Context::Block+0xe [f:\dd\vctools\crt\crtw32\concrt\context.cpp @ 62]
+04 000000cc`d25ffc00 00007ff9`efa1c891 msvcr120!Concurrency::details::_Condition_variable::wait+0xb6 [f:\dd\vctools\crt\crtw32\concrt\event.cpp @ 595]
+05 000000cc`d25ffcb0 00007ff9`e04d8e76 msvcp120!do_wait+0x49 [f:\dd\vctools\crt\crtw32\stdcpp\thr\cond.c @ 56]
+06 000000cc`d25ffd20 00007ff9`e04d98dd NCSHPCLib!udRenderCorePacket::<unnamed-type-renderData>::operator=+0x196
+07 000000cc`d25ffd80 00007ff9`efa1d24c NCSHPCLib!std::_LaunchPad<std::_Bind<1,void,void (__cdecl*const)(void * __ptr64),void * __ptr64> >::_Go+0x1d
+08 000000cc`d25ffdb0 00007ff9`ef914f7f msvcp120!_Call_func+0x14 [f:\dd\vctools\crt\crtw32\stdcpp\thr\threadcall.cpp @ 28]
+09 000000cc`d25ffdf0 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+0a 000000cc`d25ffe20 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+0b 000000cc`d25ffe50 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+0c 000000cc`d25ffe80 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  25  Id: ee0.19bc Suspend: 0 Teb: 000000cc`d16a4000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d267f658 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d267f660 00007ff9`ef8f744f KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d267f700 00007ff9`ef8f4f92 msvcr120!Concurrency::details::ExternalContextBase::Block+0x4b [f:\dd\vctools\crt\crtw32\concrt\externalcontextbase.cpp @ 151]
+03 (Inline Function) --------`-------- msvcr120!Concurrency::Context::Block+0xe [f:\dd\vctools\crt\crtw32\concrt\context.cpp @ 62]
+04 000000cc`d267f740 00007ff9`efa1c891 msvcr120!Concurrency::details::_Condition_variable::wait+0xb6 [f:\dd\vctools\crt\crtw32\concrt\event.cpp @ 595]
+05 000000cc`d267f7f0 00007ff9`e04d96d4 msvcp120!do_wait+0x49 [f:\dd\vctools\crt\crtw32\stdcpp\thr\cond.c @ 56]
+06 000000cc`d267f860 00007ff9`e04d98dd NCSHPCLib!udSemaphore_Internal::Wait+0xe4
+07 000000cc`d267fb90 00007ff9`efa1d24c NCSHPCLib!std::_LaunchPad<std::_Bind<1,void,void (__cdecl*const)(void * __ptr64),void * __ptr64> >::_Go+0x1d
+08 000000cc`d267fbc0 00007ff9`ef914f7f msvcp120!_Call_func+0x14 [f:\dd\vctools\crt\crtw32\stdcpp\thr\threadcall.cpp @ 28]
+09 000000cc`d267fc00 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+0a 000000cc`d267fc30 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+0b 000000cc`d267fc60 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+0c 000000cc`d267fc90 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  26  Id: ee0.98 Suspend: 0 Teb: 000000cc`d16a6000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d26ff3c8 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d26ff3d0 00007ff9`ef8f744f KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d26ff470 00007ff9`ef8f4f92 msvcr120!Concurrency::details::ExternalContextBase::Block+0x4b [f:\dd\vctools\crt\crtw32\concrt\externalcontextbase.cpp @ 151]
+03 (Inline Function) --------`-------- msvcr120!Concurrency::Context::Block+0xe [f:\dd\vctools\crt\crtw32\concrt\context.cpp @ 62]
+04 000000cc`d26ff4b0 00007ff9`efa1c891 msvcr120!Concurrency::details::_Condition_variable::wait+0xb6 [f:\dd\vctools\crt\crtw32\concrt\event.cpp @ 595]
+05 000000cc`d26ff560 00007ff9`e04d96d4 msvcp120!do_wait+0x49 [f:\dd\vctools\crt\crtw32\stdcpp\thr\cond.c @ 56]
+06 000000cc`d26ff5d0 00007ff9`e04d98dd NCSHPCLib!udSemaphore_Internal::Wait+0xe4
+07 000000cc`d26ff900 00007ff9`efa1d24c NCSHPCLib!std::_LaunchPad<std::_Bind<1,void,void (__cdecl*const)(void * __ptr64),void * __ptr64> >::_Go+0x1d
+08 000000cc`d26ff930 00007ff9`ef914f7f msvcp120!_Call_func+0x14 [f:\dd\vctools\crt\crtw32\stdcpp\thr\threadcall.cpp @ 28]
+09 000000cc`d26ff970 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+0a 000000cc`d26ff9a0 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+0b 000000cc`d26ff9d0 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+0c 000000cc`d26ffa00 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  27  Id: ee0.2578 Suspend: 0 Teb: 000000cc`d16a8000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d277f458 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d277f460 00007ff9`ef8f744f KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d277f500 00007ff9`ef8f4f92 msvcr120!Concurrency::details::ExternalContextBase::Block+0x4b [f:\dd\vctools\crt\crtw32\concrt\externalcontextbase.cpp @ 151]
+03 (Inline Function) --------`-------- msvcr120!Concurrency::Context::Block+0xe [f:\dd\vctools\crt\crtw32\concrt\context.cpp @ 62]
+04 000000cc`d277f540 00007ff9`efa1c891 msvcr120!Concurrency::details::_Condition_variable::wait+0xb6 [f:\dd\vctools\crt\crtw32\concrt\event.cpp @ 595]
+05 000000cc`d277f5f0 00007ff9`e04d96d4 msvcp120!do_wait+0x49 [f:\dd\vctools\crt\crtw32\stdcpp\thr\cond.c @ 56]
+06 000000cc`d277f660 00007ff9`e04d98dd NCSHPCLib!udSemaphore_Internal::Wait+0xe4
+07 000000cc`d277f990 00007ff9`efa1d24c NCSHPCLib!std::_LaunchPad<std::_Bind<1,void,void (__cdecl*const)(void * __ptr64),void * __ptr64> >::_Go+0x1d
+08 000000cc`d277f9c0 00007ff9`ef914f7f msvcp120!_Call_func+0x14 [f:\dd\vctools\crt\crtw32\stdcpp\thr\threadcall.cpp @ 28]
+09 000000cc`d277fa00 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+0a 000000cc`d277fa30 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+0b 000000cc`d277fa60 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+0c 000000cc`d277fa90 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  28  Id: ee0.11ec Suspend: 0 Teb: 000000cc`d16aa000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d27ff738 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d27ff740 00007ff9`ef8f744f KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d27ff7e0 00007ff9`ef8f4f92 msvcr120!Concurrency::details::ExternalContextBase::Block+0x4b [f:\dd\vctools\crt\crtw32\concrt\externalcontextbase.cpp @ 151]
+03 (Inline Function) --------`-------- msvcr120!Concurrency::Context::Block+0xe [f:\dd\vctools\crt\crtw32\concrt\context.cpp @ 62]
+04 000000cc`d27ff820 00007ff9`efa1c891 msvcr120!Concurrency::details::_Condition_variable::wait+0xb6 [f:\dd\vctools\crt\crtw32\concrt\event.cpp @ 595]
+05 000000cc`d27ff8d0 00007ff9`e04d96d4 msvcp120!do_wait+0x49 [f:\dd\vctools\crt\crtw32\stdcpp\thr\cond.c @ 56]
+06 000000cc`d27ff940 00007ff9`e04d98dd NCSHPCLib!udSemaphore_Internal::Wait+0xe4
+07 000000cc`d27ffc70 00007ff9`efa1d24c NCSHPCLib!std::_LaunchPad<std::_Bind<1,void,void (__cdecl*const)(void * __ptr64),void * __ptr64> >::_Go+0x1d
+08 000000cc`d27ffca0 00007ff9`ef914f7f msvcp120!_Call_func+0x14 [f:\dd\vctools\crt\crtw32\stdcpp\thr\threadcall.cpp @ 28]
+09 000000cc`d27ffce0 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+0a 000000cc`d27ffd10 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+0b 000000cc`d27ffd40 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+0c 000000cc`d27ffd70 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  29  Id: ee0.250c Suspend: 0 Teb: 000000cc`d16ac000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d287f538 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d287f540 00007ff9`ef8f744f KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d287f5e0 00007ff9`ef8f4f92 msvcr120!Concurrency::details::ExternalContextBase::Block+0x4b [f:\dd\vctools\crt\crtw32\concrt\externalcontextbase.cpp @ 151]
+03 (Inline Function) --------`-------- msvcr120!Concurrency::Context::Block+0xe [f:\dd\vctools\crt\crtw32\concrt\context.cpp @ 62]
+04 000000cc`d287f620 00007ff9`efa1c891 msvcr120!Concurrency::details::_Condition_variable::wait+0xb6 [f:\dd\vctools\crt\crtw32\concrt\event.cpp @ 595]
+05 000000cc`d287f6d0 00007ff9`e04d96d4 msvcp120!do_wait+0x49 [f:\dd\vctools\crt\crtw32\stdcpp\thr\cond.c @ 56]
+06 000000cc`d287f740 00007ff9`e04d98dd NCSHPCLib!udSemaphore_Internal::Wait+0xe4
+07 000000cc`d287fa70 00007ff9`efa1d24c NCSHPCLib!std::_LaunchPad<std::_Bind<1,void,void (__cdecl*const)(void * __ptr64),void * __ptr64> >::_Go+0x1d
+08 000000cc`d287faa0 00007ff9`ef914f7f msvcp120!_Call_func+0x14 [f:\dd\vctools\crt\crtw32\stdcpp\thr\threadcall.cpp @ 28]
+09 000000cc`d287fae0 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+0a 000000cc`d287fb10 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+0b 000000cc`d287fb40 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+0c 000000cc`d287fb70 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  30  Id: ee0.1c04 Suspend: 0 Teb: 000000cc`d16ae000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d28ff828 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d28ff830 00007ff9`ef8f744f KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d28ff8d0 00007ff9`ef8f4f92 msvcr120!Concurrency::details::ExternalContextBase::Block+0x4b [f:\dd\vctools\crt\crtw32\concrt\externalcontextbase.cpp @ 151]
+03 (Inline Function) --------`-------- msvcr120!Concurrency::Context::Block+0xe [f:\dd\vctools\crt\crtw32\concrt\context.cpp @ 62]
+04 000000cc`d28ff910 00007ff9`efa1c891 msvcr120!Concurrency::details::_Condition_variable::wait+0xb6 [f:\dd\vctools\crt\crtw32\concrt\event.cpp @ 595]
+05 000000cc`d28ff9c0 00007ff9`e04d96d4 msvcp120!do_wait+0x49 [f:\dd\vctools\crt\crtw32\stdcpp\thr\cond.c @ 56]
+06 000000cc`d28ffa30 00007ff9`e04d98dd NCSHPCLib!udSemaphore_Internal::Wait+0xe4
+07 000000cc`d28ffd60 00007ff9`efa1d24c NCSHPCLib!std::_LaunchPad<std::_Bind<1,void,void (__cdecl*const)(void * __ptr64),void * __ptr64> >::_Go+0x1d
+08 000000cc`d28ffd90 00007ff9`ef914f7f msvcp120!_Call_func+0x14 [f:\dd\vctools\crt\crtw32\stdcpp\thr\threadcall.cpp @ 28]
+09 000000cc`d28ffdd0 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+0a 000000cc`d28ffe00 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+0b 000000cc`d28ffe30 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+0c 000000cc`d28ffe60 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  31  Id: ee0.2484 Suspend: 0 Teb: 000000cc`d16b0000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d297f218 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d297f220 00007ff9`ef8f744f KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d297f2c0 00007ff9`ef8f4f92 msvcr120!Concurrency::details::ExternalContextBase::Block+0x4b [f:\dd\vctools\crt\crtw32\concrt\externalcontextbase.cpp @ 151]
+03 (Inline Function) --------`-------- msvcr120!Concurrency::Context::Block+0xe [f:\dd\vctools\crt\crtw32\concrt\context.cpp @ 62]
+04 000000cc`d297f300 00007ff9`efa1c891 msvcr120!Concurrency::details::_Condition_variable::wait+0xb6 [f:\dd\vctools\crt\crtw32\concrt\event.cpp @ 595]
+05 000000cc`d297f3b0 00007ff9`e04d96d4 msvcp120!do_wait+0x49 [f:\dd\vctools\crt\crtw32\stdcpp\thr\cond.c @ 56]
+06 000000cc`d297f420 00007ff9`e04d98dd NCSHPCLib!udSemaphore_Internal::Wait+0xe4
+07 000000cc`d297f750 00007ff9`efa1d24c NCSHPCLib!std::_LaunchPad<std::_Bind<1,void,void (__cdecl*const)(void * __ptr64),void * __ptr64> >::_Go+0x1d
+08 000000cc`d297f780 00007ff9`ef914f7f msvcp120!_Call_func+0x14 [f:\dd\vctools\crt\crtw32\stdcpp\thr\threadcall.cpp @ 28]
+09 000000cc`d297f7c0 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+0a 000000cc`d297f7f0 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+0b 000000cc`d297f820 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+0c 000000cc`d297f850 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  32  Id: ee0.2404 Suspend: 0 Teb: 000000cc`d16b2000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d29ff1b8 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d29ff1c0 00007ff9`ef8f744f KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d29ff260 00007ff9`ef8f4f92 msvcr120!Concurrency::details::ExternalContextBase::Block+0x4b [f:\dd\vctools\crt\crtw32\concrt\externalcontextbase.cpp @ 151]
+03 (Inline Function) --------`-------- msvcr120!Concurrency::Context::Block+0xe [f:\dd\vctools\crt\crtw32\concrt\context.cpp @ 62]
+04 000000cc`d29ff2a0 00007ff9`efa1c891 msvcr120!Concurrency::details::_Condition_variable::wait+0xb6 [f:\dd\vctools\crt\crtw32\concrt\event.cpp @ 595]
+05 000000cc`d29ff350 00007ff9`e04d96d4 msvcp120!do_wait+0x49 [f:\dd\vctools\crt\crtw32\stdcpp\thr\cond.c @ 56]
+06 000000cc`d29ff3c0 00007ff9`e04d98dd NCSHPCLib!udSemaphore_Internal::Wait+0xe4
+07 000000cc`d29ff6f0 00007ff9`efa1d24c NCSHPCLib!std::_LaunchPad<std::_Bind<1,void,void (__cdecl*const)(void * __ptr64),void * __ptr64> >::_Go+0x1d
+08 000000cc`d29ff720 00007ff9`ef914f7f msvcp120!_Call_func+0x14 [f:\dd\vctools\crt\crtw32\stdcpp\thr\threadcall.cpp @ 28]
+09 000000cc`d29ff760 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+0a 000000cc`d29ff790 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+0b 000000cc`d29ff7c0 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+0c 000000cc`d29ff7f0 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  33  Id: ee0.2488 Suspend: 0 Teb: 000000cc`d16b4000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d2a7f8f8 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d2a7f900 00007ff9`ef8f744f KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d2a7f9a0 00007ff9`ef8f4f92 msvcr120!Concurrency::details::ExternalContextBase::Block+0x4b [f:\dd\vctools\crt\crtw32\concrt\externalcontextbase.cpp @ 151]
+03 (Inline Function) --------`-------- msvcr120!Concurrency::Context::Block+0xe [f:\dd\vctools\crt\crtw32\concrt\context.cpp @ 62]
+04 000000cc`d2a7f9e0 00007ff9`efa1c891 msvcr120!Concurrency::details::_Condition_variable::wait+0xb6 [f:\dd\vctools\crt\crtw32\concrt\event.cpp @ 595]
+05 000000cc`d2a7fa90 00007ff9`e04d96d4 msvcp120!do_wait+0x49 [f:\dd\vctools\crt\crtw32\stdcpp\thr\cond.c @ 56]
+06 000000cc`d2a7fb00 00007ff9`e04d98dd NCSHPCLib!udSemaphore_Internal::Wait+0xe4
+07 000000cc`d2a7fe30 00007ff9`efa1d24c NCSHPCLib!std::_LaunchPad<std::_Bind<1,void,void (__cdecl*const)(void * __ptr64),void * __ptr64> >::_Go+0x1d
+08 000000cc`d2a7fe60 00007ff9`ef914f7f msvcp120!_Call_func+0x14 [f:\dd\vctools\crt\crtw32\stdcpp\thr\threadcall.cpp @ 28]
+09 000000cc`d2a7fea0 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+0a 000000cc`d2a7fed0 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+0b 000000cc`d2a7ff00 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+0c 000000cc`d2a7ff30 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  34  Id: ee0.209c Suspend: 0 Teb: 000000cc`d16b6000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d2aff568 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d2aff570 00007ff9`ef8f744f KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d2aff610 00007ff9`ef8f4f92 msvcr120!Concurrency::details::ExternalContextBase::Block+0x4b [f:\dd\vctools\crt\crtw32\concrt\externalcontextbase.cpp @ 151]
+03 (Inline Function) --------`-------- msvcr120!Concurrency::Context::Block+0xe [f:\dd\vctools\crt\crtw32\concrt\context.cpp @ 62]
+04 000000cc`d2aff650 00007ff9`efa1c891 msvcr120!Concurrency::details::_Condition_variable::wait+0xb6 [f:\dd\vctools\crt\crtw32\concrt\event.cpp @ 595]
+05 000000cc`d2aff700 00007ff9`e04d96d4 msvcp120!do_wait+0x49 [f:\dd\vctools\crt\crtw32\stdcpp\thr\cond.c @ 56]
+06 000000cc`d2aff770 00007ff9`e04d98dd NCSHPCLib!udSemaphore_Internal::Wait+0xe4
+07 000000cc`d2affaa0 00007ff9`efa1d24c NCSHPCLib!std::_LaunchPad<std::_Bind<1,void,void (__cdecl*const)(void * __ptr64),void * __ptr64> >::_Go+0x1d
+08 000000cc`d2affad0 00007ff9`ef914f7f msvcp120!_Call_func+0x14 [f:\dd\vctools\crt\crtw32\stdcpp\thr\threadcall.cpp @ 28]
+09 000000cc`d2affb10 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+0a 000000cc`d2affb40 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+0b 000000cc`d2affb70 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+0c 000000cc`d2affba0 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  35  Id: ee0.100 Suspend: 0 Teb: 000000cc`d16b8000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d2b7f1b8 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d2b7f1c0 00007ff9`ef8f744f KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d2b7f260 00007ff9`ef8f4f92 msvcr120!Concurrency::details::ExternalContextBase::Block+0x4b [f:\dd\vctools\crt\crtw32\concrt\externalcontextbase.cpp @ 151]
+03 (Inline Function) --------`-------- msvcr120!Concurrency::Context::Block+0xe [f:\dd\vctools\crt\crtw32\concrt\context.cpp @ 62]
+04 000000cc`d2b7f2a0 00007ff9`efa1c891 msvcr120!Concurrency::details::_Condition_variable::wait+0xb6 [f:\dd\vctools\crt\crtw32\concrt\event.cpp @ 595]
+05 000000cc`d2b7f350 00007ff9`e04d96d4 msvcp120!do_wait+0x49 [f:\dd\vctools\crt\crtw32\stdcpp\thr\cond.c @ 56]
+06 000000cc`d2b7f3c0 00007ff9`e04d98dd NCSHPCLib!udSemaphore_Internal::Wait+0xe4
+07 000000cc`d2b7f6f0 00007ff9`efa1d24c NCSHPCLib!std::_LaunchPad<std::_Bind<1,void,void (__cdecl*const)(void * __ptr64),void * __ptr64> >::_Go+0x1d
+08 000000cc`d2b7f720 00007ff9`ef914f7f msvcp120!_Call_func+0x14 [f:\dd\vctools\crt\crtw32\stdcpp\thr\threadcall.cpp @ 28]
+09 000000cc`d2b7f760 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+0a 000000cc`d2b7f790 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+0b 000000cc`d2b7f7c0 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+0c 000000cc`d2b7f7f0 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  36  Id: ee0.1f90 Suspend: 0 Teb: 000000cc`d16ba000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d2bff2f8 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d2bff300 00007ff9`ef8f744f KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d2bff3a0 00007ff9`ef8f4f92 msvcr120!Concurrency::details::ExternalContextBase::Block+0x4b [f:\dd\vctools\crt\crtw32\concrt\externalcontextbase.cpp @ 151]
+03 (Inline Function) --------`-------- msvcr120!Concurrency::Context::Block+0xe [f:\dd\vctools\crt\crtw32\concrt\context.cpp @ 62]
+04 000000cc`d2bff3e0 00007ff9`efa1c891 msvcr120!Concurrency::details::_Condition_variable::wait+0xb6 [f:\dd\vctools\crt\crtw32\concrt\event.cpp @ 595]
+05 000000cc`d2bff490 00007ff9`e04d96d4 msvcp120!do_wait+0x49 [f:\dd\vctools\crt\crtw32\stdcpp\thr\cond.c @ 56]
+06 000000cc`d2bff500 00007ff9`e04d98dd NCSHPCLib!udSemaphore_Internal::Wait+0xe4
+07 000000cc`d2bff830 00007ff9`efa1d24c NCSHPCLib!std::_LaunchPad<std::_Bind<1,void,void (__cdecl*const)(void * __ptr64),void * __ptr64> >::_Go+0x1d
+08 000000cc`d2bff860 00007ff9`ef914f7f msvcp120!_Call_func+0x14 [f:\dd\vctools\crt\crtw32\stdcpp\thr\threadcall.cpp @ 28]
+09 000000cc`d2bff8a0 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+0a 000000cc`d2bff8d0 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+0b 000000cc`d2bff900 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+0c 000000cc`d2bff930 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  37  Id: ee0.934 Suspend: 0 Teb: 000000cc`d16bc000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d2c7f7b8 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d2c7f7c0 00007ff9`ef8f744f KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d2c7f860 00007ff9`ef8f4f92 msvcr120!Concurrency::details::ExternalContextBase::Block+0x4b [f:\dd\vctools\crt\crtw32\concrt\externalcontextbase.cpp @ 151]
+03 (Inline Function) --------`-------- msvcr120!Concurrency::Context::Block+0xe [f:\dd\vctools\crt\crtw32\concrt\context.cpp @ 62]
+04 000000cc`d2c7f8a0 00007ff9`efa1c891 msvcr120!Concurrency::details::_Condition_variable::wait+0xb6 [f:\dd\vctools\crt\crtw32\concrt\event.cpp @ 595]
+05 000000cc`d2c7f950 00007ff9`e04d96d4 msvcp120!do_wait+0x49 [f:\dd\vctools\crt\crtw32\stdcpp\thr\cond.c @ 56]
+06 000000cc`d2c7f9c0 00007ff9`e04d98dd NCSHPCLib!udSemaphore_Internal::Wait+0xe4
+07 000000cc`d2c7fcf0 00007ff9`efa1d24c NCSHPCLib!std::_LaunchPad<std::_Bind<1,void,void (__cdecl*const)(void * __ptr64),void * __ptr64> >::_Go+0x1d
+08 000000cc`d2c7fd20 00007ff9`ef914f7f msvcp120!_Call_func+0x14 [f:\dd\vctools\crt\crtw32\stdcpp\thr\threadcall.cpp @ 28]
+09 000000cc`d2c7fd60 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+0a 000000cc`d2c7fd90 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+0b 000000cc`d2c7fdc0 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+0c 000000cc`d2c7fdf0 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  38  Id: ee0.1b70 Suspend: 0 Teb: 000000cc`d16be000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d2cff728 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d2cff730 00007ff9`ef8f744f KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d2cff7d0 00007ff9`ef8f4f92 msvcr120!Concurrency::details::ExternalContextBase::Block+0x4b [f:\dd\vctools\crt\crtw32\concrt\externalcontextbase.cpp @ 151]
+03 (Inline Function) --------`-------- msvcr120!Concurrency::Context::Block+0xe [f:\dd\vctools\crt\crtw32\concrt\context.cpp @ 62]
+04 000000cc`d2cff810 00007ff9`efa1c891 msvcr120!Concurrency::details::_Condition_variable::wait+0xb6 [f:\dd\vctools\crt\crtw32\concrt\event.cpp @ 595]
+05 000000cc`d2cff8c0 00007ff9`e04d96d4 msvcp120!do_wait+0x49 [f:\dd\vctools\crt\crtw32\stdcpp\thr\cond.c @ 56]
+06 000000cc`d2cff930 00007ff9`e04d98dd NCSHPCLib!udSemaphore_Internal::Wait+0xe4
+07 000000cc`d2cffc60 00007ff9`efa1d24c NCSHPCLib!std::_LaunchPad<std::_Bind<1,void,void (__cdecl*const)(void * __ptr64),void * __ptr64> >::_Go+0x1d
+08 000000cc`d2cffc90 00007ff9`ef914f7f msvcp120!_Call_func+0x14 [f:\dd\vctools\crt\crtw32\stdcpp\thr\threadcall.cpp @ 28]
+09 000000cc`d2cffcd0 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+0a 000000cc`d2cffd00 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+0b 000000cc`d2cffd30 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+0c 000000cc`d2cffd60 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  39  Id: ee0.190c Suspend: 0 Teb: 000000cc`d16c0000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d2d7f728 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d2d7f730 00007ff9`ef8f744f KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d2d7f7d0 00007ff9`ef8f4f92 msvcr120!Concurrency::details::ExternalContextBase::Block+0x4b [f:\dd\vctools\crt\crtw32\concrt\externalcontextbase.cpp @ 151]
+03 (Inline Function) --------`-------- msvcr120!Concurrency::Context::Block+0xe [f:\dd\vctools\crt\crtw32\concrt\context.cpp @ 62]
+04 000000cc`d2d7f810 00007ff9`efa1c891 msvcr120!Concurrency::details::_Condition_variable::wait+0xb6 [f:\dd\vctools\crt\crtw32\concrt\event.cpp @ 595]
+05 000000cc`d2d7f8c0 00007ff9`e04d96d4 msvcp120!do_wait+0x49 [f:\dd\vctools\crt\crtw32\stdcpp\thr\cond.c @ 56]
+06 000000cc`d2d7f930 00007ff9`e04d98dd NCSHPCLib!udSemaphore_Internal::Wait+0xe4
+07 000000cc`d2d7fc60 00007ff9`efa1d24c NCSHPCLib!std::_LaunchPad<std::_Bind<1,void,void (__cdecl*const)(void * __ptr64),void * __ptr64> >::_Go+0x1d
+08 000000cc`d2d7fc90 00007ff9`ef914f7f msvcp120!_Call_func+0x14 [f:\dd\vctools\crt\crtw32\stdcpp\thr\threadcall.cpp @ 28]
+09 000000cc`d2d7fcd0 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+0a 000000cc`d2d7fd00 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+0b 000000cc`d2d7fd30 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+0c 000000cc`d2d7fd60 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  40  Id: ee0.120 Suspend: 0 Teb: 000000cc`d16c2000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d2dff6c8 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d2dff6d0 00007ff9`ef8f744f KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d2dff770 00007ff9`ef8f4f92 msvcr120!Concurrency::details::ExternalContextBase::Block+0x4b [f:\dd\vctools\crt\crtw32\concrt\externalcontextbase.cpp @ 151]
+03 (Inline Function) --------`-------- msvcr120!Concurrency::Context::Block+0xe [f:\dd\vctools\crt\crtw32\concrt\context.cpp @ 62]
+04 000000cc`d2dff7b0 00007ff9`efa1c891 msvcr120!Concurrency::details::_Condition_variable::wait+0xb6 [f:\dd\vctools\crt\crtw32\concrt\event.cpp @ 595]
+05 000000cc`d2dff860 00007ff9`e04d96d4 msvcp120!do_wait+0x49 [f:\dd\vctools\crt\crtw32\stdcpp\thr\cond.c @ 56]
+06 000000cc`d2dff8d0 00007ff9`e04d98dd NCSHPCLib!udSemaphore_Internal::Wait+0xe4
+07 000000cc`d2dffc00 00007ff9`efa1d24c NCSHPCLib!std::_LaunchPad<std::_Bind<1,void,void (__cdecl*const)(void * __ptr64),void * __ptr64> >::_Go+0x1d
+08 000000cc`d2dffc30 00007ff9`ef914f7f msvcp120!_Call_func+0x14 [f:\dd\vctools\crt\crtw32\stdcpp\thr\threadcall.cpp @ 28]
+09 000000cc`d2dffc70 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+0a 000000cc`d2dffca0 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+0b 000000cc`d2dffcd0 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+0c 000000cc`d2dffd00 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  41  Id: ee0.2140 Suspend: 0 Teb: 000000cc`d16c4000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d2e7f548 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d2e7f550 00007ff9`ef8f744f KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d2e7f5f0 00007ff9`ef8f4f92 msvcr120!Concurrency::details::ExternalContextBase::Block+0x4b [f:\dd\vctools\crt\crtw32\concrt\externalcontextbase.cpp @ 151]
+03 (Inline Function) --------`-------- msvcr120!Concurrency::Context::Block+0xe [f:\dd\vctools\crt\crtw32\concrt\context.cpp @ 62]
+04 000000cc`d2e7f630 00007ff9`efa1c891 msvcr120!Concurrency::details::_Condition_variable::wait+0xb6 [f:\dd\vctools\crt\crtw32\concrt\event.cpp @ 595]
+05 000000cc`d2e7f6e0 00007ff9`e04d962f msvcp120!do_wait+0x49 [f:\dd\vctools\crt\crtw32\stdcpp\thr\cond.c @ 56]
+06 000000cc`d2e7f750 00007ff9`e0543869 NCSHPCLib!udSemaphore_Internal::Wait+0x3f
+07 000000cc`d2e7f780 00007ff9`e04d98dd NCSHPCLib!udThreadWorker::ProcessTasks+0x1c9
+08 000000cc`d2e7f820 00007ff9`efa1d24c NCSHPCLib!std::_LaunchPad<std::_Bind<1,void,void (__cdecl*const)(void * __ptr64),void * __ptr64> >::_Go+0x1d
+09 000000cc`d2e7f850 00007ff9`ef914f7f msvcp120!_Call_func+0x14 [f:\dd\vctools\crt\crtw32\stdcpp\thr\threadcall.cpp @ 28]
+0a 000000cc`d2e7f890 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+0b 000000cc`d2e7f8c0 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+0c 000000cc`d2e7f8f0 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+0d 000000cc`d2e7f920 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  42  Id: ee0.1240 Suspend: 0 Teb: 000000cc`d16c6000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d2ef77e8 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d2ef77f0 00007ff9`dd1184ce KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d2ef7890 00007ff9`dcd18c02 NCSEcw!NCS::CEvent::Wait+0xe [c:\jenkins\workspace\rl_2018_ecwjp2sdk_windows_vc120\release\image_web_server_2018\sources_ecwjp2v4\source\c\ncsutil\ncsevent.cpp @ 277]
+03 000000cc`d2ef78c0 00007ff9`dd1312d6 NCSServerUtil!NCS::IWS::ServerDatastore::CServerDatastore::Work+0x92 [c:\jenkins\workspace\rl_2018_apollocore_windows\release\image_web_server_2018\sources_iws\source\c\serverdatastore\ncsserverdatastore.cpp @ 278]
+04 000000cc`d2ef7a60 00007ff9`ef914f7f NCSEcw!NCS::CThread::sThreadFunc+0x36 [c:\jenkins\workspace\rl_2018_ecwjp2sdk_windows_vc120\release\image_web_server_2018\sources_ecwjp2v4\source\c\ncsutil\ncsthread.cpp @ 755]
+05 000000cc`d2effcd0 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+06 000000cc`d2effd00 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+07 000000cc`d2effd30 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+08 000000cc`d2effd60 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  43  Id: ee0.2198 Suspend: 0 Teb: 000000cc`d16c8000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d2f774a8 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d2f774b0 00007ff9`dd1184ce KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d2f77550 00007ff9`dd130eef NCSEcw!NCS::CEvent::Wait+0xe [c:\jenkins\workspace\rl_2018_ecwjp2sdk_windows_vc120\release\image_web_server_2018\sources_ecwjp2v4\source\c\ncsutil\ncsevent.cpp @ 277]
+03 000000cc`d2f77580 00007ff9`dcb8491c NCSEcw!NCS::CThread::Wait+0x2f [c:\jenkins\workspace\rl_2018_ecwjp2sdk_windows_vc120\release\image_web_server_2018\sources_ecwjp2v4\source\c\ncsutil\ncsthread.cpp @ 682]
+04 000000cc`d2f775b0 00007ff9`dd1312d6 NCSServerUtil!CNCSServerUtil::Work+0x2c [c:\jenkins\workspace\rl_2018_apollocore_windows\release\image_web_server_2018\sources_iws\source\c\ncsserverutil\ncsserverutil.cpp @ 936]
+05 000000cc`d2f775e0 00007ff9`ef914f7f NCSEcw!NCS::CThread::sThreadFunc+0x36 [c:\jenkins\workspace\rl_2018_ecwjp2sdk_windows_vc120\release\image_web_server_2018\sources_ecwjp2v4\source\c\ncsutil\ncsthread.cpp @ 755]
+06 000000cc`d2f7f850 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+07 000000cc`d2f7f880 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+08 000000cc`d2f7f8b0 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+09 000000cc`d2f7f8e0 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  44  Id: ee0.26e0 Suspend: 1 Teb: 000000cc`d16ca000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d2ff7718 00007ff9`fcfbd72f ntdll!NtSuspendThread+0x14
+01 000000cc`d2ff7720 00007ff9`eac73ef6 KERNELBASE!SuspendThread+0xf
+02 000000cc`d2ff7750 00007ff9`dd1312d6 ecwpmgr!NCS::IWS::AdminAPI::CNCSServerStats::Work+0xc6 [c:\jenkins\workspace\rl_2018_apollocore_windows\release\image_web_server_2018\sources_iws\source\c\ncsecwpmgr2\ncsserverstats.cpp @ 82]
+03 000000cc`d2ff7830 00007ff9`ef914f7f NCSEcw!NCS::CThread::sThreadFunc+0x36 [c:\jenkins\workspace\rl_2018_ecwjp2sdk_windows_vc120\release\image_web_server_2018\sources_ecwjp2v4\source\c\ncsutil\ncsthread.cpp @ 755]
+04 000000cc`d2fffaa0 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+05 000000cc`d2fffad0 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+06 000000cc`d2fffb00 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+07 000000cc`d2fffb30 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  45  Id: ee0.227c Suspend: 0 Teb: 000000cc`d16cc000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d307f6d8 00007ff9`fcf9796f ntdll!NtWaitForMultipleObjects+0x14
+01 000000cc`d307f6e0 00007ff9`ea444897 KERNELBASE!WaitForMultipleObjectsEx+0xef
+02 000000cc`d307f9e0 00007ff9`ea4447f9 JPIPServer!kd_delivery_manager::thread_entry+0x97 [c:\jenkins\workspace\rl_2018_apollocore_windows\release\image_web_server_2018\sources_iws\source\c\jpipserver\kdu_v5_2_4-00337c\apps\kdu_server\delivery.cpp @ 1073]
+03 000000cc`d307fa20 00007ff9`ef914f7f JPIPServer!kd_delivery_manager_start_proc+0x9 [c:\jenkins\workspace\rl_2018_apollocore_windows\release\image_web_server_2018\sources_iws\source\c\jpipserver\kdu_v5_2_4-00337c\apps\kdu_server\delivery.cpp @ 967]
+04 000000cc`d307fa50 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+05 000000cc`d307fa80 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+06 000000cc`d307fab0 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+07 000000cc`d307fae0 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  46  Id: ee0.25a0 Suspend: 0 Teb: 000000cc`d16ce000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d30f78a8 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d30f78b0 00007ff9`dd1184ce KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d30f7950 00007ff9`dd130eef NCSEcw!NCS::CEvent::Wait+0xe [c:\jenkins\workspace\rl_2018_ecwjp2sdk_windows_vc120\release\image_web_server_2018\sources_ecwjp2v4\source\c\ncsutil\ncsevent.cpp @ 277]
+03 000000cc`d30f7980 00007ff9`ea43eef1 NCSEcw!NCS::CThread::Wait+0x2f [c:\jenkins\workspace\rl_2018_ecwjp2sdk_windows_vc120\release\image_web_server_2018\sources_ecwjp2v4\source\c\ncsutil\ncsthread.cpp @ 682]
+04 000000cc`d30f79b0 00007ff9`dd1312d6 JPIPServer!CNCSJPIPServer::Work+0x31 [c:\jenkins\workspace\rl_2018_apollocore_windows\release\image_web_server_2018\sources_iws\source\c\jpipserver\ncsjpipserver.cpp @ 224]
+05 000000cc`d30f79f0 00007ff9`ef914f7f NCSEcw!NCS::CThread::sThreadFunc+0x36 [c:\jenkins\workspace\rl_2018_ecwjp2sdk_windows_vc120\release\image_web_server_2018\sources_ecwjp2v4\source\c\ncsutil\ncsthread.cpp @ 755]
+06 000000cc`d30ffc60 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+07 000000cc`d30ffc90 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+08 000000cc`d30ffcc0 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+09 000000cc`d30ffcf0 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  47  Id: ee0.21b0 Suspend: 0 Teb: 000000cc`d16d0000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d3177848 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d3177850 00007ff9`dd1184ce KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d31778f0 00007ff9`dcd38886 NCSEcw!NCS::CEvent::Wait+0xe [c:\jenkins\workspace\rl_2018_ecwjp2sdk_windows_vc120\release\image_web_server_2018\sources_ecwjp2v4\source\c\ncsutil\ncsevent.cpp @ 277]
+03 000000cc`d3177920 00007ff9`dd1312d6 NCSServerUtil!NCS::IWS::ServerDatastore::CService::Work+0x66 [c:\jenkins\workspace\rl_2018_apollocore_windows\release\image_web_server_2018\sources_iws\source\c\serverdatastore\cservice.cpp @ 701]
+04 000000cc`d3177a00 00007ff9`ef914f7f NCSEcw!NCS::CThread::sThreadFunc+0x36 [c:\jenkins\workspace\rl_2018_ecwjp2sdk_windows_vc120\release\image_web_server_2018\sources_ecwjp2v4\source\c\ncsutil\ncsthread.cpp @ 755]
+05 000000cc`d317fc70 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+06 000000cc`d317fca0 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+07 000000cc`d317fcd0 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+08 000000cc`d317fd00 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  48  Id: ee0.2138 Suspend: 0 Teb: 000000cc`d16d2000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d31f7388 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d31f7390 00007ff9`dd1184ce KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d31f7430 00007ff9`dd7f57f0 NCSEcw!NCS::CEvent::Wait+0xe [c:\jenkins\workspace\rl_2018_ecwjp2sdk_windows_vc120\release\image_web_server_2018\sources_ecwjp2v4\source\c\ncsutil\ncsevent.cpp @ 277]
+03 000000cc`d31f7460 00007ff9`dd1312d6 NCSEcw!NCS::SDK::CFileBase::CFileFactory::Work+0x40 [c:\jenkins\workspace\rl_2018_ecwjp2sdk_windows_vc120\release\image_web_server_2018\sources_ecwjp2v4\source\c\ncsecw\ncsecw\sdk\filebasefactory.cpp @ 765]
+04 000000cc`d31f74a0 00007ff9`ef914f7f NCSEcw!NCS::CThread::sThreadFunc+0x36 [c:\jenkins\workspace\rl_2018_ecwjp2sdk_windows_vc120\release\image_web_server_2018\sources_ecwjp2v4\source\c\ncsutil\ncsthread.cpp @ 755]
+05 000000cc`d31ff710 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+06 000000cc`d31ff740 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+07 000000cc`d31ff770 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+08 000000cc`d31ff7a0 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  49  Id: ee0.1c98 Suspend: 0 Teb: 000000cc`d16d4000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d32773f8 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d3277400 00007ff9`dd1184ce KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d32774a0 00007ff9`dd132ee1 NCSEcw!NCS::CEvent::Wait+0xe [c:\jenkins\workspace\rl_2018_ecwjp2sdk_windows_vc120\release\image_web_server_2018\sources_ecwjp2v4\source\c\ncsutil\ncsevent.cpp @ 277]
+03 000000cc`d32774d0 00007ff9`dd1312d6 NCSEcw!NCS::CThreadPool::CWorkThread::Work+0x61 [c:\jenkins\workspace\rl_2018_ecwjp2sdk_windows_vc120\release\image_web_server_2018\sources_ecwjp2v4\source\c\ncsutil\ncsthreadpool.cpp @ 626]
+04 000000cc`d3277500 00007ff9`ef914f7f NCSEcw!NCS::CThread::sThreadFunc+0x36 [c:\jenkins\workspace\rl_2018_ecwjp2sdk_windows_vc120\release\image_web_server_2018\sources_ecwjp2v4\source\c\ncsutil\ncsthread.cpp @ 755]
+05 000000cc`d327f770 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+06 000000cc`d327f7a0 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+07 000000cc`d327f7d0 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+08 000000cc`d327f800 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  50  Id: ee0.1350 Suspend: 0 Teb: 000000cc`d16d6000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d32f7778 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d32f7780 00007ff9`dd1184ce KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d32f7820 00007ff9`dd132ee1 NCSEcw!NCS::CEvent::Wait+0xe [c:\jenkins\workspace\rl_2018_ecwjp2sdk_windows_vc120\release\image_web_server_2018\sources_ecwjp2v4\source\c\ncsutil\ncsevent.cpp @ 277]
+03 000000cc`d32f7850 00007ff9`dd1312d6 NCSEcw!NCS::CThreadPool::CWorkThread::Work+0x61 [c:\jenkins\workspace\rl_2018_ecwjp2sdk_windows_vc120\release\image_web_server_2018\sources_ecwjp2v4\source\c\ncsutil\ncsthreadpool.cpp @ 626]
+04 000000cc`d32f7880 00007ff9`ef914f7f NCSEcw!NCS::CThread::sThreadFunc+0x36 [c:\jenkins\workspace\rl_2018_ecwjp2sdk_windows_vc120\release\image_web_server_2018\sources_ecwjp2v4\source\c\ncsutil\ncsthread.cpp @ 755]
+05 000000cc`d32ffaf0 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+06 000000cc`d32ffb20 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+07 000000cc`d32ffb50 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+08 000000cc`d32ffb80 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  51  Id: ee0.2234 Suspend: 0 Teb: 000000cc`d16d8000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d3377638 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d3377640 00007ff9`dd1184ce KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d33776e0 00007ff9`e05ba092 NCSEcw!NCS::CEvent::Wait+0xe [c:\jenkins\workspace\rl_2018_ecwjp2sdk_windows_vc120\release\image_web_server_2018\sources_ecwjp2v4\source\c\ncsutil\ncsevent.cpp @ 277]
+03 000000cc`d3377710 00007ff9`dd1312d6 NCSOTDF!CMemCache::Work+0x52 [c:\jenkins\workspace\rl_2018_apollocore_windows\release\image_web_server_2018\sources_iws\source\c\ncsotdf\memcache.h @ 354]
+04 000000cc`d3377760 00007ff9`ef914f7f NCSEcw!NCS::CThread::sThreadFunc+0x36 [c:\jenkins\workspace\rl_2018_ecwjp2sdk_windows_vc120\release\image_web_server_2018\sources_ecwjp2v4\source\c\ncsutil\ncsthread.cpp @ 755]
+05 000000cc`d337f9d0 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+06 000000cc`d337fa00 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+07 000000cc`d337fa30 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+08 000000cc`d337fa60 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  52  Id: ee0.1e2c Suspend: 0 Teb: 000000cc`d16da000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d33ff468 00007ff9`fcf9796f ntdll!NtWaitForMultipleObjects+0x14
+01 000000cc`d33ff470 00007ff9`fcf9786e KERNELBASE!WaitForMultipleObjectsEx+0xef
+02 000000cc`d33ff770 00000000`6d29810a KERNELBASE!WaitForMultipleObjects+0xe
+03 000000cc`d33ff7b0 00007ff9`fd7d8364 QTCore4!QThread::msleep+0xba
+04 000000cc`d33ff820 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+05 000000cc`d33ff850 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  53  Id: ee0.20a0 Suspend: 0 Teb: 000000cc`d16dc000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d347f948 00007ffa`0021354e ntdll!NtWaitForWorkViaWorkerFactory+0x14
+01 000000cc`d347f950 00007ff9`fd7d8364 ntdll!TppWorkerThread+0x76e
+02 000000cc`d347fd50 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+03 000000cc`d347fd80 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  54  Id: ee0.b08 Suspend: 0 Teb: 000000cc`d16de000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d34ff768 00007ffa`0021354e ntdll!NtWaitForWorkViaWorkerFactory+0x14
+01 000000cc`d34ff770 00007ff9`fd7d8364 ntdll!TppWorkerThread+0x76e
+02 000000cc`d34ffb70 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+03 000000cc`d34ffba0 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  55  Id: ee0.1bc8 Suspend: 0 Teb: 000000cc`d16e0000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d357f748 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d357f750 00007ff9`dfca07ff KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d357f7f0 00007ff9`e830ba53 coverageserver!`anonymous namespace'::WorkerThreadExImplAsync::processRequests+0x5f [c:\work\jenkins-home\workspace\v16.5-smsdk-x64release\sources_phoenix\coverageserver\workerthreadex.cpp @ 426]
+03 000000cc`d357f890 00007ff9`ef914f7f boost_thread_vc120_mt_1_65_1!boost::`anonymous namespace'::thread_start_function+0x43 [w:\third_party\boost\1.65.0\libs\thread\src\win32\thread.cpp @ 296]
+04 000000cc`d357f8d0 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+05 000000cc`d357f900 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+06 000000cc`d357f930 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+07 000000cc`d357f960 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  56  Id: ee0.804 Suspend: 0 Teb: 000000cc`d16e2000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d35ffbf8 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d35ffc00 00007ff9`dfca07ff KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d35ffca0 00007ff9`e830ba53 coverageserver!`anonymous namespace'::WorkerThreadExImplAsync::processRequests+0x5f [c:\work\jenkins-home\workspace\v16.5-smsdk-x64release\sources_phoenix\coverageserver\workerthreadex.cpp @ 426]
+03 000000cc`d35ffd40 00007ff9`ef914f7f boost_thread_vc120_mt_1_65_1!boost::`anonymous namespace'::thread_start_function+0x43 [w:\third_party\boost\1.65.0\libs\thread\src\win32\thread.cpp @ 296]
+04 000000cc`d35ffd80 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+05 000000cc`d35ffdb0 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+06 000000cc`d35ffde0 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+07 000000cc`d35ffe10 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  57  Id: ee0.25cc Suspend: 0 Teb: 000000cc`d16e4000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d367fbe8 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d367fbf0 00007ff9`dfca07ff KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d367fc90 00007ff9`e830ba53 coverageserver!`anonymous namespace'::WorkerThreadExImplAsync::processRequests+0x5f [c:\work\jenkins-home\workspace\v16.5-smsdk-x64release\sources_phoenix\coverageserver\workerthreadex.cpp @ 426]
+03 000000cc`d367fd30 00007ff9`ef914f7f boost_thread_vc120_mt_1_65_1!boost::`anonymous namespace'::thread_start_function+0x43 [w:\third_party\boost\1.65.0\libs\thread\src\win32\thread.cpp @ 296]
+04 000000cc`d367fd70 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+05 000000cc`d367fda0 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+06 000000cc`d367fdd0 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+07 000000cc`d367fe00 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  58  Id: ee0.1514 Suspend: 0 Teb: 000000cc`d16e6000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d36ff588 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d36ff590 00007ff9`dfca07ff KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d36ff630 00007ff9`e830ba53 coverageserver!`anonymous namespace'::WorkerThreadExImplAsync::processRequests+0x5f [c:\work\jenkins-home\workspace\v16.5-smsdk-x64release\sources_phoenix\coverageserver\workerthreadex.cpp @ 426]
+03 000000cc`d36ff6d0 00007ff9`ef914f7f boost_thread_vc120_mt_1_65_1!boost::`anonymous namespace'::thread_start_function+0x43 [w:\third_party\boost\1.65.0\libs\thread\src\win32\thread.cpp @ 296]
+04 000000cc`d36ff710 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+05 000000cc`d36ff740 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+06 000000cc`d36ff770 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+07 000000cc`d36ff7a0 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  59  Id: ee0.19a8 Suspend: 0 Teb: 000000cc`d16e8000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d377f918 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d377f920 00007ff9`dfca07ff KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d377f9c0 00007ff9`e830ba53 coverageserver!`anonymous namespace'::WorkerThreadExImplAsync::processRequests+0x5f [c:\work\jenkins-home\workspace\v16.5-smsdk-x64release\sources_phoenix\coverageserver\workerthreadex.cpp @ 426]
+03 000000cc`d377fa60 00007ff9`ef914f7f boost_thread_vc120_mt_1_65_1!boost::`anonymous namespace'::thread_start_function+0x43 [w:\third_party\boost\1.65.0\libs\thread\src\win32\thread.cpp @ 296]
+04 000000cc`d377faa0 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+05 000000cc`d377fad0 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+06 000000cc`d377fb00 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+07 000000cc`d377fb30 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  60  Id: ee0.2460 Suspend: 0 Teb: 000000cc`d16ea000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d37ff7d8 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d37ff7e0 00007ff9`dfca07ff KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d37ff880 00007ff9`e830ba53 coverageserver!`anonymous namespace'::WorkerThreadExImplAsync::processRequests+0x5f [c:\work\jenkins-home\workspace\v16.5-smsdk-x64release\sources_phoenix\coverageserver\workerthreadex.cpp @ 426]
+03 000000cc`d37ff920 00007ff9`ef914f7f boost_thread_vc120_mt_1_65_1!boost::`anonymous namespace'::thread_start_function+0x43 [w:\third_party\boost\1.65.0\libs\thread\src\win32\thread.cpp @ 296]
+04 000000cc`d37ff960 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+05 000000cc`d37ff990 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+06 000000cc`d37ff9c0 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+07 000000cc`d37ff9f0 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  61  Id: ee0.2470 Suspend: 0 Teb: 000000cc`d16ec000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d387f888 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d387f890 00007ff9`dfca07ff KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d387f930 00007ff9`e830ba53 coverageserver!`anonymous namespace'::WorkerThreadExImplAsync::processRequests+0x5f [c:\work\jenkins-home\workspace\v16.5-smsdk-x64release\sources_phoenix\coverageserver\workerthreadex.cpp @ 426]
+03 000000cc`d387f9d0 00007ff9`ef914f7f boost_thread_vc120_mt_1_65_1!boost::`anonymous namespace'::thread_start_function+0x43 [w:\third_party\boost\1.65.0\libs\thread\src\win32\thread.cpp @ 296]
+04 000000cc`d387fa10 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+05 000000cc`d387fa40 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+06 000000cc`d387fa70 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+07 000000cc`d387faa0 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  62  Id: ee0.1ca4 Suspend: 0 Teb: 000000cc`d16ee000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d38ffd18 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d38ffd20 00007ff9`dfca07ff KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d38ffdc0 00007ff9`e830ba53 coverageserver!`anonymous namespace'::WorkerThreadExImplAsync::processRequests+0x5f [c:\work\jenkins-home\workspace\v16.5-smsdk-x64release\sources_phoenix\coverageserver\workerthreadex.cpp @ 426]
+03 000000cc`d38ffe60 00007ff9`ef914f7f boost_thread_vc120_mt_1_65_1!boost::`anonymous namespace'::thread_start_function+0x43 [w:\third_party\boost\1.65.0\libs\thread\src\win32\thread.cpp @ 296]
+04 000000cc`d38ffea0 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+05 000000cc`d38ffed0 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+06 000000cc`d38fff00 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+07 000000cc`d38fff30 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  63  Id: ee0.18e4 Suspend: 0 Teb: 000000cc`d16f0000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d397f938 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d397f940 00007ff9`dfca07ff KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d397f9e0 00007ff9`e830ba53 coverageserver!`anonymous namespace'::WorkerThreadExImplAsync::processRequests+0x5f [c:\work\jenkins-home\workspace\v16.5-smsdk-x64release\sources_phoenix\coverageserver\workerthreadex.cpp @ 426]
+03 000000cc`d397fa80 00007ff9`ef914f7f boost_thread_vc120_mt_1_65_1!boost::`anonymous namespace'::thread_start_function+0x43 [w:\third_party\boost\1.65.0\libs\thread\src\win32\thread.cpp @ 296]
+04 000000cc`d397fac0 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+05 000000cc`d397faf0 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+06 000000cc`d397fb20 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+07 000000cc`d397fb50 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  64  Id: ee0.221c Suspend: 0 Teb: 000000cc`d16f2000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d39ff768 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d39ff770 00007ff9`dfca07ff KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d39ff810 00007ff9`e830ba53 coverageserver!`anonymous namespace'::WorkerThreadExImplAsync::processRequests+0x5f [c:\work\jenkins-home\workspace\v16.5-smsdk-x64release\sources_phoenix\coverageserver\workerthreadex.cpp @ 426]
+03 000000cc`d39ff8b0 00007ff9`ef914f7f boost_thread_vc120_mt_1_65_1!boost::`anonymous namespace'::thread_start_function+0x43 [w:\third_party\boost\1.65.0\libs\thread\src\win32\thread.cpp @ 296]
+04 000000cc`d39ff8f0 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+05 000000cc`d39ff920 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+06 000000cc`d39ff950 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+07 000000cc`d39ff980 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  65  Id: ee0.2534 Suspend: 0 Teb: 000000cc`d16f4000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d3a7fb78 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d3a7fb80 00007ff9`dfca07ff KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d3a7fc20 00007ff9`e830ba53 coverageserver!`anonymous namespace'::WorkerThreadExImplAsync::processRequests+0x5f [c:\work\jenkins-home\workspace\v16.5-smsdk-x64release\sources_phoenix\coverageserver\workerthreadex.cpp @ 426]
+03 000000cc`d3a7fcc0 00007ff9`ef914f7f boost_thread_vc120_mt_1_65_1!boost::`anonymous namespace'::thread_start_function+0x43 [w:\third_party\boost\1.65.0\libs\thread\src\win32\thread.cpp @ 296]
+04 000000cc`d3a7fd00 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+05 000000cc`d3a7fd30 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+06 000000cc`d3a7fd60 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+07 000000cc`d3a7fd90 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  66  Id: ee0.230 Suspend: 0 Teb: 000000cc`d16f6000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d3affbc8 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d3affbd0 00007ff9`dfca07ff KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d3affc70 00007ff9`e830ba53 coverageserver!`anonymous namespace'::WorkerThreadExImplAsync::processRequests+0x5f [c:\work\jenkins-home\workspace\v16.5-smsdk-x64release\sources_phoenix\coverageserver\workerthreadex.cpp @ 426]
+03 000000cc`d3affd10 00007ff9`ef914f7f boost_thread_vc120_mt_1_65_1!boost::`anonymous namespace'::thread_start_function+0x43 [w:\third_party\boost\1.65.0\libs\thread\src\win32\thread.cpp @ 296]
+04 000000cc`d3affd50 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+05 000000cc`d3affd80 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+06 000000cc`d3affdb0 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+07 000000cc`d3affde0 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  67  Id: ee0.20c4 Suspend: 0 Teb: 000000cc`d16f8000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d3b7fc68 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d3b7fc70 00007ff9`dfca07ff KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d3b7fd10 00007ff9`e830ba53 coverageserver!`anonymous namespace'::WorkerThreadExImplAsync::processRequests+0x5f [c:\work\jenkins-home\workspace\v16.5-smsdk-x64release\sources_phoenix\coverageserver\workerthreadex.cpp @ 426]
+03 000000cc`d3b7fdb0 00007ff9`ef914f7f boost_thread_vc120_mt_1_65_1!boost::`anonymous namespace'::thread_start_function+0x43 [w:\third_party\boost\1.65.0\libs\thread\src\win32\thread.cpp @ 296]
+04 000000cc`d3b7fdf0 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+05 000000cc`d3b7fe20 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+06 000000cc`d3b7fe50 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+07 000000cc`d3b7fe80 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  68  Id: ee0.620 Suspend: 0 Teb: 000000cc`d16fa000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d3bff648 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d3bff650 00007ff9`dfca07ff KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d3bff6f0 00007ff9`e830ba53 coverageserver!`anonymous namespace'::WorkerThreadExImplAsync::processRequests+0x5f [c:\work\jenkins-home\workspace\v16.5-smsdk-x64release\sources_phoenix\coverageserver\workerthreadex.cpp @ 426]
+03 000000cc`d3bff790 00007ff9`ef914f7f boost_thread_vc120_mt_1_65_1!boost::`anonymous namespace'::thread_start_function+0x43 [w:\third_party\boost\1.65.0\libs\thread\src\win32\thread.cpp @ 296]
+04 000000cc`d3bff7d0 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+05 000000cc`d3bff800 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+06 000000cc`d3bff830 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+07 000000cc`d3bff860 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  69  Id: ee0.1eec Suspend: 0 Teb: 000000cc`d16fc000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d3c7f8f8 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d3c7f900 00007ff9`dfca07ff KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d3c7f9a0 00007ff9`e830ba53 coverageserver!`anonymous namespace'::WorkerThreadExImplAsync::processRequests+0x5f [c:\work\jenkins-home\workspace\v16.5-smsdk-x64release\sources_phoenix\coverageserver\workerthreadex.cpp @ 426]
+03 000000cc`d3c7fa40 00007ff9`ef914f7f boost_thread_vc120_mt_1_65_1!boost::`anonymous namespace'::thread_start_function+0x43 [w:\third_party\boost\1.65.0\libs\thread\src\win32\thread.cpp @ 296]
+04 000000cc`d3c7fa80 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+05 000000cc`d3c7fab0 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+06 000000cc`d3c7fae0 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+07 000000cc`d3c7fb10 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  70  Id: ee0.1db0 Suspend: 0 Teb: 000000cc`d16fe000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d3cff698 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d3cff6a0 00007ff9`dfca07ff KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d3cff740 00007ff9`e830ba53 coverageserver!`anonymous namespace'::WorkerThreadExImplAsync::processRequests+0x5f [c:\work\jenkins-home\workspace\v16.5-smsdk-x64release\sources_phoenix\coverageserver\workerthreadex.cpp @ 426]
+03 000000cc`d3cff7e0 00007ff9`ef914f7f boost_thread_vc120_mt_1_65_1!boost::`anonymous namespace'::thread_start_function+0x43 [w:\third_party\boost\1.65.0\libs\thread\src\win32\thread.cpp @ 296]
+04 000000cc`d3cff820 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+05 000000cc`d3cff850 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+06 000000cc`d3cff880 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+07 000000cc`d3cff8b0 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  71  Id: ee0.23e0 Suspend: 0 Teb: 000000cc`d1700000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d3d7f798 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d3d7f7a0 00007ff9`dfcad827 KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d3d7f840 00007ff9`dfcaeb32 coverageserver!`anonymous namespace'::SharedData::waitForNextItemToDispatch+0x47 [c:\work\jenkins-home\workspace\v16.5-smsdk-x64release\sources_phoenix\coverageserver\dispatcher.cpp @ 264]
+03 000000cc`d3d7f8a0 00007ff9`e830ba53 coverageserver!erdas::phoenix::coverage::Dispatcher::Impl::listen+0x82 [c:\work\jenkins-home\workspace\v16.5-smsdk-x64release\sources_phoenix\coverageserver\dispatcher.cpp @ 534]
+04 000000cc`d3d7fac0 00007ff9`ef914f7f boost_thread_vc120_mt_1_65_1!boost::`anonymous namespace'::thread_start_function+0x43 [w:\third_party\boost\1.65.0\libs\thread\src\win32\thread.cpp @ 296]
+05 000000cc`d3d7fb00 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+06 000000cc`d3d7fb30 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+07 000000cc`d3d7fb60 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+08 000000cc`d3d7fb90 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  72  Id: ee0.1f48 Suspend: 0 Teb: 000000cc`d1702000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d3df7a68 00007ff9`fcf83acf ntdll!NtWaitForSingleObject+0x14
+01 000000cc`d3df7a70 00007ff9`d0938e9e KERNELBASE!WaitForSingleObjectEx+0x8f
+02 000000cc`d3df7b10 00007ff9`d10164a0 NCSecw_7ff9d08d0000!NCS::CEvent::Wait+0xe [c:\jenkins\workspace\rl_2018_ecwjp2sdk_windows_vc120\release\image_web_server_2018\sources_ecwjp2v4\source\c\ncsutil\ncsevent.cpp @ 277]
+03 000000cc`d3df7b40 00007ff9`d0951bc6 NCSecw_7ff9d08d0000!NCS::SDK::CFileBase::CFileFactory::Work+0x40 [c:\jenkins\workspace\rl_2018_ecwjp2sdk_windows_vc120\release\image_web_server_2018\sources_ecwjp2v4\source\c\ncsecw\ncsecw\sdk\filebasefactory.cpp @ 765]
+04 000000cc`d3df7b80 00007ff9`ef914f7f NCSecw_7ff9d08d0000!NCS::CThread::sThreadFunc+0x36 [c:\jenkins\workspace\rl_2018_ecwjp2sdk_windows_vc120\release\image_web_server_2018\sources_ecwjp2v4\source\c\ncsutil\ncsthread.cpp @ 755]
+05 000000cc`d3dffdf0 00007ff9`ef915126 msvcr120!_callthreadstartex+0x17 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 376]
+06 000000cc`d3dffe20 00007ff9`fd7d8364 msvcr120!_threadstartex+0x102 [f:\dd\vctools\crt\crtw32\startup\threadex.c @ 354]
+07 000000cc`d3dffe50 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+08 000000cc`d3dffe80 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  73  Id: ee0.a08 Suspend: 0 Teb: 000000cc`d170a000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d3fff6f8 00007ffa`0021354e ntdll!NtWaitForWorkViaWorkerFactory+0x14
+01 000000cc`d3fff700 00007ff9`fd7d8364 ntdll!TppWorkerThread+0x76e
+02 000000cc`d3fffb00 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+03 000000cc`d3fffb30 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  74  Id: ee0.2740 Suspend: 0 Teb: 000000cc`d170c000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d407f808 00007ffa`0021354e ntdll!NtWaitForWorkViaWorkerFactory+0x14
+01 000000cc`d407f810 00007ff9`fd7d8364 ntdll!TppWorkerThread+0x76e
+02 000000cc`d407fc10 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+03 000000cc`d407fc40 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+
+  75  Id: ee0.238c Suspend: 0 Teb: 000000cc`d170e000 Unfrozen
+ # Child-SP          RetAddr           Call Site
+00 000000cc`d40ff7d8 00007ffa`0021354e ntdll!NtWaitForWorkViaWorkerFactory+0x14
+01 000000cc`d40ff7e0 00007ff9`fd7d8364 ntdll!TppWorkerThread+0x76e
+02 000000cc`d40ffbe0 00007ffa`00247091 kernel32!BaseThreadInitThunk+0x14
+03 000000cc`d40ffc10 00000000`00000000 ntdll!RtlUserThreadStart+0x21
+0:019> !lmi eCommon.dll
+Loaded Module Info: [ecommon.dll] 
+         Module: eCommon
+   Base Address: 00000262ee9a0000
+     Image Name: eCommon.dll
+   Machine Type: 34404 (X64)
+     Time Stamp: 5a62ecbb Sat Jan 20 15:16:11 2018
+           Size: 6d0000
+       CheckSum: 68dbcd
+Characteristics: 2022  
+Debug Data Dirs: Type  Size     VA  Pointer
+             CODEVIEW    6f, 568ee0,  567ee0 RSDS - GUID: {E1418115-1702-4934-8400-6EF7C3F827C0}
+               Age: 1, Pdb: C:\work\jenkins-home\workspace\v16.5-SMSDK-x64Release\root\bin\x64URelease\eCommon.pdb
+                   ??    14, 568f50,  567f50 [Data not mapped]
+    Symbol Type: DEFERRED - No error - symbol load deferred
+    Load Report: no symbols loaded
+0:019> !lmi NCSServerUtil.dll
+Loaded Module Info: [ncsserverutil.dll] 
+         Module: NCSServerUtil
+   Base Address: 00007ff9dc980000
+     Image Name: NCSServerUtil.dll
+   Machine Type: 34404 (X64)
+     Time Stamp: 5a70d56b Wed Jan 31 04:28:27 2018
+           Size: 72d000
+       CheckSum: 714b56
+Characteristics: 2022  
+Debug Data Dirs: Type  Size     VA  Pointer
+             CODEVIEW    8c, 525f38,  524d38 RSDS - GUID: {A7D87CA6-80B0-4C78-811A-60F3C1E20018}
+               Age: 1, Pdb: c:\jenkins\workspace\RL_2018_ApolloCore_Windows\Release\Image_Web_Server_2018\sources_iws\bin\x64\NCSServerUtil.pdb
+                   ??    14, 525fc4,  524dc4 [Data not mapped]
+     Image Type: FILE     - Image read successfully from debugger.
+                 NCSServerUtil.dll
+    Symbol Type: PDB      - Symbols loaded successfully from image path.
+                 C:\ProgramData\dbg\sym\NCSServerUtil.pdb\A7D87CA680B04C78811A60F3C1E200181\NCSServerUtil.pdb
+       Compiler: C++ - front end [18.0 bld 40629] - back end [18.0 bld 40629]
+    Load Report: private symbols & lines, not source indexed 
+                 C:\ProgramData\dbg\sym\NCSServerUtil.pdb\A7D87CA680B04C78811A60F3C1E200181\NCSServerUtil.pdb
+0:019> q
+quit:
+
