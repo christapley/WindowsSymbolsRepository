@@ -84,8 +84,20 @@ public class WindowsCrashAnalysis implements CrashAnalysis {
             throw new IllegalArgumentException("Unable to parse STACK_TEXT from raw dump file");
         }
 */
-        int start = rawAnalysis.indexOf("STACK_TEXT:") + 11;
-        int end = rawAnalysis.indexOf("\n\n", start);
+        int start = rawAnalysis.indexOf("STACK_TEXT:");
+        
+        if(start < 0) {
+            throw new IllegalStateException("Cannot find start of STACK_TEXT in " + rawAnalysis);
+        }
+        start += 12;
+        
+        int end = rawAnalysis.indexOf(System.lineSeparator() + System.lineSeparator(), start);
+        if(end < start) {
+            end = rawAnalysis.indexOf("\n\n", start);
+        }
+        if(end < start) {
+            throw new IllegalStateException("Cannot find end of STACK_TEXT in " + rawAnalysis);
+        }
         
         String stackText = rawAnalysis.substring(start, end);
         String[] lines = stackText.split("\\R");

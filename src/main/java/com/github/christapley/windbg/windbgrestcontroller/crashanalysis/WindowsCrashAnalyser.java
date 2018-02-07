@@ -41,7 +41,7 @@ public class WindowsCrashAnalyser implements CrashAnalyser {
     @Value("${windows.windbg.symbols}")
     String windbgSymbols;
     
-    @Value("${windows.windbg.command.timeout.milliseconds}")
+    @Value("${windows.windbg.command.timeout.milliseconds:300000}")
     int windbgCommandTimeoutMs;
     
     TemporaryFile writeWindbgCommandsFile() throws IOException {
@@ -82,9 +82,15 @@ public class WindowsCrashAnalyser implements CrashAnalyser {
         }
     }
     
+    WindowsCrashAnalysis getWindowsCrashAnalysis(String rawWindbgOutput) {
+        return new WindowsCrashAnalysis(rawWindbgOutput);
+    }
+    
     CrashAnalysis parseWindbgOutput(File windbgOutputFile) throws IOException {
         String rawWindbgOutput = FileUtils.readFileToString(windbgOutputFile, "UTF8");
-        return new WindowsCrashAnalysis(rawWindbgOutput);    
+        WindowsCrashAnalysis windowsCrashAnalysis = getWindowsCrashAnalysis(rawWindbgOutput);
+        windowsCrashAnalysis.parse();
+        return windowsCrashAnalysis;
     }
             
     @Override
