@@ -13,14 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.christapley.windbg.windbgrestcontroller.crashanalysis;
+package com.github.christapley.windbg.windbgrestcontroller.db;
 
-import java.io.File;
+import com.github.christapley.windbg.windbgrestcontroller.db.entity.CrashAnalysisStatus;
+import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.repository.query.QueryByExampleExecutor;
 
 /**
  *
- * @author Chris
+ * @author ctapley
  */
-public interface CrashAnalyser {
-    CrashAnalysis analyseCrashDump(File dumpFile);
+public interface CrashAnalysisStatusRepository extends PagingAndSortingRepository<CrashAnalysisStatus, Long>, QueryByExampleExecutor<CrashAnalysisStatus> {
+    
 }

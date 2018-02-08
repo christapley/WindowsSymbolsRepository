@@ -94,14 +94,14 @@ public class WindowsCrashAnalyser implements CrashAnalyser {
     }
             
     @Override
-    public CrashAnalysis analyseCrashDump(Path dumpFile) {
+    public CrashAnalysis analyseCrashDump(File dumpFile) {
         try (TemporaryFile windbgCommandsFile = writeWindbgCommandsFile()) {
             try (TemporaryFile windbgOutputFile = getWindbgOutputFile()) {
-                runWindbgCommand(dumpFile.toFile(), windbgCommandsFile.getTemporaryFile(), windbgOutputFile.getTemporaryFile());
+                runWindbgCommand(dumpFile, windbgCommandsFile.getTemporaryFile(), windbgOutputFile.getTemporaryFile());
                 return parseWindbgOutput(windbgOutputFile.getTemporaryFile());
             }
         } catch (Exception ex) {
-            throw new CrashAnalyserException(String.format("Failed to process dump file %s", dumpFile.toFile().getAbsolutePath()), ex);
+            throw new CrashAnalyserException(String.format("Failed to process dump file %s", dumpFile.getAbsolutePath()), ex);
         }
     }
     

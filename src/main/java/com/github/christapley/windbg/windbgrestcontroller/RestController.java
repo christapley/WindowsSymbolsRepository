@@ -15,13 +15,21 @@
  */
 package com.github.christapley.windbg.windbgrestcontroller;
 
-import com.github.christapley.windbg.windbgrestcontroller.crashanalysis.CrashAnalyser;
-import com.github.christapley.windbg.windbgrestcontroller.crashanalysis.CrashAnalysis;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.github.christapley.windbg.windbgrestcontroller.crashanalysis.AsyncCrashAnalyser;
+import com.github.christapley.windbg.windbgrestcontroller.crashanalysis.WindowsAsyncCrashAnalyser;
+import com.github.christapley.windbg.windbgrestcontroller.db.CrashAnalysisStatusRepository;
+import com.github.christapley.windbg.windbgrestcontroller.db.entity.CrashAnalysisStatus;
 import com.github.christapley.windbg.windbgrestcontroller.storage.StorageFileNotFoundException;
 import com.github.christapley.windbg.windbgrestcontroller.storage.StorageService;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.stream.Collectors;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -43,13 +51,17 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  * @author Chris
  */
 
+
 @Controller
 public class RestController {
+    
+    private static final Logger LOG = LoggerFactory.getLogger(RestController.class);
+    
     @Autowired
     StorageService storageService;
     
     @Autowired
-    CrashAnalyser crashAnalyser;
+    AsyncCrashAnalyser asyncCrashAnalyser;
 
     @GetMapping("/")
     public String listUploadedFiles(Model model) throws IOException {
@@ -70,17 +82,27 @@ public class RestController {
         return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
                 "attachment; filename=\"" + file.getFilename() + "\"").body(file);
     }
-
-    @PostMapping("/")
-    public String handleFileUpload(@RequestParam("file") MultipartFile file,
-            RedirectAttributes redirectAttributes) {
+    
+    @GetMapping("/dump/process/{processId}/status")
+    @ResponseBody
+    public ResponseEntity<CrashAnalysisStatus> processDumpFileStatus(@PathVariable("processId") long processId) {
+        return ResponseEntity.ok().body(asyncCrashAnalyser.getStatus(processId));
+    }
+    
+    @PostMapping("/dump/process")
+    public String processDumpFile(@RequestParam("file") MultipartFile file,
+            RedirectAttributes redirectAttributes) throws JsonProcessingException {
 
         Path storedDumpFile = storageService.store(file);
         
-        CrashAnalysis crashAnalysis = crashAnalyser.analyseCrashDump(storedDumpFile);
+        CrashAnalysisStatus status = asyncCrashAnalyser.start(storedDumpFile.toFile());
+        
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JavaTimeModule());
+        mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
         
         redirectAttributes.addFlashAttribute("message",
-                "You successfully uploaded " + file.getOriginalFilename() + "!");
+               mapper.writeValueAsString(status));
 
         return "redirect:/";
     }

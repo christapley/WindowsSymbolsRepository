@@ -15,12 +15,19 @@
  */
 package com.github.christapley.windbg.windbgrestcontroller.crashanalysis;
 
-import java.io.File;
+import java.util.concurrent.CompletableFuture;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.stereotype.Service;
 
 /**
  *
- * @author Chris
+ * @author ctapley
  */
-public interface CrashAnalyser {
-    CrashAnalysis analyseCrashDump(File dumpFile);
+@Service
+public class Requester {
+    @Async
+    public CompletableFuture<Boolean> findUser(String user) throws InterruptedException {
+        Thread.sleep(1000L);
+        return CompletableFuture.completedFuture(Boolean.TRUE);
+    }
 }

@@ -15,12 +15,14 @@
  */
 package com.github.christapley.windbg.windbgrestcontroller.crashanalysis;
 
+import com.github.christapley.windbg.windbgrestcontroller.db.entity.CrashAnalysisStatus;
 import java.io.File;
 
 /**
  *
- * @author Chris
+ * @author ctapley
  */
-public interface CrashAnalyser {
-    CrashAnalysis analyseCrashDump(File dumpFile);
+public interface AsyncCrashAnalyser {
+    CrashAnalysisStatus start(File dumpFile);
+    CrashAnalysisStatus getStatus(Long id);
 }

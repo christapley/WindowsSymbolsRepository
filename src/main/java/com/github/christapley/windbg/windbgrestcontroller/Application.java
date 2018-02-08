@@ -21,14 +21,18 @@ package com.github.christapley.windbg.windbgrestcontroller;
  */
 import com.github.christapley.windbg.windbgrestcontroller.storage.StorageProperties;
 import com.github.christapley.windbg.windbgrestcontroller.storage.StorageService;
+import java.util.concurrent.Executor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 @SpringBootApplication
 @EnableConfigurationProperties(StorageProperties.class)
+@EnableAsync
 public class Application {
 
     public static void main(String[] args) {
@@ -41,5 +45,16 @@ public class Application {
             storageService.deleteAll();
             storageService.init();
         };
+    }
+    
+    @Bean
+    public Executor asyncExecutor() {
+        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+        executor.setCorePoolSize(5);
+        executor.setMaxPoolSize(5);
+        executor.setQueueCapacity(500);
+        executor.setThreadNamePrefix("WindbgCrashAnalysis-");
+        executor.initialize();
+        return executor;
     }
 }

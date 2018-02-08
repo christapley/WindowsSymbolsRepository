@@ -13,14 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.christapley.windbg.windbgrestcontroller.crashanalysis;
-
-import java.io.File;
+package com.github.christapley.windbg.windbgrestcontroller.db.entity;
 
 /**
  *
- * @author Chris
+ * @author ctapley
  */
-public interface CrashAnalyser {
-    CrashAnalysis analyseCrashDump(File dumpFile);
+public enum ProcessingStatus {
+    Queued("Queued"),
+	Processing("Processing"),
+	Complete("Complete"),
+	Failed("Failed");
+
+	private final String text;
+
+	private ProcessingStatus(final String text) {
+		this.text = text;
+	}
+
+	@Override
+	public String toString() {
+		return text;
+	}
 }
