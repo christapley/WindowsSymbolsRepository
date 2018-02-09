@@ -15,6 +15,7 @@
  */
 package com.github.christapley.windbg.windbgrestcontroller.crashanalysis;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 
 /**
@@ -22,6 +23,8 @@ import java.util.List;
  * @author Chris
  */
 public interface CrashAnalysis {
+    
+    @JsonIgnore
     String getRawAnalysis();
     
     // Microsoft's bucketing http://www.freepatentsonline.com/9710371.html

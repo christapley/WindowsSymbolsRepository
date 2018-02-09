@@ -13,28 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.christapley.windbg.windbgrestcontroller.storage;
+package com.github.christapley.windbg.windbgrestcontroller.db;
 
-import org.springframework.core.io.Resource;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.nio.file.Path;
-import java.util.stream.Stream;
+import com.github.christapley.windbg.windbgrestcontroller.crashanalysis.CrashAnalysis;
+import com.github.christapley.windbg.windbgrestcontroller.db.entity.DumpFileEntry;
 
 /**
  *
- * @author Chris
+ * @author ctapley
  */
-public interface StorageService {
-    void init();
-
-    Path store(MultipartFile file);
-    
-    Stream<Path> loadAll();
-
-    Path load(String filename);
-
-    Resource loadAsResource(String filename);
-
-    void deleteAll();
+public interface DumpDatabaseModel {
+    DumpFileEntry insertCrashAnalysis(CrashAnalysis crashAnalysis);
 }

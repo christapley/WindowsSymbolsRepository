@@ -16,8 +16,12 @@
 package com.github.christapley.windbg.windbgrestcontroller.crashanalysis;
 
 import com.github.christapley.windbg.windbgrestcontroller.db.CrashAnalysisStatusRepository;
+import com.github.christapley.windbg.windbgrestcontroller.db.DumpDatabaseModel;
+import com.github.christapley.windbg.windbgrestcontroller.db.DumpFileEntryRepository;
 import com.github.christapley.windbg.windbgrestcontroller.db.entity.CrashAnalysisStatus;
+import com.github.christapley.windbg.windbgrestcontroller.db.entity.DumpFileEntry;
 import com.github.christapley.windbg.windbgrestcontroller.db.entity.ProcessingStatus;
+import com.github.christapley.windbg.windbgrestcontroller.storage.DumpFileStorageService;
 import java.io.File;
 import java.time.Instant;
 import java.util.Date;
@@ -40,6 +44,12 @@ public class WindowsAsyncCrashAnalyserInternal {
     @Autowired
     CrashAnalysisStatusRepository crashAnalysisStatusRepository;
  
+    @Autowired
+    DumpFileStorageService storageService;
+    
+    @Autowired
+    DumpDatabaseModel dumpDatbaseModel;
+    
     private static final Logger LOG = LoggerFactory.getLogger(WindowsAsyncCrashAnalyserInternal.class);
     
     public void completeStatus(CrashAnalysisStatus status) {
@@ -50,19 +60,28 @@ public class WindowsAsyncCrashAnalyserInternal {
     }
     
     @Async
-    public CompletableFuture<Boolean> processDumpFileAsync(Long id) {
-        CrashAnalysisStatus status = crashAnalysisStatusRepository.findOne(id);
-        
-        status.setStatus(ProcessingStatus.Processing);
-        status.setMessage("Extracting dump information");
-        
-        crashAnalysisStatusRepository.save(status);
-        
-        LOG.info("Processing " + status.getDumpFile());
-        CrashAnalysis crashAnalysis = crashAnalyser.analyseCrashDump(new File(status.getDumpFile()));
-        
-        completeStatus(status);
-        
-        return CompletableFuture.completedFuture(Boolean.TRUE);
+    public void processDumpFileAsync(Long statusId) {
+        try {
+            CrashAnalysisStatus status = crashAnalysisStatusRepository.findOne(statusId);
+
+            status.setStatus(ProcessingStatus.Processing);
+            status.setMessage("Extracting dump information");
+
+            crashAnalysisStatusRepository.save(status);
+
+            LOG.info("Processing " + status.getDumpFile());
+            CrashAnalysis crashAnalysis = crashAnalyser.analyseCrashDump(new File(status.getDumpFile()));
+
+            status.setMessage("Storing dump information");
+            crashAnalysisStatusRepository.save(status);
+
+            DumpFileEntry entry = dumpDatbaseModel.insertCrashAnalysis(crashAnalysis);
+            storageService.moveDumpFileInTempAreaToJobArea(new File(status.getDumpFile()), entry.getId());
+            storageService.storeCrashAnalysisInJobArea(crashAnalysis, entry.getId());
+
+            completeStatus(status);
+        } catch(Exception ex) {
+            LOG.error(String.format("Failed to process job %d", statusId.intValue()), ex);
+        }
     }
 }

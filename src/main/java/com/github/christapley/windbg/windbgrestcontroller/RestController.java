@@ -23,8 +23,10 @@ import com.github.christapley.windbg.windbgrestcontroller.crashanalysis.AsyncCra
 import com.github.christapley.windbg.windbgrestcontroller.crashanalysis.WindowsAsyncCrashAnalyser;
 import com.github.christapley.windbg.windbgrestcontroller.db.CrashAnalysisStatusRepository;
 import com.github.christapley.windbg.windbgrestcontroller.db.entity.CrashAnalysisStatus;
+import com.github.christapley.windbg.windbgrestcontroller.storage.DumpFileStorageService;
 import com.github.christapley.windbg.windbgrestcontroller.storage.StorageFileNotFoundException;
 import com.github.christapley.windbg.windbgrestcontroller.storage.StorageService;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.stream.Collectors;
@@ -58,22 +60,22 @@ public class RestController {
     private static final Logger LOG = LoggerFactory.getLogger(RestController.class);
     
     @Autowired
-    StorageService storageService;
+    DumpFileStorageService storageService;
     
     @Autowired
     AsyncCrashAnalyser asyncCrashAnalyser;
 
     @GetMapping("/")
     public String listUploadedFiles(Model model) throws IOException {
-
+/*
         model.addAttribute("files", storageService.loadAll().map(
                 path -> MvcUriComponentsBuilder.fromMethodName(RestController.class,
                         "serveFile", path.getFileName().toString()).build().toString())
                 .collect(Collectors.toList()));
-
+*/
         return "uploadForm";
     }
-
+    /*
     @GetMapping("/files/{filename:.+}")
     @ResponseBody
     public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
@@ -82,6 +84,7 @@ public class RestController {
         return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
                 "attachment; filename=\"" + file.getFilename() + "\"").body(file);
     }
+*/
     
     @GetMapping("/dump/process/{processId}/status")
     @ResponseBody
@@ -93,9 +96,9 @@ public class RestController {
     public String processDumpFile(@RequestParam("file") MultipartFile file,
             RedirectAttributes redirectAttributes) throws JsonProcessingException {
 
-        Path storedDumpFile = storageService.store(file);
+        File storedDumpFile = storageService.storeDumpFileInTempArea(file);
         
-        CrashAnalysisStatus status = asyncCrashAnalyser.start(storedDumpFile.toFile());
+        CrashAnalysisStatus status = asyncCrashAnalyser.start(storedDumpFile);
         
         ObjectMapper mapper = new ObjectMapper();
         mapper.registerModule(new JavaTimeModule());

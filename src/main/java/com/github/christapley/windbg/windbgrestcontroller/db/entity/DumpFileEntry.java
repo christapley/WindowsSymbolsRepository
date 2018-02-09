@@ -15,18 +15,16 @@
  */
 package com.github.christapley.windbg.windbgrestcontroller.db.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Date;
 import javax.persistence.Column;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
-
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  *
@@ -35,29 +33,15 @@ import javax.persistence.Temporal;
 @Entity
 @Data
 @NoArgsConstructor(force = true)
-public class CrashAnalysisStatus {
+public class DumpFileEntry {
     @Id
     @GeneratedValue
     private Long id;
     
-    @Enumerated(EnumType.STRING)
-    private ProcessingStatus status;
-    
-    @Column(nullable = true)
-    private String message;
-    
-    @Column
-    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
-    private Date startDateTime;
-    
-    @Column(nullable = true)
-    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
-    private Date endDateTime;
-    
-    @Column(nullable = true)
-    private Long dumpId;
-    
-    @JsonIgnore
     @Column(nullable = false)
-    private String dumpFile;
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    private Date enteredDataTime;
+    
+    @ManyToOne
+    private DumpType dumpType;
 }

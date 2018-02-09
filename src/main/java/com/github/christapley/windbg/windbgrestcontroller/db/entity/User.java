@@ -13,28 +13,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.christapley.windbg.windbgrestcontroller.storage;
+package com.github.christapley.windbg.windbgrestcontroller.db.entity;
 
-import org.springframework.core.io.Resource;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.nio.file.Path;
-import java.util.stream.Stream;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  *
- * @author Chris
+ * @author ctapley
  */
-public interface StorageService {
-    void init();
-
-    Path store(MultipartFile file);
+//@Entity
+//@Data
+//@NoArgsConstructor(force = true)
+public class User {
+  //  @Id
+    //@GeneratedValue
+    private Long id;
     
-    Stream<Path> loadAll();
-
-    Path load(String filename);
-
-    Resource loadAsResource(String filename);
-
-    void deleteAll();
+    //@NotNull
+    private String firstName;
+    
+    //@NotNull
+    private String lastName;
 }

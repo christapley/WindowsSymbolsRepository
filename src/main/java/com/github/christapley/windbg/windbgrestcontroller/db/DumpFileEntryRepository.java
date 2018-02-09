@@ -13,28 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.christapley.windbg.windbgrestcontroller.storage;
+package com.github.christapley.windbg.windbgrestcontroller.db;
 
-import org.springframework.core.io.Resource;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.nio.file.Path;
-import java.util.stream.Stream;
+import com.github.christapley.windbg.windbgrestcontroller.db.entity.DumpFileEntry;
+import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.repository.query.QueryByExampleExecutor;
 
 /**
  *
- * @author Chris
+ * @author ctapley
  */
-public interface StorageService {
-    void init();
-
-    Path store(MultipartFile file);
+public interface DumpFileEntryRepository extends PagingAndSortingRepository<DumpFileEntry, Long>, QueryByExampleExecutor<DumpFileEntry> {
     
-    Stream<Path> loadAll();
-
-    Path load(String filename);
-
-    Resource loadAsResource(String filename);
-
-    void deleteAll();
 }

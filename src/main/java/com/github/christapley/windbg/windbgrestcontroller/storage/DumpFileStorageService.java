@@ -15,26 +15,21 @@
  */
 package com.github.christapley.windbg.windbgrestcontroller.storage;
 
+import com.github.christapley.windbg.windbgrestcontroller.crashanalysis.CrashAnalysis;
+import java.io.File;
 import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.nio.file.Path;
-import java.util.stream.Stream;
-
 /**
  *
- * @author Chris
+ * @author ctapley
  */
-public interface StorageService {
-    void init();
-
-    Path store(MultipartFile file);
+public interface DumpFileStorageService {
+    File storeDumpFileInTempArea(MultipartFile file);
+    void moveDumpFileInTempAreaToJobArea(File dumpFileInTempArea, Long dumpId);
+    void storeCrashAnalysisInJobArea(CrashAnalysis crashAnalysis, Long dumpId);
     
-    Stream<Path> loadAll();
-
-    Path load(String filename);
-
-    Resource loadAsResource(String filename);
-
-    void deleteAll();
+    Resource getDumpFileFromJobAreaAsResource(Long dumpId);
+    Resource getCrashAnalysisFromJobAreaAsResource(Long dumpId);
+    Resource getRawCrashAnalysisFromJobAreaAsResource(Long dumpId);
 }
