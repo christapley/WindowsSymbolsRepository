@@ -21,6 +21,8 @@
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <node.dir>C:\Program Files\nodejs</node.dir>
+        <npm.command>npm.cmd</npm.command>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
@@ -61,7 +63,6 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.16.6</version>
             <type>jar</type>
         </dependency>
     </dependencies>
@@ -80,6 +81,36 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.8</version>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <exec executable="${npm.command}" dir="${project.basedir}\upload-app">
+                                    <arg value="install" />
+                                    <env key="PATH" path="${env.PATH}:${node.dir}"/>
+                                </exec>
+                                <exec executable="${npm.command}" dir="${project.basedir}\upload-app" searchpath="true">
+                                    <arg value="run-script" />
+                                    <arg value="build" />
+                                    <env key="PATH" path="${env.PATH}:${node.dir}"/>
+                                </exec>
+                                <move todir="${project.basedir}/src/main/webapp">
+                                    <fileset dir="${project.basedir}/upload-app/dist">
+                                        <include name="**/**"/>
+                                    </fileset>
+                                </move>
+                            </target>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

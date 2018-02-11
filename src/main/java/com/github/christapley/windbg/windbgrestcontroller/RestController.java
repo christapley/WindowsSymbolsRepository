@@ -65,26 +65,16 @@ public class RestController {
     @Autowired
     AsyncCrashAnalyser asyncCrashAnalyser;
 
-    @GetMapping("/")
-    public String listUploadedFiles(Model model) throws IOException {
-/*
-        model.addAttribute("files", storageService.loadAll().map(
-                path -> MvcUriComponentsBuilder.fromMethodName(RestController.class,
-                        "serveFile", path.getFileName().toString()).build().toString())
-                .collect(Collectors.toList()));
-*/
-        return "uploadForm";
-    }
     /*
-    @GetMapping("/files/{filename:.+}")
+    @GetMapping("/dump/entries")
     @ResponseBody
-    public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
+    public ResponseEntity<Resource> serveFile() {
 
         Resource file = storageService.loadAsResource(filename);
         return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
                 "attachment; filename=\"" + file.getFilename() + "\"").body(file);
     }
-*/
+    */
     
     @GetMapping("/dump/process/{processId}/status")
     @ResponseBody
@@ -93,21 +83,12 @@ public class RestController {
     }
     
     @PostMapping("/dump/process")
-    public String processDumpFile(@RequestParam("file") MultipartFile file,
+    public CrashAnalysisStatus processDumpFile(@RequestParam("file") MultipartFile file,
             RedirectAttributes redirectAttributes) throws JsonProcessingException {
 
         File storedDumpFile = storageService.storeDumpFileInTempArea(file);
-        
         CrashAnalysisStatus status = asyncCrashAnalyser.start(storedDumpFile);
-        
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.registerModule(new JavaTimeModule());
-        mapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
-        
-        redirectAttributes.addFlashAttribute("message",
-               mapper.writeValueAsString(status));
-
-        return "redirect:/";
+        return status;
     }
 
     @ExceptionHandler(StorageFileNotFoundException.class)
