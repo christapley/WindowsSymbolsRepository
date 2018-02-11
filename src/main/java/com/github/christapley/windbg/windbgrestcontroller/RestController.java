@@ -83,12 +83,13 @@ public class RestController {
     }
     
     @PostMapping("/dump/process")
-    public CrashAnalysisStatus processDumpFile(@RequestParam("file") MultipartFile file,
+    @ResponseBody
+    public ResponseEntity<CrashAnalysisStatus> processDumpFile(@RequestParam("file") MultipartFile file,
             RedirectAttributes redirectAttributes) throws JsonProcessingException {
 
         File storedDumpFile = storageService.storeDumpFileInTempArea(file);
         CrashAnalysisStatus status = asyncCrashAnalyser.start(storedDumpFile);
-        return status;
+        return ResponseEntity.ok().body(status);
     }
 
     @ExceptionHandler(StorageFileNotFoundException.class)

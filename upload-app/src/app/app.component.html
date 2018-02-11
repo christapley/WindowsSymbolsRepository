@@ -1,17 +1,11 @@
 <style>
-    .my-drop-zone { border: dotted 3px lightgray; padding: 20px;  }
-    .nv-file-over { border: dotted 3px red;} /* Default class applied to drop zones on over */
+    .my-drop-zone { border: dotted 3px lightgray; padding: 20px; }
+    .nv-file-over { border: dotted 3px red; } /* Default class applied to drop zones on over */
  
-    html, body { height: 100%; }
+    html, body { height: 100%; font-family: Arial }
 </style>
  
 <div class="container">
- 
-    <div class="navbar navbar-default">
-        <div class="navbar-header">
-            <a class="navbar-brand" href>Angular2 File Upload</a>
-        </div>
-    </div>
  
     <div class="row">
  
@@ -26,8 +20,6 @@
                  class="well my-drop-zone">
                 Base drop zone
             </div>
- 
-            Multiple
             <input type="file" ng2FileSelect [uploader]="uploader" multiple  /><br/>
         </div>
  

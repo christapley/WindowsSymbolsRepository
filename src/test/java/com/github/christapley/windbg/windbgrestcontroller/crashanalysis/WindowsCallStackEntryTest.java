@@ -40,4 +40,13 @@ public class WindowsCallStackEntryTest {
         Assert.assertEquals("NtWaitForSingleObject", entry.getFunction());
         Assert.assertEquals("0x14", entry.getOffset());
     }
+    
+    @Test
+    public void unresolved() {
+        WindowsCallStackEntry entry = new WindowsCallStackEntry("0000006b`e0efc9a0 000001c6`0000009c : 00000000`0000009c 00000000`00000409 00007ffb`a60000a6 00000000`00000004 : 0x2");
+        Assert.assertEquals("Unknown", entry.getModule());
+        Assert.assertEquals("Unknown", entry.getFunction());
+        Assert.assertEquals("0x2", entry.getOffset());
+    }
+    
 }

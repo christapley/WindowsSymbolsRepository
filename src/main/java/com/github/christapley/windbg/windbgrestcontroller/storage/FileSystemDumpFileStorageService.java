@@ -76,9 +76,10 @@ public class FileSystemDumpFileStorageService implements DumpFileStorageService 
                         "Cannot store file with relative path outside current directory "
                                 + filename);
             }
-            Path destination = destinationDir.resolve(UUID.randomUUID().toString() + "-" + filename);
-            Files.copy(file.getInputStream(), destination,
-                    StandardCopyOption.REPLACE_EXISTING);
+            Path tempDestinationDir = destinationDir.resolve(UUID.randomUUID().toString());
+            Files.createDirectories(tempDestinationDir);
+            Path destination = tempDestinationDir.resolve(filename);
+            Files.copy(file.getInputStream(), destination, StandardCopyOption.REPLACE_EXISTING);
             return destination.toFile();
         }
         catch (IOException ex) {
@@ -109,6 +110,7 @@ public class FileSystemDumpFileStorageService implements DumpFileStorageService 
         Path destinationFile = jobFolder.resolve(dumpFileName);
         try {
             FileUtils.moveFile(dumpFileInTempArea, destinationFile.toFile());
+            FileUtils.deleteQuietly(dumpFileInTempArea.getParentFile());
         } catch(IOException ex) {
             throw new StorageException(String.format("Failed to move temp dump file %s to job folder as file %s", dumpFileInTempArea.getAbsolutePath(), destinationFile.toFile().getAbsolutePath()), ex);
         }

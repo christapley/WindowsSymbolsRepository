@@ -36,7 +36,14 @@ public class WindowsCallStackEntry implements CallStackEntry {
             function = regexMatcher.group(2);
             offset = regexMatcher.group(3);
         } else {
-            throw new IllegalArgumentException(String.format("Unable to parse stack trace line %s", line));
+            pattern = Pattern.compile("^.* : (.*)$", Pattern.MULTILINE);
+            regexMatcher = pattern.matcher(line);
+            if(regexMatcher.find()) {
+                function = module = "Unknown";
+                offset = regexMatcher.group(1);
+            } else {
+                throw new IllegalArgumentException(String.format("Unable to parse stack trace line %s", line));
+            }
         }
     }
     

@@ -8,7 +8,7 @@ import { FileUploader } from 'ng2-file-upload';
 })
 export class AppComponent {
   title = 'app';
-  public uploader:FileUploader = new FileUploader({url: '/upload'});
+  public uploader:FileUploader = new FileUploader({url: '/dump/process'});
   public hasBaseDropZoneOver:boolean = false;
   public hasAnotherDropZoneOver:boolean = false;
  

@@ -17,15 +17,15 @@ package com.github.christapley.windbg.windbgrestcontroller.crashanalysis;
 
 import com.github.christapley.windbg.windbgrestcontroller.db.CrashAnalysisStatusRepository;
 import com.github.christapley.windbg.windbgrestcontroller.db.DumpDatabaseModel;
-import com.github.christapley.windbg.windbgrestcontroller.db.DumpFileEntryRepository;
 import com.github.christapley.windbg.windbgrestcontroller.db.entity.CrashAnalysisStatus;
 import com.github.christapley.windbg.windbgrestcontroller.db.entity.DumpFileEntry;
 import com.github.christapley.windbg.windbgrestcontroller.db.entity.ProcessingStatus;
 import com.github.christapley.windbg.windbgrestcontroller.storage.DumpFileStorageService;
 import java.io.File;
 import java.time.Instant;
+import java.util.Arrays;
 import java.util.Date;
-import java.util.concurrent.CompletableFuture;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,11 +59,17 @@ public class WindowsAsyncCrashAnalyserInternal {
         crashAnalysisStatusRepository.save(status);
     }
     
+    public void failStatus(CrashAnalysisStatus status, Exception ex) {
+        status.setStatus(ProcessingStatus.Failed);
+        status.setMessage(Arrays.toString(ExceptionUtils.getRootCauseStackTrace(ex)));
+        status.setEndDateTime(Date.from(Instant.now()));
+        crashAnalysisStatusRepository.save(status);
+    }
+    
     @Async
     public void processDumpFileAsync(Long statusId) {
+        CrashAnalysisStatus status = crashAnalysisStatusRepository.findOne(statusId);
         try {
-            CrashAnalysisStatus status = crashAnalysisStatusRepository.findOne(statusId);
-
             status.setStatus(ProcessingStatus.Processing);
             status.setMessage("Extracting dump information");
 
@@ -82,6 +88,7 @@ public class WindowsAsyncCrashAnalyserInternal {
             completeStatus(status);
         } catch(Exception ex) {
             LOG.error(String.format("Failed to process job %d", statusId.intValue()), ex);
+            failStatus(status, ex);
         }
     }
 }

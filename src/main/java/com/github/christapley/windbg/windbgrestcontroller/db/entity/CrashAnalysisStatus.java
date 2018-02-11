@@ -16,6 +16,7 @@
 package com.github.christapley.windbg.windbgrestcontroller.db.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import lombok.Data;
