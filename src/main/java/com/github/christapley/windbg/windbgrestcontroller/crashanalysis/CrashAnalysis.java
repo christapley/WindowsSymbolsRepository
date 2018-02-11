@@ -27,6 +27,8 @@ public interface CrashAnalysis {
     @JsonIgnore
     String getRawAnalysis();
     
+    String getCrashFileName();
+    
     // Microsoft's bucketing http://www.freepatentsonline.com/9710371.html
     String getWatsonBucketModule();
     String getWatsonBucketModStamp();

@@ -42,6 +42,9 @@ public class DumpFileEntry {
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date enteredDataTime;
     
+    @Column(nullable = false)
+    private String dumpFileName;
+    
     @ManyToOne
     private DumpType dumpType;
 }

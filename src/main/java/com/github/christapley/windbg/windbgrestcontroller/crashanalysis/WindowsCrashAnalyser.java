@@ -18,9 +18,6 @@ package com.github.christapley.windbg.windbgrestcontroller.crashanalysis;
 import com.github.christapley.windbg.windbgrestcontroller.util.TemporaryFile;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.apache.commons.exec.CommandLine;
 import org.apache.commons.exec.DefaultExecutor;
 import org.apache.commons.exec.ExecuteWatchdog;
@@ -86,9 +83,10 @@ public class WindowsCrashAnalyser implements CrashAnalyser {
         return new WindowsCrashAnalysis(rawWindbgOutput);
     }
     
-    CrashAnalysis parseWindbgOutput(File windbgOutputFile) throws IOException {
+    CrashAnalysis parseWindbgOutput(File windbgOutputFile, String dumpFileName) throws IOException {
         String rawWindbgOutput = FileUtils.readFileToString(windbgOutputFile, "UTF8");
         WindowsCrashAnalysis windowsCrashAnalysis = getWindowsCrashAnalysis(rawWindbgOutput);
+        windowsCrashAnalysis.setCrashFileName(dumpFileName);
         windowsCrashAnalysis.parse();
         return windowsCrashAnalysis;
     }
@@ -98,7 +96,7 @@ public class WindowsCrashAnalyser implements CrashAnalyser {
         try (TemporaryFile windbgCommandsFile = writeWindbgCommandsFile()) {
             try (TemporaryFile windbgOutputFile = getWindbgOutputFile()) {
                 runWindbgCommand(dumpFile, windbgCommandsFile.getTemporaryFile(), windbgOutputFile.getTemporaryFile());
-                return parseWindbgOutput(windbgOutputFile.getTemporaryFile());
+                return parseWindbgOutput(windbgOutputFile.getTemporaryFile(), dumpFile.getName());
             }
         } catch (Exception ex) {
             throw new CrashAnalyserException(String.format("Failed to process dump file %s", dumpFile.getAbsolutePath()), ex);

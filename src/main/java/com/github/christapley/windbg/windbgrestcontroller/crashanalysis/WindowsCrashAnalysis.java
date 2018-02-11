@@ -27,6 +27,7 @@ import org.thymeleaf.util.StringUtils;
  */
 public class WindowsCrashAnalysis implements CrashAnalysis {
     String rawAnalysis;
+    private String crashFileName;
     String watsonBucketModule;
     String watsonBucketModStamp;
     String watsonBucketModOffset;
@@ -151,5 +152,20 @@ public class WindowsCrashAnalysis implements CrashAnalysis {
     @Override
     public List<CallStackEntry> getStackOfCrashingThread() {
         return stackOfCrashingThread;
+    }
+
+    /**
+     * @return the crashFileName
+     */
+    @Override
+    public String getCrashFileName() {
+        return crashFileName;
+    }
+
+    /**
+     * @param crashFileName the crashFileName to set
+     */
+    public void setCrashFileName(String crashFileName) {
+        this.crashFileName = crashFileName;
     }
 }
