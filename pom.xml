@@ -99,11 +99,14 @@
                             <goal>run</goal>
                         </goals>
                         <configuration>
-                            <target>
+                            <target name="npmInstall" unless="nodeModulesExists">
+                                <available property="nodeModulesExists" directory="${project.basedir}/upload-app/node_modules" />
                                 <exec executable="${npm.command}" dir="${project.basedir}\upload-app">
                                     <arg value="install" />
                                     <env key="PATH" path="${env.PATH}:${node.dir}"/>
                                 </exec>
+                            </target>
+                            <target>
                                 <exec executable="${npm.command}" dir="${project.basedir}\upload-app" searchpath="true">
                                     <arg value="run-script" />
                                     <arg value="build" />
