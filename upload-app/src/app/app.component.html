@@ -1,103 +1,113 @@
-<style>
-    .my-drop-zone { border: dotted 3px lightgray; padding: 20px; }
-    .nv-file-over { border: dotted 3px red; } /* Default class applied to drop zones on over */
-	.main-heading { margin: 20px; }
-    html, body { height: 100%; font-family: Arial }
-</style>
-<h2 class="main-heading">Windows Dump File Analysis</h2>
-	<div class="row">
-		<div class="col-md-3">
-			<div class="container">
- 
-				<div>
-
-					<h3>Select dump files</h3>
-
-					<div ng2FileDrop
-						 [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
-						 (fileOver)="fileOverBase($event)"
-						 [uploader]="uploader"
-						 class="well my-drop-zone">
-						Base drop zone
-					</div>
-					<input type="file" ng2FileSelect [uploader]="uploader" multiple  /><br/>
-				</div>
-
-				<div style="margin-bottom: 40px">
-
-					<h3>Upload queue</h3>
-					<p>Queue length: {{ uploader?.queue?.length }}</p>
-
-					<table class="table">
-						<thead>
-						<tr>
-							<th width="50%">Name</th>
-							<th>Size</th>
-							<th>Progress</th>
-							<th>Status</th>
-							<th>Actions</th>
-						</tr>
-						</thead>
-						<tbody>
-						<tr *ngFor="let item of uploader.queue">
-							<td><strong>{{ item?.file?.name }}</strong></td>
-							<td *ngIf="uploader.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
-							<td *ngIf="uploader.isHTML5">
-								<div class="progress" style="margin-bottom: 0;">
-									<div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
-								</div>
-							</td>
-							<td class="text-center">
-								<span *ngIf="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
-								<span *ngIf="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
-								<span *ngIf="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
-							</td>
-							<td nowrap>
-								<button type="button" class="btn btn-success btn-xs"
-										(click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
-									<span class="glyphicon glyphicon-upload"></span> Upload
-								</button>
-								<button type="button" class="btn btn-warning btn-xs"
-										(click)="item.cancel()" [disabled]="!item.isUploading">
-									<span class="glyphicon glyphicon-ban-circle"></span> Cancel
-								</button>
-								<button type="button" class="btn btn-danger btn-xs"
-										(click)="item.remove()">
-									<span class="glyphicon glyphicon-trash"></span> Remove
-								</button>
-							</td>
-						</tr>
-						</tbody>
-					</table>
-
-					<div>
-						<div>
-							Queue progress:
-							<div class="progress" style="">
-								<div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
-							</div>
-						</div>
-						<button type="button" class="btn btn-success btn-s"
-								(click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
-							<span class="glyphicon glyphicon-upload"></span> Upload all
-						</button>
-						<button type="button" class="btn btn-warning btn-s"
-								(click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
-							<span class="glyphicon glyphicon-ban-circle"></span> Cancel all
-						</button>
-						<button type="button" class="btn btn-danger btn-s"
-								(click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
-							<span class="glyphicon glyphicon-trash"></span> Remove all
-						</button>
-					</div>
-
-				</div>
-
-
-			 
-			</div>
-		</div>
-		<div class="col-md-9">
-			<app-list></app-list>
-		</div>
-	</div>
+<div class="container-full-screen">
+  <mat-toolbar>
+    Windows Crash Dump Analyser and Registry
+  </mat-toolbar>
+  <div class=fill-height>
+    <table class=fill-height>
+      <tr>
+        <td class="fill-height left-main">
+          <div class="container-content" class="content-container">
+            <div ng2FileDrop
+            [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
+            (fileOver)="fileOverBase($event)"
+            [uploader]="uploader"
+            class="well file-drop-zone">
+             Drop dump files here
+           </div>
+          <mat-selection-list #shoes>
+            <mat-list-option *ngFor="let file of filesToUpload">
+              {{file}}
+            </mat-list-option>
+          </mat-selection-list>
+        </div>
+        </td>
+        <td class="fill-height right-main">
+          <div class="main-content-container">
+            <mat-card class="padded-content-item">
+                <mat-card-header>
+                  <mat-icon mat-card-avatar class="icon-fixed">done</mat-icon>
+                  <mat-card-title>
+                    <h4>STATUS_BREAKPOINT_80000003_ntdll.dll!NtGetContextThread</h4>
+                  </mat-card-title>
+                  <mat-card-subtitle>
+                    Fixed <a href="https://ingrjira.ingrnet.com/browse/IW-12345">IW-12345</a>
+                  </mat-card-subtitle>
+                </mat-card-header>
+                
+                <mat-card-content>
+                  <mat-card>
+                    <mat-card-header>
+                    <mat-card-title>
+                      <table class="heading-table">
+                        <tr>
+                          <td>Dump Version</td>
+                          <td>16.5.0.169</td>
+                        </tr>
+                        <tr>
+                            <td>Dump Checksum</td>
+                            <td>5a62f8c3</td>
+                          </tr>
+                      </table>
+                    </mat-card-title>
+                    </mat-card-header>
+                      <mat-card-content>
+                        <div>
+                            <table id="customers">
+                              <tr>
+                                <th>Dump Filename</th>
+                                <th>Dump Date</th>
+                                <th>Dump Time</th>
+                                <th>Dump Actions</th>
+                              </tr>
+                              <tr>
+                                  <td>w3wp.2312.dmp</td>
+                                  <td>29/02/2018</td>
+                                  <td>16:23:32+0Z</td>
+                                  <td>
+                                      <button mat-mini-fab color="primary" matTooltip="Download source dmp file">
+                                          <mat-icon aria-label="Download source dmp file">cloud_download</mat-icon>
+                                        </button>
+                                        <button mat-mini-fab color="primary">
+                                          <mat-icon aria-label="Download raw analysis">assignment</mat-icon>
+                                      </button>
+                                      <button mat-mini-fab color="primary">
+                                          <mat-icon aria-label="View crash information">code</mat-icon>
+                                      </button>
+                                  </td>
+                                </tr>
+                                <tr>
+                                    <td>w3wp.2312.dmp</td>
+                                    <td>29/02/2018</td>
+                                    <td>16:23:32+0Z</td>
+                                    <td>
+                                        <button mat-mini-fab color="primary" matTooltip="Download source dmp file">
+                                            <mat-icon aria-label="Download source dmp file">cloud_download</mat-icon>
+                                          </button>
+                                          <button mat-mini-fab color="primary">
+                                            <mat-icon aria-label="Download raw analysis">assignment</mat-icon>
+                                        </button>
+                                        <button mat-mini-fab color="primary">
+                                            <mat-icon aria-label="View crash information">code</mat-icon>
+                                        </button>
+                                    </td>
+                                  </tr>
+                            </table>
+                      </div>
+                      </mat-card-content>
+                  </mat-card>
+              
+                </mat-card-content>
+                <mat-card-actions>
+                  <div class="content-container">
+                    <button mat-mini-fab color="accent">
+                        <mat-icon aria-label="Edit metadata">edit</mat-icon>
+                    </button>
+                  </div>
+                </mat-card-actions>
+              </mat-card>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

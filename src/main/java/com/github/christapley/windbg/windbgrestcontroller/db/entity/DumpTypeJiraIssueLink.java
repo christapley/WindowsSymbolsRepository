@@ -15,36 +15,28 @@
  */
 package com.github.christapley.windbg.windbgrestcontroller.db.entity;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Index;
-import javax.persistence.Table;
+import javax.persistence.ManyToOne;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
  *
- * @author ctapley
+ * @author Chris
  */
 @Entity
 @Data
 @NoArgsConstructor(force = true)
-@Table(indexes = {
-    @Index(columnList = "failureBucketId", name = "failureBucketId_hidx")
-})
-public class DumpType {
+public class DumpTypeJiraIssueLink {
     @Id
     @GeneratedValue
     private Long id;
     
-    @Column(nullable = false, unique = true)
-    private String failureBucketId;
+    @ManyToOne
+    private DumpType dumpType;
     
-    @Column(nullable = true)
-    private String briefDescription;
-    
-    @Column(nullable = false)
-    private boolean resolved;
+    @ManyToOne
+    private JiraIssue jiraIssue;
 }

@@ -45,6 +45,18 @@ public class DumpFileEntry {
     @Column(nullable = false)
     private String dumpFileName;
     
+    @Column(nullable = false)
+    private String dumpModule;
+    
+    @Column(nullable = false)
+    private String dumpChecksum;
+    
+    @Column(nullable = false)
+    private String dumpOffset;
+    
+    @Column(nullable = false)
+    private String dumpVersion;
+    
     @ManyToOne
     private DumpType dumpType;
 }

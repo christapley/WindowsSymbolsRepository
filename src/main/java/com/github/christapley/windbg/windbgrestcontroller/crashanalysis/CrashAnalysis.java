@@ -33,6 +33,7 @@ public interface CrashAnalysis {
     String getWatsonBucketModule();
     String getWatsonBucketModStamp();
     String getWatsonBucketModOffset();
+    String getWatsonBucketModVer();
     String getFailureBucketId();
     
     List<CallStackEntry> getStackOfCrashingThread();

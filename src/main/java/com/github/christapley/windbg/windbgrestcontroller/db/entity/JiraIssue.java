@@ -26,25 +26,19 @@ import lombok.NoArgsConstructor;
 
 /**
  *
- * @author ctapley
+ * @author Chris
  */
 @Entity
 @Data
 @NoArgsConstructor(force = true)
 @Table(indexes = {
-    @Index(columnList = "failureBucketId", name = "failureBucketId_hidx")
+    @Index(columnList = "issueId", name = "issueId_hidx")
 })
-public class DumpType {
+public class JiraIssue {
     @Id
     @GeneratedValue
     private Long id;
     
     @Column(nullable = false, unique = true)
-    private String failureBucketId;
-    
-    @Column(nullable = true)
-    private String briefDescription;
-    
-    @Column(nullable = false)
-    private boolean resolved;
+    private String issueId;
 }

@@ -58,6 +58,10 @@ public class DumpDatabaseModelImpl implements DumpDatabaseModel {
         entry.setEnteredDataTime(Date.from(Instant.now()));
         entry.setDumpType(dumpType);
         entry.setDumpFileName(crashAnalysis.getCrashFileName());
+        entry.setDumpChecksum(crashAnalysis.getWatsonBucketModStamp());
+        entry.setDumpModule(crashAnalysis.getWatsonBucketModule());
+        entry.setDumpOffset(crashAnalysis.getWatsonBucketModOffset());
+        entry.setDumpVersion(crashAnalysis.getWatsonBucketModVer());
         dumpFileEntryRepository.save(entry);
         
         return entry;
