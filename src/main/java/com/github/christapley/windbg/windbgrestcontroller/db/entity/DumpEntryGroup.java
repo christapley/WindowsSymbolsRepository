@@ -15,37 +15,43 @@
  */
 package com.github.christapley.windbg.windbgrestcontroller.db.entity;
 
-import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
  *
- * @author ctapley
+ * @author Chris
  */
 @Entity
 @Data
 @NoArgsConstructor(force = true)
-public class DumpFileEntry {
+@Table(uniqueConstraints = {
+    @UniqueConstraint(columnNames = { "dumpModule", "dumpChecksum", "dumpOffset", "dumpVersion" })
+})
+public class DumpEntryGroup {
     @Id
     @GeneratedValue
     private Long id;
     
     @Column(nullable = false)
-    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
-    private Date enteredDateTime;
+    private String dumpModule;
     
     @Column(nullable = false)
-    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
-    private Date crashDateTime;
+    private String dumpChecksum;
+    
+    @Column(nullable = false)
+    private String dumpOffset;
+    
+    @Column(nullable = false)
+    private String dumpVersion;
     
     @ManyToOne
-    private DumpEntryGroup dumpEntryGroup;
+    private DumpType dumpType;
 }

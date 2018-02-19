@@ -15,14 +15,14 @@
  */
 package com.github.christapley.windbg.windbgrestcontroller.db;
 
-import com.github.christapley.windbg.windbgrestcontroller.crashanalysis.CrashAnalysis;
-import com.github.christapley.windbg.windbgrestcontroller.db.entity.DumpFileEntry;
-import java.util.List;
+import com.github.christapley.windbg.windbgrestcontroller.db.entity.DumpEntryGroup;
+import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.repository.query.QueryByExampleExecutor;
 
 /**
  *
- * @author ctapley
+ * @author Chris
  */
-public interface DumpDatabaseModel {
-    DumpFileEntry insertCrashAnalysis(CrashAnalysis crashAnalysis);
+public interface DumpEntryGroupRepository extends PagingAndSortingRepository<DumpEntryGroup, Long>, QueryByExampleExecutor<DumpEntryGroup> {
+    DumpEntryGroup findOneByUniqueParams(String dumpModule, String dumpVersion, String dumpOffset);
 }

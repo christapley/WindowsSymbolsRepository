@@ -16,10 +16,13 @@
 package com.github.christapley.windbg.windbgrestcontroller.db;
 
 import com.github.christapley.windbg.windbgrestcontroller.crashanalysis.CrashAnalysis;
+import com.github.christapley.windbg.windbgrestcontroller.db.entity.DumpEntryGroup;
 import com.github.christapley.windbg.windbgrestcontroller.db.entity.DumpFileEntry;
 import com.github.christapley.windbg.windbgrestcontroller.db.entity.DumpType;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +35,9 @@ public class DumpDatabaseModelImpl implements DumpDatabaseModel {
 
     @Autowired
     DumpTypeRepository dumpTypeRepository;
+    
+    @Autowired
+    DumpEntryGroupRepository dumpEntryGroupRepository;
     
     @Autowired
     DumpFileEntryRepository dumpFileEntryRepository;
@@ -50,21 +56,35 @@ public class DumpDatabaseModelImpl implements DumpDatabaseModel {
         return dumpType;
     }
     
+    DumpEntryGroup findOrCreateDumpEntryGroup(CrashAnalysis crashAnalysis) {
+        DumpEntryGroup dumpEntryGroup = dumpEntryGroupRepository.findOneByUniqueParams(crashAnalysis.getWatsonBucketModule(), crashAnalysis.getWatsonBucketModVer(), crashAnalysis.getWatsonBucketModOffset());
+        if(dumpEntryGroup == null) {
+            dumpEntryGroup = new DumpEntryGroup();
+            dumpEntryGroup.setDumpChecksum(crashAnalysis.getWatsonBucketModStamp());
+            dumpEntryGroup.setDumpModule(crashAnalysis.getWatsonBucketModule());
+            dumpEntryGroup.setDumpOffset(crashAnalysis.getWatsonBucketModOffset());
+            dumpEntryGroup.setDumpVersion(crashAnalysis.getWatsonBucketModVer());
+            dumpEntryGroup.setDumpType(findOrCreateDumpType(crashAnalysis));
+            try {
+                dumpEntryGroupRepository.save(dumpEntryGroup);
+            } catch(Exception ex) {
+                dumpEntryGroup = dumpEntryGroupRepository.findOneByUniqueParams(crashAnalysis.getWatsonBucketModule(), crashAnalysis.getWatsonBucketModVer(), crashAnalysis.getWatsonBucketModOffset());
+            }
+        }
+        return dumpEntryGroup;
+    }
+    
     @Override
     public DumpFileEntry insertCrashAnalysis(CrashAnalysis crashAnalysis) {
-        DumpType dumpType = findOrCreateDumpType(crashAnalysis);
+        DumpEntryGroup dumpEntryGroup = findOrCreateDumpEntryGroup(crashAnalysis);
         
         DumpFileEntry entry = new DumpFileEntry();
-        entry.setEnteredDataTime(Date.from(Instant.now()));
-        entry.setDumpType(dumpType);
-        entry.setDumpFileName(crashAnalysis.getCrashFileName());
-        entry.setDumpChecksum(crashAnalysis.getWatsonBucketModStamp());
-        entry.setDumpModule(crashAnalysis.getWatsonBucketModule());
-        entry.setDumpOffset(crashAnalysis.getWatsonBucketModOffset());
-        entry.setDumpVersion(crashAnalysis.getWatsonBucketModVer());
+        entry.setEnteredDateTime(Date.from(Instant.now()));
+        entry.setCrashDateTime(Date.from(Instant.now()));
+        entry.setDumpEntryGroup(dumpEntryGroup);
         dumpFileEntryRepository.save(entry);
         
         return entry;
     }
-    
+
 }
