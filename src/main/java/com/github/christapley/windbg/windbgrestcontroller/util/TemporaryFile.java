@@ -43,6 +43,4 @@ public class TemporaryFile implements AutoCloseable {
             temporaryFile.delete();
         }
     }
-    
-    
 }

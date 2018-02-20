@@ -19,10 +19,15 @@ import com.github.christapley.windbg.windbgrestcontroller.crashanalysis.CrashAna
 import com.github.christapley.windbg.windbgrestcontroller.db.entity.DumpEntryGroup;
 import com.github.christapley.windbg.windbgrestcontroller.db.entity.DumpFileEntry;
 import com.github.christapley.windbg.windbgrestcontroller.db.entity.DumpType;
+import com.github.christapley.windbg.windbgrestcontroller.response.DumpTypeResponse;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -56,8 +61,9 @@ public class DumpDatabaseModelImpl implements DumpDatabaseModel {
         return dumpType;
     }
     
+    @Transactional
     DumpEntryGroup findOrCreateDumpEntryGroup(CrashAnalysis crashAnalysis) {
-        DumpEntryGroup dumpEntryGroup = dumpEntryGroupRepository.findOneByUniqueParams(crashAnalysis.getWatsonBucketModule(), crashAnalysis.getWatsonBucketModVer(), crashAnalysis.getWatsonBucketModOffset());
+        DumpEntryGroup dumpEntryGroup = dumpEntryGroupRepository.findOneByDumpModuleAndDumpVersionAndDumpOffset(crashAnalysis.getWatsonBucketModule(), crashAnalysis.getWatsonBucketModVer(), crashAnalysis.getWatsonBucketModOffset());
         if(dumpEntryGroup == null) {
             dumpEntryGroup = new DumpEntryGroup();
             dumpEntryGroup.setDumpChecksum(crashAnalysis.getWatsonBucketModStamp());
@@ -68,7 +74,7 @@ public class DumpDatabaseModelImpl implements DumpDatabaseModel {
             try {
                 dumpEntryGroupRepository.save(dumpEntryGroup);
             } catch(Exception ex) {
-                dumpEntryGroup = dumpEntryGroupRepository.findOneByUniqueParams(crashAnalysis.getWatsonBucketModule(), crashAnalysis.getWatsonBucketModVer(), crashAnalysis.getWatsonBucketModOffset());
+                dumpEntryGroup = dumpEntryGroupRepository.findOneByDumpModuleAndDumpVersionAndDumpOffset(crashAnalysis.getWatsonBucketModule(), crashAnalysis.getWatsonBucketModVer(), crashAnalysis.getWatsonBucketModOffset());
             }
         }
         return dumpEntryGroup;
@@ -87,4 +93,19 @@ public class DumpDatabaseModelImpl implements DumpDatabaseModel {
         return entry;
     }
 
+    // this should be a query
+    List<Long> findUniqueDumpTypeIds(List<Long> dumpEntryIds) {
+        Map<Long, Boolean> dumpTypeIds = new HashMap<>();
+        for(Long dumpFileEntryId : dumpEntryIds) {
+            Long dumpTypeId = dumpFileEntryRepository.findDumpTypeIdFromDumpFileEntryId(dumpFileEntryId);
+            dumpTypeIds.put(dumpTypeId, Boolean.TRUE);
+        }
+        return new ArrayList<>(dumpTypeIds.keySet());
+    }
+    
+    @Override
+    public List<DumpTypeResponse> findFromDumpEntryIds(List<Long> dumpEntryIds) {
+        List<Long> uniqueDumpTypeIds = findUniqueDumpTypeIds(dumpEntryIds);
+        return null;
+    }
 }

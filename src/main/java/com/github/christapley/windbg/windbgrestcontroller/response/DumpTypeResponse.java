@@ -13,19 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.christapley.windbg.windbgrestcontroller.db;
+package com.github.christapley.windbg.windbgrestcontroller.response;
 
-import com.github.christapley.windbg.windbgrestcontroller.crashanalysis.CrashAnalysis;
-import com.github.christapley.windbg.windbgrestcontroller.db.entity.DumpFileEntry;
-import com.github.christapley.windbg.windbgrestcontroller.response.DumpTypeResponse;
 import java.util.List;
+import lombok.NoArgsConstructor;
 
 /**
  *
- * @author ctapley
+ * @author Chris
  */
-public interface DumpDatabaseModel {
-    DumpFileEntry insertCrashAnalysis(CrashAnalysis crashAnalysis);
-    
-    List<DumpTypeResponse> findFromDumpEntryIds(List<Long> dumpEntryIds);
+@NoArgsConstructor(force = true)
+public class DumpTypeResponse {
+    Long id;
+    String failureBucketId;
+    String briefDescription;
+    boolean resolved;
+    List<DumpEntryGroupResponse> dumpFileEntries;
+    List<String> jiraIssues;
 }

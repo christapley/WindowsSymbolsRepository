@@ -16,7 +16,9 @@
 package com.github.christapley.windbg.windbgrestcontroller.db;
 
 import com.github.christapley.windbg.windbgrestcontroller.db.entity.DumpFileEntry;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.data.repository.query.QueryByExampleExecutor;
 
 /**
@@ -25,4 +27,6 @@ import org.springframework.data.repository.query.QueryByExampleExecutor;
  */
 public interface DumpFileEntryRepository extends PagingAndSortingRepository<DumpFileEntry, Long>, QueryByExampleExecutor<DumpFileEntry> {
     
+    @Query("SELECT dt.id FROM DumpType dt, DumpEntryGroup deg, DumpFileEntry dfe WHERE dt.id=deg.dumpType AND deg.id=dfe.dumpEntryGroup AND dfe.id = :id")
+    Long findDumpTypeIdFromDumpFileEntryId(@Param("id") Long dumpFileEntryId);
 }
