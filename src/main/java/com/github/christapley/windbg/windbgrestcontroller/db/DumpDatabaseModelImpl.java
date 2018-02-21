@@ -19,10 +19,11 @@ import com.github.christapley.windbg.windbgrestcontroller.crashanalysis.CrashAna
 import com.github.christapley.windbg.windbgrestcontroller.db.entity.DumpEntryGroup;
 import com.github.christapley.windbg.windbgrestcontroller.db.entity.DumpFileEntry;
 import com.github.christapley.windbg.windbgrestcontroller.db.entity.DumpType;
+import com.github.christapley.windbg.windbgrestcontroller.response.DumpEntryGroupResponse;
+import com.github.christapley.windbg.windbgrestcontroller.response.DumpFileEntryResponse;
 import com.github.christapley.windbg.windbgrestcontroller.response.DumpTypeResponse;
 import java.time.Instant;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -94,7 +95,7 @@ public class DumpDatabaseModelImpl implements DumpDatabaseModel {
     }
 
     // this should be a query
-    List<Long> findUniqueDumpTypeIds(List<Long> dumpEntryIds) {
+    public List<Long> findUniqueDumpTypeIds(List<Long> dumpEntryIds) {
         Map<Long, Boolean> dumpTypeIds = new HashMap<>();
         for(Long dumpFileEntryId : dumpEntryIds) {
             Long dumpTypeId = dumpFileEntryRepository.findDumpTypeIdFromDumpFileEntryId(dumpFileEntryId);
@@ -103,9 +104,65 @@ public class DumpDatabaseModelImpl implements DumpDatabaseModel {
         return new ArrayList<>(dumpTypeIds.keySet());
     }
     
+    public List<DumpFileEntryResponse> findDumpFileEntryForDumpEntryGroup(Long dumpEntryGroupId) {
+        List<DumpFileEntryResponse> dumpFileEntryResponses = new ArrayList<>();
+        List<DumpFileEntry> dumpFileEntries = dumpFileEntryRepository.findAllByDumpEntryGroup(dumpEntryGroupId);
+                
+        for(DumpFileEntry dumpFileEntry : dumpFileEntries) {
+            DumpFileEntryResponse dumpFileEntryResponse = new DumpFileEntryResponse();
+            dumpFileEntryResponse.setId(dumpFileEntry.getId());
+            dumpFileEntryResponse.setCrashDateTime(dumpFileEntry.getCrashDateTime());
+            dumpFileEntryResponse.setEnteredDateTime(dumpFileEntry.getEnteredDateTime());
+            dumpFileEntryResponses.add(dumpFileEntryResponse);
+        }
+        
+        return dumpFileEntryResponses;
+    }
+    
+    public List<DumpEntryGroupResponse> findDumpEntryGroupsForDumpType(Long dumpTypeId) {
+        
+        List<DumpEntryGroupResponse> dumpEntryGroupsResponse = new ArrayList<>();
+        List<DumpEntryGroup> dumpEntryGroups = dumpEntryGroupRepository.findAllByDumpType(dumpTypeId);
+        
+        for(DumpEntryGroup dumpEntryGroup : dumpEntryGroups) {
+            DumpEntryGroupResponse dumpEntryGroupResponse = new DumpEntryGroupResponse();
+            dumpEntryGroupResponse.setId(dumpEntryGroup.getId());
+            dumpEntryGroupResponse.setDumpChecksum(dumpEntryGroup.getDumpChecksum());
+            dumpEntryGroupResponse.setDumpModule(dumpEntryGroup.getDumpModule());
+            dumpEntryGroupResponse.setDumpOffset(dumpEntryGroup.getDumpOffset());
+            dumpEntryGroupResponse.setDumpVersion(dumpEntryGroup.getDumpVersion());
+            dumpEntryGroupResponse.setDumpFileEntries(findDumpFileEntryForDumpEntryGroup(dumpEntryGroup.getId()));
+            dumpEntryGroupsResponse.add(dumpEntryGroupResponse);
+        }
+        return dumpEntryGroupsResponse;
+    }
+    
+    public DumpTypeResponse findDumpTypeById(Long dumpTypeId) {
+        DumpType dumpType = dumpTypeRepository.findOne(dumpTypeId);
+        DumpTypeResponse dumpTypeResponse = new DumpTypeResponse();
+        dumpTypeResponse.setBriefDescription(dumpType.getBriefDescription());
+        dumpTypeResponse.setId(dumpType.getId());
+        dumpTypeResponse.setResolved(dumpType.isResolved());
+        dumpTypeResponse.setFailureBucketId(dumpType.getFailureBucketId());
+        
+        List<String> jiraIssues = new ArrayList<>();
+        //todo
+        dumpTypeResponse.setJiraIssues(jiraIssues);
+                
+        dumpTypeResponse.setDumpFileEntries(findDumpEntryGroupsForDumpType(dumpTypeResponse.getId()));
+        return dumpTypeResponse;
+    }
+    
     @Override
     public List<DumpTypeResponse> findFromDumpEntryIds(List<Long> dumpEntryIds) {
         List<Long> uniqueDumpTypeIds = findUniqueDumpTypeIds(dumpEntryIds);
-        return null;
+        
+        List<DumpTypeResponse> response = new ArrayList<>();
+        
+        for(Long dumpTypeId : uniqueDumpTypeIds) {
+            response.add(findDumpTypeById(dumpTypeId));
+        }
+        
+        return response;
     }
 }

@@ -16,14 +16,16 @@
 package com.github.christapley.windbg.windbgrestcontroller.response;
 
 import java.util.List;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
  *
  * @author Chris
  */
+@Data
 @NoArgsConstructor(force = true)
-public class DumpTypeResponse {
+public class DumpTypeResponse { 
     Long id;
     String failureBucketId;
     String briefDescription;
