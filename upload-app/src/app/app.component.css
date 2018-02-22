@@ -35,7 +35,7 @@
 }
 
 .left-main {
-    width:400px;
+    width:500px;
     vertical-align: top;
     padding: 5px;
 }
@@ -43,4 +43,8 @@
 .right-main {
     vertical-align: top;
     padding: 5px;
+}
+
+.button-spacing {
+    margin: 5px
 }
