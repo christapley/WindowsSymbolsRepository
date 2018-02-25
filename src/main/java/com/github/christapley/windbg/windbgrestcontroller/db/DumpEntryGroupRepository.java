@@ -26,5 +26,5 @@ import org.springframework.data.repository.query.QueryByExampleExecutor;
  */
 public interface DumpEntryGroupRepository extends PagingAndSortingRepository<DumpEntryGroup, Long>, QueryByExampleExecutor<DumpEntryGroup> {
     DumpEntryGroup findOneByDumpModuleAndDumpVersionAndDumpOffset(String dumpModule, String dumpVersion, String dumpOffset);
-    List<DumpEntryGroup> findAllByDumpType(Long dumpTypeId); 
+    List<DumpEntryGroup> findAllByDumpTypeId(Long dumpTypeId); 
 }

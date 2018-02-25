@@ -22,13 +22,16 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.github.christapley.windbg.windbgrestcontroller.crashanalysis.AsyncCrashAnalyser;
 import com.github.christapley.windbg.windbgrestcontroller.crashanalysis.WindowsAsyncCrashAnalyser;
 import com.github.christapley.windbg.windbgrestcontroller.db.CrashAnalysisStatusRepository;
+import com.github.christapley.windbg.windbgrestcontroller.db.DumpDatabaseModel;
 import com.github.christapley.windbg.windbgrestcontroller.db.entity.CrashAnalysisStatus;
+import com.github.christapley.windbg.windbgrestcontroller.response.DumpTypeResponse;
 import com.github.christapley.windbg.windbgrestcontroller.storage.DumpFileStorageService;
 import com.github.christapley.windbg.windbgrestcontroller.storage.StorageFileNotFoundException;
 import com.github.christapley.windbg.windbgrestcontroller.storage.StorageService;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.List;
 import java.util.stream.Collectors;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
@@ -65,6 +68,9 @@ public class RestController {
     @Autowired
     AsyncCrashAnalyser asyncCrashAnalyser;
 
+    @Autowired
+    DumpDatabaseModel dumpDatabaseModel;
+    
     /*
     @GetMapping("/dump/entries")
     @ResponseBody
@@ -75,6 +81,12 @@ public class RestController {
                 "attachment; filename=\"" + file.getFilename() + "\"").body(file);
     }
     */
+    
+    @GetMapping("dump/list/{dumps}")
+    @ResponseBody
+    public ResponseEntity<List<DumpTypeResponse>> listDumps(@PathVariable("dumps") List<Long> fileEntryIds) {
+        return ResponseEntity.ok().body(dumpDatabaseModel.findFromDumpEntryIds(fileEntryIds));
+    }
     
     @GetMapping("/dump/process/{processId}/status")
     @ResponseBody

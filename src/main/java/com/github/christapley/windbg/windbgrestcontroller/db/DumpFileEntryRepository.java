@@ -31,5 +31,5 @@ public interface DumpFileEntryRepository extends PagingAndSortingRepository<Dump
     @Query("SELECT dt.id FROM DumpType dt, DumpEntryGroup deg, DumpFileEntry dfe WHERE dt.id=deg.dumpType AND deg.id=dfe.dumpEntryGroup AND dfe.id = :id")
     Long findDumpTypeIdFromDumpFileEntryId(@Param("id") Long dumpFileEntryId);
     
-    List<DumpFileEntry> findAllByDumpEntryGroup(Long dumpEntryGroup);    
+    List<DumpFileEntry> findAllByDumpEntryGroupId(Long dumpEntryGroup);    
 }

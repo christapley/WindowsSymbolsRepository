@@ -57,6 +57,9 @@ public class DumpDatabaseModelImpl implements DumpDatabaseModel {
                 dumpTypeRepository.save(dumpType);
             } catch(Exception ex) {
                 dumpType = dumpTypeRepository.findOneByFailureBucketIdIgnoreCase(crashAnalysis.getFailureBucketId());
+                if(dumpType == null) {
+                    throw ex;
+                }
             }
         }
         return dumpType;
@@ -76,6 +79,9 @@ public class DumpDatabaseModelImpl implements DumpDatabaseModel {
                 dumpEntryGroupRepository.save(dumpEntryGroup);
             } catch(Exception ex) {
                 dumpEntryGroup = dumpEntryGroupRepository.findOneByDumpModuleAndDumpVersionAndDumpOffset(crashAnalysis.getWatsonBucketModule(), crashAnalysis.getWatsonBucketModVer(), crashAnalysis.getWatsonBucketModOffset());
+                if(dumpEntryGroup == null) {
+                    throw ex;
+                }
             }
         }
         return dumpEntryGroup;
@@ -106,7 +112,7 @@ public class DumpDatabaseModelImpl implements DumpDatabaseModel {
     
     public List<DumpFileEntryResponse> findDumpFileEntryForDumpEntryGroup(Long dumpEntryGroupId) {
         List<DumpFileEntryResponse> dumpFileEntryResponses = new ArrayList<>();
-        List<DumpFileEntry> dumpFileEntries = dumpFileEntryRepository.findAllByDumpEntryGroup(dumpEntryGroupId);
+        List<DumpFileEntry> dumpFileEntries = dumpFileEntryRepository.findAllByDumpEntryGroupId(dumpEntryGroupId);
                 
         for(DumpFileEntry dumpFileEntry : dumpFileEntries) {
             DumpFileEntryResponse dumpFileEntryResponse = new DumpFileEntryResponse();
@@ -122,7 +128,7 @@ public class DumpDatabaseModelImpl implements DumpDatabaseModel {
     public List<DumpEntryGroupResponse> findDumpEntryGroupsForDumpType(Long dumpTypeId) {
         
         List<DumpEntryGroupResponse> dumpEntryGroupsResponse = new ArrayList<>();
-        List<DumpEntryGroup> dumpEntryGroups = dumpEntryGroupRepository.findAllByDumpType(dumpTypeId);
+        List<DumpEntryGroup> dumpEntryGroups = dumpEntryGroupRepository.findAllByDumpTypeId(dumpTypeId);
         
         for(DumpEntryGroup dumpEntryGroup : dumpEntryGroups) {
             DumpEntryGroupResponse dumpEntryGroupResponse = new DumpEntryGroupResponse();
