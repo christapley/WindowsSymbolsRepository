@@ -155,7 +155,7 @@ public class DumpDatabaseModelImpl implements DumpDatabaseModel {
         //todo
         dumpTypeResponse.setJiraIssues(jiraIssues);
                 
-        dumpTypeResponse.setDumpFileEntries(findDumpEntryGroupsForDumpType(dumpTypeResponse.getId()));
+        dumpTypeResponse.setDumpEntryGroups(findDumpEntryGroupsForDumpType(dumpTypeResponse.getId()));
         return dumpTypeResponse;
     }
     
