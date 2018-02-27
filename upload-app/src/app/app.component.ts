@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
 import {MatTableDataSource} from '@angular/material'
+import {SearchService} from "./app.search.service";
+import {IDumpFileEntry, IDumpEntryGroup, IDumpType} from "./search.results";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  providers: [SearchService]
 })
 export class AppComponent {
   title = 'app';
@@ -14,9 +17,21 @@ export class AppComponent {
   public fileOverBase(e:any):void {
     this.hasBaseDropZoneOver = e;
   }
-  public filesToUpload = ['w3wp.2312.dmp', 'w3wp.2212.dmp', 'w3wp.3452.dmp', 'w3wp.4564.dmp', 'w3wp.1121.dmp'];
-  public dumps = ['w3wp.2312.dmp', 'w3wp.2212.dmp', 'w3wp.3452.dmp', 'w3wp.4564.dmp', 'w3wp.1121.dmp', 'w3wp.2312.dmp', 'w3wp.2212.dmp', 'w3wp.3452.dmp', 'w3wp.4564.dmp', 'w3wp.1121.dmp', 'w3wp.2312.dmp', 'w3wp.2212.dmp', 'w3wp.3452.dmp', 'w3wp.4564.dmp', 'w3wp.1121.dmp'];
 
+  searchResults: IDumpType[];
+ 
+  constructor(private searchService: SearchService) {
+ }
+ 
+  getSearchResults(): void {
+    this.searchService.getSearchResults()
+        .subscribe(
+            resultArray => this.searchResults = resultArray,
+            error => console.log("Error :: " + error)
+        )
+  }
 
-
+  ngOnInit(): void {
+      this.getSearchResults();
+  }
 }

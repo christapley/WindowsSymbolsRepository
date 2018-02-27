@@ -11,6 +11,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatGridListModule, MatListModule} from '@angular/material';
 import {FlexLayoutModule} from "@angular/flex-layout";
+import {HttpModule} from "@angular/http";
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {FlexLayoutModule} from "@angular/flex-layout";
     MatIconModule,
     MatGridListModule,
     MatListModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]

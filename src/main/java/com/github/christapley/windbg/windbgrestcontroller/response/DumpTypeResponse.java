@@ -30,6 +30,6 @@ public class DumpTypeResponse {
     String failureBucketId;
     String briefDescription;
     boolean resolved;
-    List<DumpEntryGroupResponse> dumpFileEntries;
+    List<DumpEntryGroupResponse> dumpEntryGroups;
     List<String> jiraIssues;
 }
