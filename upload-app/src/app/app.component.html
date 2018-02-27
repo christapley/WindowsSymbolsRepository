@@ -43,34 +43,43 @@
            
           <mat-divider></mat-divider>
           <button (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length" class="button-spacing" mat-raised-button>Upload</button>
+          <button (click)="addSearchQuery()" class="button-spacing" mat-raised-button>Add</button>
         </div>
         </td>
         <td class="fill-height right-main">
-          <div class="main-content-container">
+          <div class="main-content-container" *ngFor="let dumpType of searchResults">
             <mat-card class="padded-content-item">
                 <mat-card-header>
                   <mat-icon mat-card-avatar class="icon-fixed">done</mat-icon>
                   <mat-card-title>
-                    <h4>STATUS_BREAKPOINT_80000003_ntdll.dll!NtGetContextThread</h4>
+                    <h4>{{dumpType.failureBucketId}}</h4>
                   </mat-card-title>
                   <mat-card-subtitle>
-                    Fixed <a href="https://ingrjira.ingrnet.com/browse/IW-12345">IW-12345</a>
+                    {{dumpType.resolved ? "Fixed" : "Unresolved"}} <a href="https://ingrjira.ingrnet.com/browse/IW-12345">IW-12345</a>
                   </mat-card-subtitle>
                 </mat-card-header>
                 
                 <mat-card-content>
-                  <mat-card>
+                  <mat-card *ngFor="let dumpEntryGroup of dumpType.dumpEntryGroups">
                     <mat-card-header>
                     <mat-card-title>
                       <table class="heading-table">
-                        <tr>
-                          <td>Dump Version</td>
-                          <td>16.5.0.169</td>
+                        <tr >
+                            <td>Dump Module</td>
+                            <td>{{dumpEntryGroup.dumpModule}}</td>
                         </tr>
                         <tr>
+                          <td>Dump Version</td>
+                          <td>{{dumpEntryGroup.dumpVersion}}</td>
+                        </tr>
+                        <tr >
                             <td>Dump Checksum</td>
-                            <td>5a62f8c3</td>
-                          </tr>
+                            <td>{{dumpEntryGroup.dumpChecksum}}</td>
+                        </tr>
+                        <tr >
+                            <td>Dump Offset</td>
+                            <td>{{dumpEntryGroup.dumpOffset}}</td>
+                        </tr>
                       </table>
                     </mat-card-title>
                     </mat-card-header>
@@ -80,13 +89,13 @@
                               <tr>
                                 <th>Dump Filename</th>
                                 <th>Dump Date</th>
-                                <th>Dump Time</th>
+                                <th>Entered Date</th>
                                 <th>Dump Actions</th>
                               </tr>
-                              <tr>
+                              <tr *ngFor="let dumpFileEntry of dumpEntryGroup.dumpFileEntries">
                                   <td>w3wp.2312.dmp</td>
-                                  <td>29/02/2018</td>
-                                  <td>16:23:32+0Z</td>
+                                  <td>{{dumpFileEntry.crashDateTime}}</td>
+                                  <td>{{dumpFileEntry.enteredDateTime}}</td>
                                   <td>
                                       <button mat-mini-fab color="primary" matTooltip="Download source dmp file">
                                           <mat-icon aria-label="Download source dmp file">cloud_download</mat-icon>
@@ -99,22 +108,6 @@
                                       </button>
                                   </td>
                                 </tr>
-                                <tr>
-                                    <td>w3wp.2312.dmp</td>
-                                    <td>29/02/2018</td>
-                                    <td>16:23:32+0Z</td>
-                                    <td>
-                                        <button mat-mini-fab color="primary" matTooltip="Download source dmp file">
-                                            <mat-icon aria-label="Download source dmp file">cloud_download</mat-icon>
-                                          </button>
-                                          <button mat-mini-fab color="primary">
-                                            <mat-icon aria-label="Download raw analysis">assignment</mat-icon>
-                                        </button>
-                                        <button mat-mini-fab color="primary">
-                                            <mat-icon aria-label="View crash information">code</mat-icon>
-                                        </button>
-                                    </td>
-                                  </tr>
                             </table>
                       </div>
                       </mat-card-content>

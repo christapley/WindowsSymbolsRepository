@@ -7,14 +7,18 @@ import {IDumpFileEntry, IDumpEntryGroup, IDumpType} from "./search.results";
 @Injectable()
 export class SearchService {
  
-    private _postsURL = "/dump/list/48,60";
+    private _postsHost = "http://localhost:8899"
+    private _postsURL = "/dump/list/";
  
     constructor(private http: Http) {
     }
  
-    getSearchResults(): Observable<IDumpType[]> {
+    
+
+    getSearchResults(dumpEntryIds): Observable<IDumpType[]> {
+
          return this.http
-             .get(this._postsURL)
+             .get(this._postsHost + this._postsURL + dumpEntryIds.join(","))
              .map((response: Response) => {
                  return <IDumpType[]>response.json();
              })

@@ -47,3 +47,6 @@ Temporary Items
 .apdisk
 /target/
 /nbproject/
+/src/main/webapp
+/src/main/resources/web
+/src/main/resources/templates

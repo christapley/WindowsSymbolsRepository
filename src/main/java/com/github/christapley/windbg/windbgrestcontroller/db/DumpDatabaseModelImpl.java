@@ -95,6 +95,7 @@ public class DumpDatabaseModelImpl implements DumpDatabaseModel {
         entry.setEnteredDateTime(Date.from(Instant.now()));
         entry.setCrashDateTime(Date.from(Instant.now()));
         entry.setDumpEntryGroup(dumpEntryGroup);
+        entry.setFileName(crashAnalysis.getCrashFileName());
         dumpFileEntryRepository.save(entry);
         
         return entry;

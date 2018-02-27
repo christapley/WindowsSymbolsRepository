@@ -16,31 +16,20 @@
 package com.github.christapley.windbg.windbgrestcontroller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.github.christapley.windbg.windbgrestcontroller.crashanalysis.AsyncCrashAnalyser;
-import com.github.christapley.windbg.windbgrestcontroller.crashanalysis.WindowsAsyncCrashAnalyser;
-import com.github.christapley.windbg.windbgrestcontroller.db.CrashAnalysisStatusRepository;
 import com.github.christapley.windbg.windbgrestcontroller.db.DumpDatabaseModel;
 import com.github.christapley.windbg.windbgrestcontroller.db.entity.CrashAnalysisStatus;
 import com.github.christapley.windbg.windbgrestcontroller.response.DumpTypeResponse;
 import com.github.christapley.windbg.windbgrestcontroller.storage.DumpFileStorageService;
 import com.github.christapley.windbg.windbgrestcontroller.storage.StorageFileNotFoundException;
-import com.github.christapley.windbg.windbgrestcontroller.storage.StorageService;
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.Path;
 import java.util.List;
-import java.util.stream.Collectors;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.Resource;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -48,7 +37,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
@@ -56,7 +44,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
  * @author Chris
  */
 
-
+@CrossOrigin
 @Controller
 public class RestController {
     

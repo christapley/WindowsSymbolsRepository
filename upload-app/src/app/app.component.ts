@@ -18,13 +18,20 @@ export class AppComponent {
     this.hasBaseDropZoneOver = e;
   }
 
+  searchQuery: number[];
   searchResults: IDumpType[];
  
   constructor(private searchService: SearchService) {
- }
+    this.searchQuery = [48];
+  }
  
+  addSearchQuery(): void {
+    this.searchQuery.push(60);
+    this.getSearchResults();
+  }
+
   getSearchResults(): void {
-    this.searchService.getSearchResults()
+    this.searchService.getSearchResults(this.searchQuery)
         .subscribe(
             resultArray => this.searchResults = resultArray,
             error => console.log("Error :: " + error)

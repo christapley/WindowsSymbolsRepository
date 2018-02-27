@@ -15,6 +15,7 @@
  */
 package com.github.christapley.windbg.windbgrestcontroller.response;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.util.Date;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,6 +28,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(force = true)
 public class DumpFileEntryResponse {
     Long id;
+    
+    String fileName;
+    
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     Date enteredDateTime;
+    
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     Date crashDateTime;
 }
