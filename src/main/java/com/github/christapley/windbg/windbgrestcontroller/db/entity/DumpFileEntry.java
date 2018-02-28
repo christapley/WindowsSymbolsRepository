@@ -46,6 +46,8 @@ public class DumpFileEntry {
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date crashDateTime;
     
+    String fileName;
+    
     @ManyToOne
     private DumpEntryGroup dumpEntryGroup;
 }

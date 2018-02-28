@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('upload-app App', () => {
+describe('upload-angular2-material App', () => {
   let page: AppPage;
 
   beforeEach(() => {
