@@ -33,6 +33,7 @@ public class WindowsCrashAnalysis implements CrashAnalysis {
     String watsonBucketModOffset;
     String failureBucketId;
     String watsonBucketModVer;
+    String crashTime;
     List<CallStackEntry> stackOfCrashingThread;
 
     public WindowsCrashAnalysis(String rawAnalysis) {
@@ -65,6 +66,9 @@ public class WindowsCrashAnalysis implements CrashAnalysis {
         watsonBucketModVer = parseValueByRegexInternal("WATSON_BKT_MODVER");
     }
     
+    void parseCrashTime() {
+        crashTime = parseValueByRegexInternal("Debug session time");
+    }
     
     void parseFailureBucketId() {
         failureBucketId = parseValueByRegexInternal("FAILURE_BUCKET_ID");
@@ -129,6 +133,7 @@ public class WindowsCrashAnalysis implements CrashAnalysis {
         parseWatsonBucketModVer();
         parseFailureBucketId();
         parseStackOfCrashingThread();
+        parseCrashTime();
     }
     
     @Override
@@ -179,6 +184,11 @@ public class WindowsCrashAnalysis implements CrashAnalysis {
      */
     public void setCrashFileName(String crashFileName) {
         this.crashFileName = crashFileName;
+    }
+
+    @Override
+    public String getCrashTime() {
+        return crashTime;
     }
  
 }

@@ -22,7 +22,7 @@ export class AppComponent {
   searchResults: IDumpType[];
  
   constructor(private searchService: SearchService) {
-    this.searchQuery = [48];
+    this.searchQuery = [112];
   }
  
   addSearchQuery(): void {

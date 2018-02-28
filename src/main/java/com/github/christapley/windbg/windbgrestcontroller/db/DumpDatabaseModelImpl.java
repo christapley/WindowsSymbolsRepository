@@ -22,12 +22,17 @@ import com.github.christapley.windbg.windbgrestcontroller.db.entity.DumpType;
 import com.github.christapley.windbg.windbgrestcontroller.response.DumpEntryGroupResponse;
 import com.github.christapley.windbg.windbgrestcontroller.response.DumpFileEntryResponse;
 import com.github.christapley.windbg.windbgrestcontroller.response.DumpTypeResponse;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
+import java.util.TimeZone;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -87,13 +92,22 @@ public class DumpDatabaseModelImpl implements DumpDatabaseModel {
         return dumpEntryGroup;
     }
     
+    public Date parseFromCrashAnalysisString(String dateString) throws ParseException {
+        DateFormat df = new SimpleDateFormat("EEE MMM dd kk:mm:ss.SSS yyyy", Locale.ENGLISH);
+        return df.parse(dateString);  
+    }
+    
     @Override
     public DumpFileEntry insertCrashAnalysis(CrashAnalysis crashAnalysis) {
         DumpEntryGroup dumpEntryGroup = findOrCreateDumpEntryGroup(crashAnalysis);
         
         DumpFileEntry entry = new DumpFileEntry();
         entry.setEnteredDateTime(Date.from(Instant.now()));
-        entry.setCrashDateTime(Date.from(Instant.now()));
+        try {
+            entry.setCrashDateTime(parseFromCrashAnalysisString(crashAnalysis.getCrashTime()));
+        } catch (ParseException ex) {
+            entry.setCrashDateTime(entry.getEnteredDateTime());
+        }
         entry.setDumpEntryGroup(dumpEntryGroup);
         entry.setFileName(crashAnalysis.getCrashFileName());
         dumpFileEntryRepository.save(entry);
@@ -120,6 +134,7 @@ public class DumpDatabaseModelImpl implements DumpDatabaseModel {
             dumpFileEntryResponse.setId(dumpFileEntry.getId());
             dumpFileEntryResponse.setCrashDateTime(dumpFileEntry.getCrashDateTime());
             dumpFileEntryResponse.setEnteredDateTime(dumpFileEntry.getEnteredDateTime());
+            dumpFileEntryResponse.setFileName(dumpFileEntry.getFileName());
             dumpFileEntryResponses.add(dumpFileEntryResponse);
         }
         

@@ -13,29 +13,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.christapley.windbg.windbgrestcontroller.crashanalysis;
+package com.github.christapley.windbg.windbgrestcontroller.db;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import java.util.List;
+import java.text.ParseException;
+import java.util.Date;
+import org.junit.Test;
+import static org.junit.Assert.*;
+import org.junit.Before;
 
 /**
  *
  * @author Chris
  */
-public interface CrashAnalysis {
+public class DumpDatabaseModelImplTest {
     
-    @JsonIgnore
-    String getRawAnalysis();
     
-    String getCrashFileName();
-    String getCrashTime();
+    DumpDatabaseModelImpl impl;
     
-    // Microsoft's bucketing http://www.freepatentsonline.com/9710371.html
-    String getWatsonBucketModule();
-    String getWatsonBucketModStamp();
-    String getWatsonBucketModOffset();
-    String getWatsonBucketModVer();
-    String getFailureBucketId();
+    @Before
+    public void setup() {
+        impl = new DumpDatabaseModelImpl();
+    }
     
-    List<CallStackEntry> getStackOfCrashingThread();
+    @Test
+    public void parseFromCrashAnalysisString_known() throws ParseException {
+        Date actual = impl.parseFromCrashAnalysisString("Fri Feb  2 12:49:23.000 2018 (UTC + 8:00)");
+        int stop =0 ;
+    }
+    
 }

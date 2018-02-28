@@ -93,7 +93,7 @@
                                 <th>Dump Actions</th>
                               </tr>
                               <tr *ngFor="let dumpFileEntry of dumpEntryGroup.dumpFileEntries">
-                                  <td>w3wp.2312.dmp</td>
+                                  <td>{{dumpFileEntry.fileName}}</td>
                                   <td>{{dumpFileEntry.crashDateTime}}</td>
                                   <td>{{dumpFileEntry.enteredDateTime}}</td>
                                   <td>

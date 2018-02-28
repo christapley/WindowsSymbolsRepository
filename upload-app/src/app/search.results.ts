@@ -2,6 +2,7 @@
 
 export interface IDumpFileEntry {
     id: number,
+    fileName: string,
     enteredDateTime: number,
     crashDateTime: number;
 }
