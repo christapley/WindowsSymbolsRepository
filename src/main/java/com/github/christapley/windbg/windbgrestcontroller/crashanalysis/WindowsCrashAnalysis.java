@@ -126,6 +126,7 @@ public class WindowsCrashAnalysis implements CrashAnalysis {
         parseWatsonBucketModule();
         parseWatsonBucketModStamp();
         parseWatsonBucketModOffset();
+        parseWatsonBucketModVer();
         parseFailureBucketId();
         parseStackOfCrashingThread();
     }
