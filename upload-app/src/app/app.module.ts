@@ -12,10 +12,12 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatGridListModule, MatListModule} from '@angular/material';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {HttpModule} from "@angular/http";
+import { UploadDumpProcessComponent } from './upload-dump-process/upload-dump-process.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    UploadDumpProcessComponent
   ],
   imports: [
     BrowserModule,

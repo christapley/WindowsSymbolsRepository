@@ -58,6 +58,9 @@ public class CrashAnalysisStatus {
     @Column(nullable = true)
     private Long dumpId;
     
+    @Column(nullable = false)
+    private String dumpFileName;
+    
     @JsonIgnore
     @Column(nullable = false)
     private String dumpFile;

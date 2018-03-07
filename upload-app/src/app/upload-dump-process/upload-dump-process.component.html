@@ -1,0 +1,15 @@
+<table>
+  <tr>
+    <th>
+      Dump file
+    </th>
+    <th>
+      Processing status
+    </th>
+  </tr>
+  <tr *ngFor="let upload of currentUploadResults">
+    <td>{{upload.dumpFileName}}</td>
+    <td>{{upload.status}}</td>
+  </tr>
+</table>
+  

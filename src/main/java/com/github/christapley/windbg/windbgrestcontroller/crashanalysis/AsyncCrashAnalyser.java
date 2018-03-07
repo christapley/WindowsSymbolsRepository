@@ -17,6 +17,7 @@ package com.github.christapley.windbg.windbgrestcontroller.crashanalysis;
 
 import com.github.christapley.windbg.windbgrestcontroller.db.entity.CrashAnalysisStatus;
 import java.io.File;
+import java.util.List;
 
 /**
  *
@@ -25,4 +26,5 @@ import java.io.File;
 public interface AsyncCrashAnalyser {
     CrashAnalysisStatus start(File dumpFile);
     CrashAnalysisStatus getStatus(Long id);
+    List<CrashAnalysisStatus> getStatuses(List<Long> processIds);
 }

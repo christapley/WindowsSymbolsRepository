@@ -20,7 +20,9 @@ import com.github.christapley.windbg.windbgrestcontroller.db.entity.CrashAnalysi
 import com.github.christapley.windbg.windbgrestcontroller.db.entity.ProcessingStatus;
 import java.io.File;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +52,7 @@ public class WindowsAsyncCrashAnalyser implements AsyncCrashAnalyser {
         status.setStatus(ProcessingStatus.Queued);
         status.setStartDateTime(Date.from(Instant.now()));
         status.setDumpFile(filePath);
+        status.setDumpFileName(new File(filePath).getName());
         return status;
     }
     
@@ -69,4 +72,12 @@ public class WindowsAsyncCrashAnalyser implements AsyncCrashAnalyser {
         return crashAnalysisStatusRepository.findOne(id);
     }
     
+    @Override
+    public List<CrashAnalysisStatus> getStatuses(List<Long> processIds) {
+        List<CrashAnalysisStatus> results = new ArrayList<>();
+        for(Long id : processIds) {
+            results.add(getStatus(id));
+        }
+        return results;
+    }
 }

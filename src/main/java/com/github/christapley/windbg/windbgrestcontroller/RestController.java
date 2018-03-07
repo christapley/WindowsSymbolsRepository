@@ -82,6 +82,12 @@ public class RestController {
         return ResponseEntity.ok().body(asyncCrashAnalyser.getStatus(processId));
     }
     
+    @GetMapping("/dump/process/status/{processIds}")
+    @ResponseBody
+    public ResponseEntity<List<CrashAnalysisStatus>> processDumpFileStatuses(@PathVariable("processIds") List<Long> processIds) {
+        return ResponseEntity.ok().body(asyncCrashAnalyser.getStatuses(processIds));
+    }
+    
     @PostMapping("/dump/process")
     @ResponseBody
     public ResponseEntity<CrashAnalysisStatus> processDumpFile(@RequestParam("file") MultipartFile file,

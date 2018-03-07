@@ -12,8 +12,6 @@ export class SearchService {
  
     constructor(private http: Http) {
     }
- 
-    
 
     getSearchResults(dumpEntryIds): Observable<IDumpType[]> {
 

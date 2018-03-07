@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
-import { FileUploader, FileItem, ParsedResponseHeaders } from 'ng2-file-upload';
+import {Component} from '@angular/core';
+import {FileUploader, FileItem, ParsedResponseHeaders} from 'ng2-file-upload';
 import {MatTableDataSource} from '@angular/material'
 import {SearchService} from "./app.search.service";
 import {IDumpFileEntry, IDumpEntryGroup, IDumpType} from "./search.results";
+import {UploadDumpProcessComponent} from "./upload-dump-process/upload-dump-process.component"
 
 @Component({
   selector: 'app-root',

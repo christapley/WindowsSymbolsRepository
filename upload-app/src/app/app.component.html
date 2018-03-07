@@ -39,7 +39,8 @@
                 </td>
             </tr>
             </tbody>
-        </table>
+          </table>
+          <app-upload-dump-process></app-upload-dump-process>
            
           <mat-divider></mat-divider>
           <button (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length" class="button-spacing" mat-raised-button>Upload</button>
