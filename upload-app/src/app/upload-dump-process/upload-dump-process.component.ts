@@ -12,19 +12,46 @@ export class UploadDumpProcessComponent implements OnInit {
 
   activeUploadIds: Array<number>;
   currentUploadResults: Array<ICrashAnalysisStatus>;
+  completedUploadResults: Array<ICrashAnalysisStatus>;
 
   private _postsHost = "http://localhost:8899"
-  private _postsURL = "/dump/process/";
+  private _postsURL = "/dump/process/status/";
 
-  constructor(private http: Http) {
+  constructor(private http: Http) { 
     this.activeUploadIds = [];
     this.currentUploadResults = [];
+    this.completedUploadResults = [];
+  }
+
+  handleNewlyCompletedUploads(resultArray: ICrashAnalysisStatus[]) {
+    resultArray.forEach(item => {
+      if(item.status == "Complete") {
+        this.removeUploadId(item.id);
+        this.onItemCompleted(item);
+      } else if(item.status == "Failed") {
+        this.removeUploadId(item.id);
+        this.onItemFailed(item);
+      }
+    });
+  }
+
+  public onItemCompleted(item: ICrashAnalysisStatus): any {
+    return { item };
+  }
+
+  public onItemFailed(item: ICrashAnalysisStatus): any {
+    return { item };
+  }
+
+  onReceivedData(resultArray: ICrashAnalysisStatus[]) {
+    this.handleNewlyCompletedUploads(resultArray);
+    this.currentUploadResults = resultArray;
   }
 
   ngOnInit() {
     this.refresh()
         .subscribe(
-            resultArray => this.currentUploadResults = resultArray,
+            resultArray => this.onReceivedData(resultArray),
             error => console.log("Error :: " + error)
         )
   }
@@ -32,7 +59,7 @@ export class UploadDumpProcessComponent implements OnInit {
   refresh(): Observable<ICrashAnalysisStatus[]> {
 
     return this.http
-        .get(this._postsHost + this._postsURL + this.activeUploadIds.join(",") + "/status/")
+        .get(this._postsHost + this._postsURL + this.activeUploadIds.join(","))
         .map((response: Response) => {
             return <ICrashAnalysisStatus[]>response.json();
         })
@@ -47,15 +74,18 @@ export class UploadDumpProcessComponent implements OnInit {
     return Observable.throw(error.statusText);
   }
 
-  addUploadId(id: number) {
-    for(var i = 0; i < this.activeUploadIds.length; i++) {
-      if(this.activeUploadIds[i] == id) {
-        return;
-      }
+  removeUploadId(id: number) {
+    const index: number = this.activeUploadIds.indexOf(id);
+    if(index !== -1) {
+      this.activeUploadIds.splice(index, 1);
     }
-    this.activeUploadIds.push(id);
-    this.refresh();
   }
 
-
+  addUploadId(id: number) {
+    const index: number = this.activeUploadIds.indexOf(id);
+    if(index === -1) {
+      this.activeUploadIds.push(id);
+      this.refresh();
+    }
+  }
 }

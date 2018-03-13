@@ -85,6 +85,8 @@ public class WindowsAsyncCrashAnalyserInternal {
             storageService.moveDumpFileInTempAreaToJobArea(new File(status.getDumpFile()), entry.getId());
             storageService.storeCrashAnalysisInJobArea(crashAnalysis, entry.getId());
 
+            status.setDumpId(entry.getId());
+            
             completeStatus(status);
         } catch(Exception ex) {
             LOG.error(String.format("Failed to process job %d", statusId.intValue()), ex);

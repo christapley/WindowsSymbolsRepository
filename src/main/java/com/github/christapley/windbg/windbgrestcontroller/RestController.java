@@ -76,12 +76,6 @@ public class RestController {
         return ResponseEntity.ok().body(dumpDatabaseModel.findFromDumpEntryIds(fileEntryIds));
     }
     
-    @GetMapping("/dump/process/{processId}/status")
-    @ResponseBody
-    public ResponseEntity<CrashAnalysisStatus> processDumpFileStatus(@PathVariable("processId") long processId) {
-        return ResponseEntity.ok().body(asyncCrashAnalyser.getStatus(processId));
-    }
-    
     @GetMapping("/dump/process/status/{processIds}")
     @ResponseBody
     public ResponseEntity<List<CrashAnalysisStatus>> processDumpFileStatuses(@PathVariable("processIds") List<Long> processIds) {

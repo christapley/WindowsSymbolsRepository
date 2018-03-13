@@ -4,6 +4,8 @@ import {MatTableDataSource} from '@angular/material'
 import {SearchService} from "./app.search.service";
 import {IDumpFileEntry, IDumpEntryGroup, IDumpType} from "./search.results";
 import {UploadDumpProcessComponent} from "./upload-dump-process/upload-dump-process.component"
+import {ICrashAnalysisStatus} from "./upload-dump-process/upload.status";
+import { Http } from '@angular/http';
 
 @Component({
   selector: 'app-root',
@@ -13,11 +15,13 @@ import {UploadDumpProcessComponent} from "./upload-dump-process/upload-dump-proc
 })
 export class AppComponent {
   title = 'app';
+  
   public uploader:FileUploader = new FileUploader({
     url: 'http://localhost:8899/dump/process',
     headers: [{name:'Accept', value:'application/json'}],
     autoUpload: true
   });
+
   public hasBaseDropZoneOver:boolean = false;
   public fileOverBase(e:any):void {
     this.hasBaseDropZoneOver = e;
@@ -28,10 +32,14 @@ export class AppComponent {
     console.log(response);
   }
 
+  onDumpProcessingCompleted(item: ICrashAnalysisStatus) {
+    this.searchQuery.push(item.dumpId);
+  }
+
   searchQuery: number[];
   searchResults: IDumpType[];
  
-  constructor(private searchService: SearchService) {
+  constructor(private searchService: SearchService, private uploadProcessor: UploadDumpProcessComponent) {
     this.searchQuery = [112];
   }
  
@@ -51,5 +59,6 @@ export class AppComponent {
   ngOnInit(): void {
       this.getSearchResults();
       this.uploader.onSuccessItem = (item, response, status, headers) => this.onSuccessItem(item, response, status, headers);
+      this.uploadProcessor.onItemCompleted = (item) => this.onDumpProcessingCompleted(item);
   }
 }
