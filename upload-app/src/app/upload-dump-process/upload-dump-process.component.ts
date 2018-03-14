@@ -13,6 +13,8 @@ export class UploadDumpProcessComponent implements OnInit {
   activeUploadIds: Array<number>;
   currentUploadResults: Array<ICrashAnalysisStatus>;
   completedUploadResults: Array<ICrashAnalysisStatus>;
+  myFromNowInterval: any;
+
 
   private _postsHost = "http://localhost:8899"
   private _postsURL = "/dump/process/status/";
@@ -21,6 +23,12 @@ export class UploadDumpProcessComponent implements OnInit {
     this.activeUploadIds = [];
     this.currentUploadResults = [];
     this.completedUploadResults = [];
+
+    Observable.interval(2000)
+    .switchMap(() => http.get(this._postsHost + this._postsURL + this.activeUploadIds.join(","))).map((data) => data.json())
+    .subscribe((data) => {
+      this.onReceivedData(data as Array<ICrashAnalysisStatus>);
+    });
   }
 
   handleNewlyCompletedUploads(resultArray: ICrashAnalysisStatus[]) {
@@ -49,21 +57,19 @@ export class UploadDumpProcessComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.refresh()
-        .subscribe(
-            resultArray => this.onReceivedData(resultArray),
-            error => console.log("Error :: " + error)
-        )
+   
+    //this.currentUploadObservable = null;
+    //this.myFromNowInterval = setInterval( () => this.refresh(), 5000);
   }
 
-  refresh(): Observable<ICrashAnalysisStatus[]> {
+  ngOnDestroy() {
+    clearInterval(this.myFromNowInterval);
+  }
 
-    return this.http
-        .get(this._postsHost + this._postsURL + this.activeUploadIds.join(","))
-        .map((response: Response) => {
-            return <ICrashAnalysisStatus[]>response.json();
-        })
-        .catch(this.handleError);
+  refresh() {
+    if( this.activeUploadIds.length > 0) {
+      
+    }
   }
 
   clear() {

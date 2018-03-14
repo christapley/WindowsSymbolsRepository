@@ -14,6 +14,7 @@
             class="well file-drop-zone">
              Drop dump files here
            </div>
+           <!--
            <table class="table">
             <thead>
             <tr>
@@ -40,11 +41,12 @@
             </tr>
             </tbody>
           </table>
+          //-->
+          <mat-divider></mat-divider>
           <app-upload-dump-process></app-upload-dump-process>
            
-          <mat-divider></mat-divider>
-          <button (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length" class="button-spacing" mat-raised-button>Upload</button>
-          <button (click)="addSearchQuery()" class="button-spacing" mat-raised-button>Add</button>
+          
+          <!--<button (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length" class="button-spacing" mat-raised-button>Upload</button>/-->
         </div>
         </td>
         <td class="fill-height right-main">

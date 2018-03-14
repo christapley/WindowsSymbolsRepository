@@ -23,6 +23,7 @@ import com.github.christapley.windbg.windbgrestcontroller.response.DumpTypeRespo
 import com.github.christapley.windbg.windbgrestcontroller.storage.DumpFileStorageService;
 import com.github.christapley.windbg.windbgrestcontroller.storage.StorageFileNotFoundException;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
@@ -70,10 +71,22 @@ public class RestController {
     }
     */
     
+    @GetMapping("dump/list")
+    @ResponseBody
+    public ResponseEntity<List<DumpTypeResponse>> listDumps() {
+        return ResponseEntity.ok().body(new ArrayList<>());
+    }
+    
     @GetMapping("dump/list/{dumps}")
     @ResponseBody
     public ResponseEntity<List<DumpTypeResponse>> listDumps(@PathVariable("dumps") List<Long> fileEntryIds) {
         return ResponseEntity.ok().body(dumpDatabaseModel.findFromDumpEntryIds(fileEntryIds));
+    }
+    
+    @GetMapping("/dump/process/status")
+    @ResponseBody
+    public ResponseEntity<List<CrashAnalysisStatus>> processDumpFileStatuses() {
+        return ResponseEntity.ok().body(new ArrayList<>());
     }
     
     @GetMapping("/dump/process/status/{processIds}")

@@ -33,7 +33,7 @@ import { UploadDumpProcessComponent } from './upload-dump-process/upload-dump-pr
     FlexLayoutModule,
     HttpModule
   ],
-  providers: [],
+  providers: [UploadDumpProcessComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {FileUploader, FileItem, ParsedResponseHeaders} from 'ng2-file-upload';
 import {MatTableDataSource} from '@angular/material'
 import {SearchService} from "./app.search.service";
@@ -14,6 +14,7 @@ import { Http } from '@angular/http';
   providers: [SearchService]
 })
 export class AppComponent {
+  @ViewChild(UploadDumpProcessComponent) uploadProcessor:UploadDumpProcessComponent;
   title = 'app';
   
   public uploader:FileUploader = new FileUploader({
@@ -28,26 +29,23 @@ export class AppComponent {
   }
 
   onSuccessItem(item: FileItem, response: string, status: number, headers: ParsedResponseHeaders): any {
-    let data = JSON.parse(response);
-    console.log(response);
+    console.debug(response);
+    let statusObject = JSON.parse(response) as ICrashAnalysisStatus;
+    this.uploadProcessor.addUploadId(statusObject.id);
   }
 
   onDumpProcessingCompleted(item: ICrashAnalysisStatus) {
     this.searchQuery.push(item.dumpId);
+    this.getSearchResults();
   }
 
   searchQuery: number[];
   searchResults: IDumpType[];
  
-  constructor(private searchService: SearchService, private uploadProcessor: UploadDumpProcessComponent) {
-    this.searchQuery = [112];
+  constructor(private searchService: SearchService) {
+    this.searchQuery = [];
   }
  
-  addSearchQuery(): void {
-    this.searchQuery.push(60);
-    this.getSearchResults();
-  }
-
   getSearchResults(): void {
     this.searchService.getSearchResults(this.searchQuery)
         .subscribe(
