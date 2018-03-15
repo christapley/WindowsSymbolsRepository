@@ -19,14 +19,14 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #fafafa;
+    background-color: #f6f6f6;
 }
 
 .padded-content-item {
     margin-bottom: 20px;
     margin-left: 5px;
     margin-right: 5px;
-    background-color: #fbfbfb;
+    background-color: #f8f8f8;
   }
 
   .main-content-container {
@@ -49,3 +49,4 @@
     font-size: 12pt;
     padding-bottom: 5px;
 }
+

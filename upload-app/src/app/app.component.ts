@@ -27,7 +27,7 @@ export class AppComponent {
   public fileOverBase(e:any):void {
     this.hasBaseDropZoneOver = e;
   }
-
+  
   onSuccessItem(item: FileItem, response: string, status: number, headers: ParsedResponseHeaders): any {
     console.debug(response);
     let statusObject = JSON.parse(response) as ICrashAnalysisStatus;
