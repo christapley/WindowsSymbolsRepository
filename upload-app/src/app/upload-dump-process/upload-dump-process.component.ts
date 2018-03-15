@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ICrashAnalysisStatus} from "./upload.status";
 import {Http, Response} from "@angular/http";
 import {Observable} from 'rxjs/Rx';
+import {ISubscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-upload-dump-process',
@@ -14,21 +15,18 @@ export class UploadDumpProcessComponent implements OnInit {
   currentUploadResults: Array<ICrashAnalysisStatus>;
   completedUploadResults: Array<ICrashAnalysisStatus>;
   myFromNowInterval: any;
-
-
+  private http: Http;
+  private isPolling: boolean;
   private _postsHost = "http://localhost:8899"
   private _postsURL = "/dump/process/status/";
+  private subscription: ISubscription;
 
-  constructor(private http: Http) { 
+  constructor(private httpIn: Http) { 
     this.activeUploadIds = [];
     this.currentUploadResults = [];
     this.completedUploadResults = [];
-
-    Observable.interval(2000)
-    .switchMap(() => http.get(this._postsHost + this._postsURL + this.activeUploadIds.join(","))).map((data) => data.json())
-    .subscribe((data) => {
-      this.onReceivedData(data as Array<ICrashAnalysisStatus>);
-    });
+    this.http = httpIn;
+    this.subscription = null;
   }
 
   handleNewlyCompletedUploads(resultArray: ICrashAnalysisStatus[]) {
@@ -41,6 +39,11 @@ export class UploadDumpProcessComponent implements OnInit {
         this.onItemFailed(item);
       }
     });
+
+    if(this.activeUploadIds.length == 0) {
+      this.subscription.unsubscribe();
+      this.subscription = null;
+    } 
   }
 
   public onItemCompleted(item: ICrashAnalysisStatus): any {
@@ -57,17 +60,21 @@ export class UploadDumpProcessComponent implements OnInit {
   }
 
   ngOnInit() {
-   
-    //this.currentUploadObservable = null;
-    //this.myFromNowInterval = setInterval( () => this.refresh(), 5000);
+
   }
 
   ngOnDestroy() {
     clearInterval(this.myFromNowInterval);
   }
 
-  refresh() {
-    if( this.activeUploadIds.length > 0) {
+  startPolling() {
+    if(this.subscription == null) {
+
+      this.subscription = Observable.interval(2000)
+        .switchMap(() => this.http.get(this._postsHost + this._postsURL + this.activeUploadIds.join(","))).map((data) => data.json())
+        .subscribe((data) => {
+          this.onReceivedData(data as Array<ICrashAnalysisStatus>);
+        });
       
     }
   }
@@ -91,7 +98,7 @@ export class UploadDumpProcessComponent implements OnInit {
     const index: number = this.activeUploadIds.indexOf(id);
     if(index === -1) {
       this.activeUploadIds.push(id);
-      this.refresh();
+      this.startPolling();
     }
   }
 }
