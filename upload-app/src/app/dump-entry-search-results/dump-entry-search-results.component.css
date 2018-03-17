@@ -1,0 +1,79 @@
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px; /* 5px rounded corners */
+}
+
+.dump-type-card {
+    width: 1200px;
+}
+
+/* Add rounded corners to the top left and the top right corner of the image */
+.card-header {
+    border-radius: 5px 5px 0 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.status-unresolved {
+    background-color: #FF9494;
+}
+
+.status-resolved {
+    background-color: #94FF98;
+}
+
+.dump-group-header {
+    background-color: lightgray;
+}
+
+.status-text {
+    font-weight: bold;
+}
+
+.card-body {
+    border-radius: 0px 0px 5px 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+.inner-card-body {
+    padding: 0px;
+}
+
+.content-table {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    border-radius: 0px 0px 5px 5px;
+}
+
+.content-table td, .content-table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.heading-table td {
+    border: 1px solid #ddd;
+    padding: 5px;
+}
+
+.my-dump-entry {
+    font-weight: bold;
+}
+
+.content-table tr:nth-child(even){background-color: #f2f2f2;}
+
+.content-table tr:hover {background-color: #ddd;}
+
+.content-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #aaa;
+    color: white;
+}

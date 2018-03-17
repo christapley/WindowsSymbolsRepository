@@ -1,0 +1,126 @@
+<div class="main-content-container" *ngFor="let dumpType of searchResults">
+  <div class="card dump-type-card">
+    <div class="card-header {{dumpType.resolved ? 'status-resolved' : 'status-unresolved'}}">
+        <div class="card-title">
+          <h4>{{dumpType.failureBucketId}}</h4>
+        </div>
+        <div class="card-subtitle">
+            <span class="status-text">{{dumpType.resolved ? "Fixed" : "Unresolved"}}</span> <a href="https://ingrjira.ingrnet.com/browse/IW-12345">IW-12345</a>
+        </div>
+    </div>
+    <div class="card-body">
+      <div class="card" *ngFor="let dumpEntryGroup of dumpType.dumpEntryGroups">
+        <div class="card-header dump-group-header">
+          <div class="card-title">
+            <h4>{{dumpEntryGroup.dumpModule}}+0x{{dumpEntryGroup.dumpOffset}} ({{dumpEntryGroup.dumpVersion}})</h4>
+          </div>
+          <div class="card-subtitle">
+            Checksum {{dumpEntryGroup.dumpChecksum}}
+          </div>
+        </div>
+        <div class="card-body inner-card-body">
+          <table class="content-table">
+            <tr>
+              <th>Dump Filename</th>
+              <th>Dump Date</th>
+              <th>Entered Date</th>
+              <th>Dump Actions</th>
+            </tr>
+            <tr *ngFor="let dumpFileEntry of dumpEntryGroup.dumpFileEntries">
+              <td class="{{searchQuery.indexOf(dumpFileEntry.id) >= 0 ? 'my-dump-entry' : ''}}">{{dumpFileEntry.fileName}}</td>
+              <td>{{dumpFileEntry.crashDateTime}}</td>
+              <td>{{dumpFileEntry.enteredDateTime}}</td>
+              <td>
+                <button mat-button matTooltip="Download source dmp file">
+                  <mat-icon aria-label="Download source dmp file">cloud_download</mat-icon>
+                </button>
+                <button mat-button>
+                  <mat-icon aria-label="Download raw analysis">assignment</mat-icon>
+                </button>
+                <button mat-button>
+                  <mat-icon aria-label="View crash information">code</mat-icon>
+                </button>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--
+    <mat-card class="padded-content-item">
+        <mat-card-header>
+          <mat-icon mat-card-avatar class="icon-fixed">done</mat-icon>
+          <mat-card-title>
+            <h4>{{dumpType.failureBucketId}}</h4>
+          </mat-card-title>
+          <mat-card-subtitle>
+            {{dumpType.resolved ? "Fixed" : "Unresolved"}} <a href="https://ingrjira.ingrnet.com/browse/IW-12345">IW-12345</a>
+          </mat-card-subtitle>
+        </mat-card-header>
+        
+        <mat-card-content>
+          <mat-card *ngFor="let dumpEntryGroup of dumpType.dumpEntryGroups">
+            <mat-card-header>
+            <mat-card-title>
+              <table class="heading-table">
+                <tr >
+                    <td>Dump Module</td>
+                    <td>{{dumpEntryGroup.dumpModule}}</td>
+                </tr>
+                <tr>
+                  <td>Dump Version</td>
+                  <td>{{dumpEntryGroup.dumpVersion}}</td>
+                </tr>
+                <tr >
+                    <td>Dump Checksum</td>
+                    <td>{{dumpEntryGroup.dumpChecksum}}</td>
+                </tr>
+                <tr >
+                    <td>Dump Offset</td>
+                    <td>{{dumpEntryGroup.dumpOffset}}</td>
+                </tr>
+              </table>
+            </mat-card-title>
+            </mat-card-header>
+              <mat-card-content>
+                <div>
+                    <table class="content-table">
+                      <tr>
+                        <th>Dump Filename</th>
+                        <th>Dump Date</th>
+                        <th>Entered Date</th>
+                        <th>Dump Actions</th>
+                      </tr>
+                      <tr *ngFor="let dumpFileEntry of dumpEntryGroup.dumpFileEntries">
+                          <td>{{dumpFileEntry.fileName}}</td>
+                          <td>{{dumpFileEntry.crashDateTime}}</td>
+                          <td>{{dumpFileEntry.enteredDateTime}}</td>
+                          <td>
+                              <button mat-mini-fab color="primary" matTooltip="Download source dmp file">
+                                  <mat-icon aria-label="Download source dmp file">cloud_download</mat-icon>
+                                </button>
+                                <button mat-mini-fab color="primary">
+                                  <mat-icon aria-label="Download raw analysis">assignment</mat-icon>
+                              </button>
+                              <button mat-mini-fab color="primary">
+                                  <mat-icon aria-label="View crash information">code</mat-icon>
+                              </button>
+                          </td>
+                        </tr>
+                    </table>
+              </div>
+              </mat-card-content>
+          </mat-card>
+      
+        </mat-card-content>
+        <mat-card-actions>
+          <div class="content-container">
+            <button mat-mini-fab color="accent">
+                <mat-icon aria-label="Edit metadata">edit</mat-icon>
+            </button>
+          </div>
+        </mat-card-actions>
+      </mat-card>
+      //-->
+  </div>

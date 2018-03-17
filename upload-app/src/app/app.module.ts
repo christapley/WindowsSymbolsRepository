@@ -13,11 +13,13 @@ import {MatGridListModule, MatListModule} from '@angular/material';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {HttpModule} from "@angular/http";
 import { UploadDumpProcessComponent } from './upload-dump-process/upload-dump-process.component';
+import { DumpEntrySearchResultsComponent } from './dump-entry-search-results/dump-entry-search-results.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UploadDumpProcessComponent
+    UploadDumpProcessComponent,
+    DumpEntrySearchResultsComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +35,7 @@ import { UploadDumpProcessComponent } from './upload-dump-process/upload-dump-pr
     FlexLayoutModule,
     HttpModule
   ],
-  providers: [UploadDumpProcessComponent],
+  providers: [UploadDumpProcessComponent, DumpEntrySearchResultsComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
