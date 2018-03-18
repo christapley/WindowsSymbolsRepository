@@ -5,7 +5,13 @@
           <h4>{{dumpType.failureBucketId}}</h4>
         </div>
         <div class="card-subtitle">
-            <span class="status-text">{{dumpType.resolved ? "Fixed" : "Unresolved"}}</span> <a href="https://ingrjira.ingrnet.com/browse/IW-12345">IW-12345</a>
+            <span class="status-text">{{dumpType.resolved ? "Fixed" : "Unresolved"}}</span>
+            <span [hidden]="!dumpType.briefDescription == null">&nbsp;{{dumpType.briefDescription}}</span>
+        </div>
+        <div [hidden]="dumpType.jiraIssues.length > 0">
+          <span *ngFor="let jiraIssue of dumpType.jiraIssues">
+            <a href="https://ingrjira.ingrnet.com/browse/{{jiraIssue}}">{{jiraIssue}}</a>
+          </span>
         </div>
     </div>
     <div class="card-body inner-card-body">
@@ -31,22 +37,22 @@
               <td>{{dumpFileEntry.crashDateTime}}</td>
               <td>{{dumpFileEntry.enteredDateTime}}</td>
               <td>
-                <button mat-button matTooltip="Download source dmp file">
-                  <mat-icon aria-label="Download source dmp file">cloud_download</mat-icon>
+                <button mat-raised-button aria-label="Download source dmp file" matTooltip="Download source dmp file">
+                  Source dump
                 </button>
-                <button mat-button>
-                  <mat-icon aria-label="Download raw analysis">assignment</mat-icon>
+                <button mat-raised-button aria-label="Download raw analysis">
+                  Raw Analysis
                 </button>
-                <button mat-button>
-                  <mat-icon aria-label="View crash information">code</mat-icon>
+                <button mat-raised-button aria-label="View crash information">
+                  View Parsed Details
                 </button>
               </td>
             </tr>
           </table>
         </div>
         <div class="card-actions">
-          <button mat-button>
-            <mat-icon aria-label="Edit metadata">edit</mat-icon>
+          <button mat-raised-button aria-label="Edit metadata">
+            Edit Dump Type
           </button>
         </div>
       </div>

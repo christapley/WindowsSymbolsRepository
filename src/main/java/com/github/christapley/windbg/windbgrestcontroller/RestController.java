@@ -28,6 +28,8 @@ import java.util.List;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -81,6 +83,30 @@ public class RestController {
     @ResponseBody
     public ResponseEntity<List<DumpTypeResponse>> listDumps(@PathVariable("dumps") List<Long> fileEntryIds) {
         return ResponseEntity.ok().body(dumpDatabaseModel.findFromDumpEntryIds(fileEntryIds));
+    }
+    
+    @GetMapping("dump/file/{dumpFileEntryId}/dump")
+    @ResponseBody
+    public ResponseEntity<Resource> getDumpFile(@PathVariable("dumpFileEntryId") Long fileEntryId) {
+        Resource file = storageService.getDumpFileFromJobAreaAsResource(fileEntryId);
+        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
+                "attachment; filename=\"" + file.getFilename() + "\"").body(file);
+    }
+    
+    @GetMapping("dump/file/{dumpFileEntryId}/analysis/raw")
+    @ResponseBody
+    public ResponseEntity<Resource> getDumpRawAnalysisFile(@PathVariable("dumpFileEntryId") Long fileEntryId) {
+        Resource file = storageService.getRawCrashAnalysisFromJobAreaAsResource(fileEntryId);
+        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
+                "attachment; filename=\"" + file.getFilename() + "\"").body(file);
+    }
+    
+    @GetMapping("dump/file/{dumpFileEntryId}/analysis/parsed")
+    @ResponseBody
+    public ResponseEntity<Resource> getDumpParsedAnalysisFile(@PathVariable("dumpFileEntryId") Long fileEntryId) {
+        Resource file = storageService.getCrashAnalysisFromJobAreaAsResource(fileEntryId);
+        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
+                "attachment; filename=\"" + file.getFilename() + "\"").body(file);
     }
     
     @GetMapping("/dump/process/status")

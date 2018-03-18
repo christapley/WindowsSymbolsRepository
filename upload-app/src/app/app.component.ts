@@ -48,6 +48,7 @@ export class AppComponent {
       this.uploader.onSuccessItem = (item, response, status, headers) => this.onSuccessItem(item, response, status, headers);
       this.uploadProcessor.onItemCompleted = (item) => this.onDumpProcessingCompleted(item);
 
-      this.dumpEntrySearcher.addDumpEntryId(119)
+      this.dumpEntrySearcher.addDumpEntryId(119);
+      this.dumpEntrySearcher.addDumpEntryId(123);
   }
 }

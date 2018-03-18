@@ -22,4 +22,5 @@ export interface IDumpType {
     briefDescription: string,
     resolved: boolean,
     dumpEntryGroups: Array<IDumpEntryGroup>;
+    jiraIssues: Array<string>;
 }
