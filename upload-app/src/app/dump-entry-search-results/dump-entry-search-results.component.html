@@ -37,10 +37,10 @@
               <td>{{dumpFileEntry.crashDateTime}}</td>
               <td>{{dumpFileEntry.enteredDateTime}}</td>
               <td>
-                <button mat-raised-button aria-label="Download source dmp file" matTooltip="Download source dmp file">
+                <button (click)="downloadDumpFile(dumpFileEntry.id, dumpFileEntry.fileName)" mat-raised-button aria-label="Download source dmp file" matTooltip="Download source dmp file">
                   Source dump
                 </button>
-                <button mat-raised-button aria-label="Download raw analysis">
+                <button (click)="downloadRawAnalysis(dumpFileEntry.id, dumpFileEntry.fileName + '.log')" mat-raised-button aria-label="Download raw analysis">
                   Raw Analysis
                 </button>
                 <button mat-raised-button aria-label="View crash information">

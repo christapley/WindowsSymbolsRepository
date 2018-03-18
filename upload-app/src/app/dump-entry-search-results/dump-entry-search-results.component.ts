@@ -34,6 +34,27 @@ export class DumpEntrySearchResultsComponent implements OnInit {
     }
   }
 
+  onDownloadFile(blob: Blob, fileName: string) {
+    var link=document.createElement('a');
+    link.href=window.URL.createObjectURL(blob);
+    link.download=fileName;
+    link.click();
+  }
+
+  public downloadDumpFile(id: number, fileName: string) {
+    this.searchService.getDumpFile(id)
+      .subscribe(blob => {
+        this.onDownloadFile(blob, fileName);
+      })
+  }
+
+  public downloadRawAnalysis(id: number, fileName: string) {
+    this.searchService.getDumpRawAnalysis(id)
+      .subscribe(blob => {
+        this.onDownloadFile(blob, fileName);
+      })
+  }
+
   ngOnInit() {
   }
 

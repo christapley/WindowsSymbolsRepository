@@ -50,5 +50,6 @@ export class AppComponent {
 
       this.dumpEntrySearcher.addDumpEntryId(119);
       this.dumpEntrySearcher.addDumpEntryId(123);
+      this.dumpEntrySearcher.addDumpEntryId(190);
   }
 }
