@@ -14,6 +14,7 @@ import {FlexLayoutModule} from "@angular/flex-layout";
 import {HttpModule} from "@angular/http";
 import { UploadDumpProcessComponent } from './upload-dump-process/upload-dump-process.component';
 import { DumpEntrySearchResultsComponent } from './dump-entry-search-results/dump-entry-search-results.component';
+import {Globals} from "./globals";
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { DumpEntrySearchResultsComponent } from './dump-entry-search-results/dum
     FlexLayoutModule,
     HttpModule
   ],
-  providers: [UploadDumpProcessComponent, DumpEntrySearchResultsComponent],
+  providers: [Globals, UploadDumpProcessComponent, DumpEntrySearchResultsComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

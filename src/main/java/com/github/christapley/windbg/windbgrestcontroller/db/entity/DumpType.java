@@ -39,7 +39,7 @@ public class DumpType {
     @GeneratedValue
     private Long id;
     
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true, length = 2048)
     private String failureBucketId;
     
     @Column(nullable = true)

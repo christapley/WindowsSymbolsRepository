@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {IDumpFileEntry, IDumpEntryGroup, IDumpType} from "./search.results";
+import {Globals} from "../globals";
 import {SearchService} from "./app.search.service";
 
 @Component({

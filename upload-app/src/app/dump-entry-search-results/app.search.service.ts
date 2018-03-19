@@ -3,22 +3,18 @@ import {Http, Response, RequestOptions, Headers, ResponseContentType} from "@ang
 import {Observable} from "rxjs/Observable";
 import "rxjs/Rx";
 import {IDumpFileEntry, IDumpEntryGroup, IDumpType} from "./search.results";
- 
+import {Globals} from '../globals'
+
 @Injectable()
 export class SearchService {
- 
-    private _postsHost = "http://localhost:8899";
-    private _postsURL = "/dump/list/";
-    private dumpFileUrl = "/dump/file/{id}/dump";
-    private dumpRawAnalysisUrl = "/dump/file/{id}/analysis/raw";
- 
-    constructor(private http: Http) {
+
+    constructor(private http: Http, private globals: Globals) {
     }
 
     getSearchResults(dumpEntryIds): Observable<IDumpType[]> {
 
          return this.http
-             .get(this._postsHost + this._postsURL + dumpEntryIds.join(","))
+             .get(this.globals.dumpsUrlHost + this.globals.dumpsListUrlPath + dumpEntryIds.join(","))
              .map((response: Response) => {
                  return <IDumpType[]>response.json();
              })
@@ -43,14 +39,14 @@ export class SearchService {
     }
 
     getDumpFile(dumpFileEntryId: number): Observable<Blob> {
-        var url = this._postsHost + this.dumpFileUrl;
+        var url = this.globals.dumpsUrlHost + this.globals.dumpFileUrlPath;
         url = url.replace("{id}", dumpFileEntryId.toString());
 
         return this.downloadFileInternal(url);
     }
 
     getDumpRawAnalysis(dumpFileEntryId: number): Observable<Blob> {
-        var url = this._postsHost + this.dumpRawAnalysisUrl;
+        var url = this.globals.dumpsUrlHost + this.globals.dumpRawAnalysisUrlPath;
         url = url.replace("{id}", dumpFileEntryId.toString());
 
         return this.downloadFileInternal(url);

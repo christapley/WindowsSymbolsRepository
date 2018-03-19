@@ -5,6 +5,7 @@ import {MatTableDataSource} from '@angular/material'
 import {UploadDumpProcessComponent} from "./upload-dump-process/upload-dump-process.component"
 import {ICrashAnalysisStatus} from "./upload-dump-process/upload.status";
 import {DumpEntrySearchResultsComponent} from "./dump-entry-search-results/dump-entry-search-results.component"
+import {Globals} from './globals'
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,7 @@ export class AppComponent {
   title = 'app';
   
   public uploader:FileUploader = new FileUploader({
-    url: 'http://localhost:8899/dump/process',
+    url: this.globals.dumpsUrlHost + this.globals.dumpUploadUrlPath,
     headers: [{name:'Accept', value:'application/json'}],
     autoUpload: true
   });
@@ -38,7 +39,7 @@ export class AppComponent {
   }
 
   
-  constructor() {
+  constructor(private globals: Globals) {
     
   }
  
@@ -47,9 +48,5 @@ export class AppComponent {
   ngOnInit(): void {
       this.uploader.onSuccessItem = (item, response, status, headers) => this.onSuccessItem(item, response, status, headers);
       this.uploadProcessor.onItemCompleted = (item) => this.onDumpProcessingCompleted(item);
-
-      this.dumpEntrySearcher.addDumpEntryId(119);
-      this.dumpEntrySearcher.addDumpEntryId(123);
-      this.dumpEntrySearcher.addDumpEntryId(190);
   }
 }

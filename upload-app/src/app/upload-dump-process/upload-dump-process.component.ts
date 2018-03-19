@@ -3,6 +3,7 @@ import {ICrashAnalysisStatus} from "./upload.status";
 import {Http, Response} from "@angular/http";
 import {Observable} from 'rxjs/Rx';
 import {ISubscription} from 'rxjs/Subscription';
+import {Globals} from '../globals'
 
 @Component({
   selector: 'app-upload-dump-process',
@@ -17,11 +18,9 @@ export class UploadDumpProcessComponent implements OnInit {
   myFromNowInterval: any;
   private http: Http;
   private isPolling: boolean;
-  private _postsHost = "http://localhost:8899"
-  private _postsURL = "/dump/process/status/";
   private subscription: ISubscription;
 
-  constructor(private httpIn: Http) { 
+  constructor(private httpIn: Http, private globals: Globals) { 
     this.activeUploadIds = [];
     this.currentUploadResults = [];
     this.completedUploadResults = [];
@@ -71,7 +70,7 @@ export class UploadDumpProcessComponent implements OnInit {
     if(this.subscription == null) {
 
       this.subscription = Observable.interval(2000)
-        .switchMap(() => this.http.get(this._postsHost + this._postsURL + this.activeUploadIds.join(","))).map((data) => data.json())
+        .switchMap(() => this.http.get(this.globals.dumpsUrlHost + this.globals.dumpsProcessStatusUrlPath + this.activeUploadIds.join(","))).map((data) => data.json())
         .subscribe((data) => {
           this.onReceivedData(data as Array<ICrashAnalysisStatus>);
         });
