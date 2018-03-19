@@ -2,26 +2,22 @@
   <mat-toolbar>
     Windows Crash Dump Analyser and Registry
   </mat-toolbar>
-  <div class=fill-height>
-    <table class=fill-height>
-      <tr>
-        <td class="fill-height left-main">
-          <div class="container-content" class="content-container" uploader="uploader">
+  <div class="wrapper">
+    <div class="fill-height left-main">
+        <div class="container-content" class="content-container" uploader="uploader">
             <div ng2FileDrop
             [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
             (fileOver)="fileOverBase($event)"
             [uploader]="uploader"
             class="well file-drop-zone">
-             Drop dump files here
-           </div>
+              Drop dump files here
+            </div>
           <app-upload-dump-process></app-upload-dump-process>
           
           </div>
-        </td>
-        <td class="fill-height right-main">
-          <app-dump-entry-search-results></app-dump-entry-search-results>
-        </td>
-      </tr>
-    </table>
+    </div>
+    <div class="fill-height right-main">
+      <app-dump-entry-search-results></app-dump-entry-search-results>
+    </div>
   </div>
 </div>

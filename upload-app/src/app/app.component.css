@@ -30,21 +30,45 @@
     width:100%;
 }
 
-.fill-height {
+html, body, .fill-height {
     height:100%;
 }
 
+.container-full-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #f6f6f6;
+}
+
+
+.fill-remaining-height {
+    flex-grow: 1;
+}
+
+.wrapper {
+    display: flex;
+}
+
 .left-main {
-    width:500px;
-    vertical-align: top;
+    flex: 0 0 500px;
     padding: 5px;
 }
 
 .right-main {
+    flex: 1;
     vertical-align: top;
     padding: 5px;
 }
 
 .button-spacing {
     margin: 5px
+}
+
+.top-container { 
+    padding-left: 10px;
+    background-color: #ddd;
+    width: 100%;
 }
