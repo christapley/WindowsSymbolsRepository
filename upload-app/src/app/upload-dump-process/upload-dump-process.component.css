@@ -25,3 +25,21 @@
     background-color: #aaa;
     color: white;
 }
+
+.file-drop-zone { 
+    border: dotted 3px lightgray;
+    padding: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 100%;
+    text-align: center;
+    font-style: italic; 
+    color: grey; 
+}
+.nv-file-over { 
+    border: dotted 3px green; 
+}
+
+.padded-button-container {
+    padding: 5px;
+}

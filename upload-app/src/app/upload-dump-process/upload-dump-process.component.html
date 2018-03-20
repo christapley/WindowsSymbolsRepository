@@ -1,4 +1,11 @@
-<table class="content-table" [hidden]="currentUploadResults.length == 0">
+<div ng2FileDrop
+              [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
+              (fileOver)="fileOverBase($event)"
+              [uploader]="uploader"
+              class="well file-drop-zone">
+  Drop dump files here
+</div>
+<table class="content-table" [hidden]="hasActiveUploads() == false">
   <tr>
     <th>
       Dump file
@@ -7,9 +14,26 @@
       Processing status
     </th>
   </tr>
+  <tr *ngFor="let upload of completedUploadResults">
+    <td>{{upload.dumpFileName}}</td>
+    <td>{{upload.status}}</td>
+  </tr>
   <tr *ngFor="let upload of currentUploadResults">
     <td>{{upload.dumpFileName}}</td>
     <td>{{upload.status}}</td>
   </tr>
+  <tr *ngFor="let item of uploader.queue">
+    <td>{{item?.file?.name}}</td>
+    <td>
+      <div class="progress" style="margin-bottom: 0;">
+        <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+      </div>
+    </td>
+  </tr>
 </table>
-  
+<div class="padded-button-container" [hidden]="hasActiveUploads() == false">
+  <button (click)="clearAllResults()" mat-raised-button aria-label="Clear upload list">
+    Clear
+  </button>
+</div>
+

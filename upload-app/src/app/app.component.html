@@ -6,16 +6,7 @@
     <div class="fill-height left-main">
       <mat-tab-group>
         <mat-tab label="Upload">
-          <div class="container-content" class="content-container" uploader="uploader">
-            <div ng2FileDrop
-              [ngClass]="{'nv-file-over': hasBaseDropZoneOver}"
-              (fileOver)="fileOverBase($event)"
-              [uploader]="uploader"
-              class="well file-drop-zone">
-                Drop dump files here
-            </div>
-            <app-upload-dump-process></app-upload-dump-process>
-          </div>
+          <app-upload-dump-process></app-upload-dump-process>
         </mat-tab>
         <mat-tab label="List">
           <p>list</p>
