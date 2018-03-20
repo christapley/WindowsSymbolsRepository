@@ -1,26 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
-.file-drop-zone { border: dotted 3px lightgray; padding: 20px; width: 100%; text-align: center; font-style: italic; color: grey; }
-.nv-file-over { border: dotted 3px lightgreen; }
-
-.sidenav {
-    margin: 10px;
-}
 
 .left-panel { 
     width: 300px;
     margin: 10px;
 }
 
-.container-full-screen {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #fafafa;
-}
+
 
 .padded-content-item {
     margin-bottom: 20px;

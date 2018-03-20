@@ -1,6 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
 import {FileUploader, FileItem, ParsedResponseHeaders} from 'ng2-file-upload';
-import {MatTableDataSource} from '@angular/material'
+import {MatTabGroup, MatTab} from '@angular/material'
 
 import {UploadDumpProcessComponent} from "./upload-dump-process/upload-dump-process.component"
 import {ICrashAnalysisStatus} from "./upload-dump-process/upload.status";
@@ -42,11 +42,11 @@ export class AppComponent {
   constructor(private globals: Globals) {
     
   }
- 
-  
 
   ngOnInit(): void {
       this.uploader.onSuccessItem = (item, response, status, headers) => this.onSuccessItem(item, response, status, headers);
       this.uploadProcessor.onItemCompleted = (item) => this.onDumpProcessingCompleted(item);
+
+      this.dumpEntrySearcher.addDumpEntryId(182);
   }
 }

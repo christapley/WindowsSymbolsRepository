@@ -4,6 +4,19 @@
     width: 100%;
 }
 
+.file-drop-zone { 
+    border: dotted 3px lightgray;
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+    font-style: italic; 
+    color: grey; 
+}
+.nv-file-over { 
+    border: dotted 3px green; 
+}
+
+
 .content-table td, .content-table th {
     border: 1px solid #ddd;
     padding: 8px;

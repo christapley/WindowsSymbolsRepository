@@ -9,7 +9,7 @@ import {MatCardModule} from '@angular/material/card';
 import { FileUploadModule } from "ng2-file-upload";
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
-import {MatGridListModule, MatListModule} from '@angular/material';
+import {MatGridListModule, MatListModule, MatTabsModule} from '@angular/material';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {HttpModule} from "@angular/http";
 import { UploadDumpProcessComponent } from './upload-dump-process/upload-dump-process.component';
@@ -34,6 +34,7 @@ import {Globals} from "./globals";
     MatGridListModule,
     MatListModule,
     FlexLayoutModule,
+    MatTabsModule, 
     HttpModule
   ],
   providers: [Globals, UploadDumpProcessComponent, DumpEntrySearchResultsComponent],
