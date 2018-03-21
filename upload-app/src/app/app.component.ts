@@ -14,20 +14,10 @@ export class AppComponent {
   @ViewChild(UploadDumpProcessComponent) uploadProcessor:UploadDumpProcessComponent;
   @ViewChild(DumpEntrySearchResultsComponent) dumpEntrySearcher:DumpEntrySearchResultsComponent;
   title = 'app';
-  
-
-
-  public hasBaseDropZoneOver:boolean = false;
-  public fileOverBase(e:any):void {
-    this.hasBaseDropZoneOver = e;
-  }
-  
-  
 
   onDumpProcessingCompleted(item: ICrashAnalysisStatus) {
     this.dumpEntrySearcher.addDumpEntryId(item.dumpId)
   }
-
   
   constructor() {
     

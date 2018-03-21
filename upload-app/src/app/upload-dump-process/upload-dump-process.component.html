@@ -5,25 +5,21 @@
               class="well file-drop-zone">
   Drop dump files here
 </div>
-<table class="content-table" [hidden]="hasActiveUploads() == false">
+<table class="content-table" [hidden]="mergedUploadResults.length == 0">
   <tr>
     <th>
       Dump file
     </th>
     <th>
-      Processing status
+      Status
+    </th>
+    <th>
+      Status progress
     </th>
   </tr>
-  <tr *ngFor="let upload of completedUploadResults">
-    <td>{{upload.dumpFileName}}</td>
-    <td>{{upload.status}}</td>
-  </tr>
-  <tr *ngFor="let upload of currentUploadResults">
-    <td>{{upload.dumpFileName}}</td>
-    <td>{{upload.status}}</td>
-  </tr>
-  <tr *ngFor="let item of uploader.queue">
-    <td>{{item?.file?.name}}</td>
+  <tr *ngFor="let item of mergedUploadResults">
+    <td>{{item.dumpFileName}}</td>
+    <td>{{item.status}}</td>
     <td>
       <div class="progress" style="margin-bottom: 0;">
         <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
@@ -31,7 +27,7 @@
     </td>
   </tr>
 </table>
-<div class="padded-button-container" [hidden]="hasActiveUploads() == false">
+<div class="padded-button-container" [hidden]="mergedUploadResults.length == 0">
   <button (click)="clearAllResults()" mat-raised-button aria-label="Clear upload list">
     Clear
   </button>

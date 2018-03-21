@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ICrashAnalysisStatus} from "./upload.status";
+import {ICrashAnalysisStatus, ICrashAnalysisPublicStatus} from "./upload.status";
 import {Http, Response} from "@angular/http";
 import {FileUploader, FileItem, ParsedResponseHeaders} from 'ng2-file-upload';
 import {Observable} from 'rxjs/Rx';
@@ -15,8 +15,8 @@ export class UploadDumpProcessComponent implements OnInit {
 
   activeUploadIds: Array<number>;
   currentUploadResults: Array<ICrashAnalysisStatus>;
-  completedUploadResults: Array<ICrashAnalysisStatus>;
-  myFromNowInterval: any;
+  mergedUploadResults: Array<ICrashAnalysisPublicStatus>;
+
   private http: Http;
   private isPolling: boolean;
   private subscription: ISubscription;
@@ -30,7 +30,7 @@ export class UploadDumpProcessComponent implements OnInit {
   constructor(private httpIn: Http, private globals: Globals) { 
     this.activeUploadIds = [];
     this.currentUploadResults = [];
-    this.completedUploadResults = [];
+    this.mergedUploadResults = [];
     this.http = httpIn;
     this.subscription = null;
   }
@@ -41,31 +41,29 @@ export class UploadDumpProcessComponent implements OnInit {
   }
 
   public clearAllResults() {
-    this.completedUploadResults = [];
     this.uploader.clearQueue();
+    let toRemove:Array<number> = [];
+
+    for (var i = this.mergedUploadResults.length - 1; i >= 0; i--) {
+      if(this.mergedUploadResults[i].status == "Complete" || this.mergedUploadResults[i].status == "Failed") {
+        this.mergedUploadResults.splice(i, 1);
+      }
+    }
   }
 
   handleNewlyCompletedUploads(resultArray: ICrashAnalysisStatus[]) {
-
-    var indexToRemove = [];
-
     resultArray.forEach((item, index) => {
+      let progress: number = 0;
       if(item.status == "Complete") {
         this.removeUploadId(item.id);
-        this.completedUploadResults.push(item);
         this.onItemCompleted(item);
-        indexToRemove.push(index);
+        progress = 100;
       } else if(item.status == "Failed") {
         this.removeUploadId(item.id);
-        this.completedUploadResults.push(item);
         this.onItemFailed(item);
-        indexToRemove.push(index);
       }
+      this.updateItemInMergedList(item, progress);
     });
-
-    for(var index = 0; index < indexToRemove.length; index++) {
-      resultArray.splice(indexToRemove[index], 1);
-    }
 
     if(this.activeUploadIds.length == 0) {
       this.subscription.unsubscribe();
@@ -78,6 +76,14 @@ export class UploadDumpProcessComponent implements OnInit {
     let statusObject = JSON.parse(response) as ICrashAnalysisStatus;
     this.addUploadId(statusObject.id);
     item.remove();
+    this.mergedUploadResults.forEach(mergedItem => {
+      if(mergedItem.uploadId == item.index) {
+        mergedItem.processingId = statusObject.id;
+        mergedItem.status = "Queued";
+        mergedItem.progress = 0;
+        return;
+      }
+    });
   }
 
   public onItemCompleted(item: ICrashAnalysisStatus): any {
@@ -97,12 +103,42 @@ export class UploadDumpProcessComponent implements OnInit {
     this.currentUploadResults = resultArray;
   }
 
+  updateItemInMergedList(newItemStatus: ICrashAnalysisStatus, progress: number) {
+    this.mergedUploadResults.forEach(item => {
+      if(item.processingId == newItemStatus.id) {
+        item.status = newItemStatus.status;
+        item.progress = progress;
+        return;
+      }
+    });
+  }
+
+  onAfterAddingFile(fileItem: FileItem) {
+    let crashAnalysisPublicStatus: ICrashAnalysisPublicStatus  = new ICrashAnalysisPublicStatus();
+    crashAnalysisPublicStatus.dumpFileName = fileItem.file.name;
+    crashAnalysisPublicStatus.uploadId = fileItem.index;
+    crashAnalysisPublicStatus.status = "Uploading";
+    crashAnalysisPublicStatus.progress = 0;
+    this.mergedUploadResults.push(crashAnalysisPublicStatus);
+  }
+
+  onUploadProgressItem(fileItem: FileItem, progress: any) {
+    this.mergedUploadResults.forEach(item => {
+      if(item.uploadId == fileItem.index) {
+        item.progress = fileItem.progress;
+        return;
+      }
+    });
+  }
+
   ngOnInit() {
+    this.uploader.onAfterAddingFile = (fileItem) => this.onAfterAddingFile(fileItem);
+    this.uploader.onProgressItem = (fileItem, progress) => this.onUploadProgressItem(fileItem, progress);
     this.uploader.onSuccessItem = (item, response, status, headers) => this.onSuccessItem(item, response, status, headers);
   }
 
   ngOnDestroy() {
-    clearInterval(this.myFromNowInterval);
+    
   }
 
   startPolling() {
