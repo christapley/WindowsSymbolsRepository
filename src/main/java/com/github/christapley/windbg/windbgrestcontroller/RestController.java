@@ -18,7 +18,9 @@ package com.github.christapley.windbg.windbgrestcontroller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.github.christapley.windbg.windbgrestcontroller.crashanalysis.AsyncCrashAnalyser;
 import com.github.christapley.windbg.windbgrestcontroller.db.DumpDatabaseModel;
+import com.github.christapley.windbg.windbgrestcontroller.db.DumpFileEntryRepository;
 import com.github.christapley.windbg.windbgrestcontroller.db.entity.CrashAnalysisStatus;
+import com.github.christapley.windbg.windbgrestcontroller.db.entity.DumpFileEntry;
 import com.github.christapley.windbg.windbgrestcontroller.response.DumpTypeResponse;
 import com.github.christapley.windbg.windbgrestcontroller.storage.DumpFileStorageService;
 import com.github.christapley.windbg.windbgrestcontroller.storage.StorageFileNotFoundException;
@@ -29,6 +31,8 @@ import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -41,6 +45,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 
 /**
  *
@@ -62,21 +69,21 @@ public class RestController {
     @Autowired
     DumpDatabaseModel dumpDatabaseModel;
     
-    /*
-    @GetMapping("/dump/entries")
-    @ResponseBody
-    public ResponseEntity<Resource> serveFile() {
-
-        Resource file = storageService.loadAsResource(filename);
-        return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
-                "attachment; filename=\"" + file.getFilename() + "\"").body(file);
-    }
-    */
+    @Autowired
+    DumpFileEntryRepository dumpFileEntryRepository;
     
-    @GetMapping("dump/list")
+    @GetMapping("dump/entry/list")
     @ResponseBody
-    public ResponseEntity<List<DumpTypeResponse>> listDumps() {
-        return ResponseEntity.ok().body(new ArrayList<>());
+    public ResponseEntity<List<DumpFileEntry>> listDumps(
+            @RequestParam(name = "sort", defaultValue = "desc") String sort,
+            @RequestParam(name = "order", defaultValue = "enteredDateTime") String order,
+            @RequestParam(name = "page", defaultValue = "0") Integer page,
+            @RequestParam(name = "size", defaultValue = "10") Integer size
+    ) {
+        
+        Pageable pageable = new PageRequest(page, size, new Sort(Direction.fromString(sort), order));
+        Page<DumpFileEntry> pageContent = dumpFileEntryRepository.findAll(pageable);
+        return ResponseEntity.ok().body(pageContent.getContent());
     }
     
     @GetMapping("dump/list/{dumps}")
