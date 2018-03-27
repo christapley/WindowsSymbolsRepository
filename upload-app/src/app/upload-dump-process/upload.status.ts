@@ -9,10 +9,10 @@
  }
  
  export class ICrashAnalysisPublicStatus {
-    dumpFileName: string,
-    status: string,
-    progress: number,
-    dumpId: number,
-    uploadId: number,
+    dumpFileName: string;
+    status: string;
+    progress: number;
+    dumpId: number;
+    uploadId: number;
     processingId: number;
  }
