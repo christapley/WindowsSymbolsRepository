@@ -1,0 +1,35 @@
+<div class="example-container">
+  <div class="example-loading-shade"
+       *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+
+  <mat-table #table [dataSource]="dataSource" class="example-table mat-elevation-z8" matSortActive="enteredDateTime" matSortDirection="desc" matSort>
+
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.id }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="dumpEntryGroup">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Dump Group Id</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.dumpEntryGroup.id }}</mat-cell>
+    </ng-container>
+    
+    <ng-container matColumnDef="fileName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>File name</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.fileName }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="enteredDateTime">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Entered</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.enteredDateTime | date : "medium" }}</mat-cell>
+    </ng-container>
+  
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <mat-paginator [length]="resultsLength" [pageSize]="30">
+  </mat-paginator>
+</div>

@@ -9,4 +9,5 @@ export class Globals {
   dumpFileUrlPath: string = "/dump/file/{id}/dump";
   dumpRawAnalysisUrlPath: string = "/dump/file/{id}/analysis/raw";
   dumpUploadUrlPath: string = "/dump/process";
+  dumpFileEntryList: string = "/dump/entry/list";
 }

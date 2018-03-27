@@ -21,6 +21,7 @@ import com.github.christapley.windbg.windbgrestcontroller.db.DumpDatabaseModel;
 import com.github.christapley.windbg.windbgrestcontroller.db.DumpFileEntryRepository;
 import com.github.christapley.windbg.windbgrestcontroller.db.entity.CrashAnalysisStatus;
 import com.github.christapley.windbg.windbgrestcontroller.db.entity.DumpFileEntry;
+import com.github.christapley.windbg.windbgrestcontroller.response.DumpFileEntryPagingContextResponse;
 import com.github.christapley.windbg.windbgrestcontroller.response.DumpTypeResponse;
 import com.github.christapley.windbg.windbgrestcontroller.storage.DumpFileStorageService;
 import com.github.christapley.windbg.windbgrestcontroller.storage.StorageFileNotFoundException;
@@ -74,16 +75,24 @@ public class RestController {
     
     @GetMapping("dump/entry/list")
     @ResponseBody
-    public ResponseEntity<List<DumpFileEntry>> listDumps(
-            @RequestParam(name = "sort", defaultValue = "desc") String sort,
-            @RequestParam(name = "order", defaultValue = "enteredDateTime") String order,
+    public ResponseEntity<DumpFileEntryPagingContextResponse> listDumps(
+            @RequestParam(name = "sort", defaultValue = "enteredDateTime") String sort,
+            @RequestParam(name = "order", defaultValue = "desc") String order,
             @RequestParam(name = "page", defaultValue = "0") Integer page,
             @RequestParam(name = "size", defaultValue = "10") Integer size
     ) {
         
-        Pageable pageable = new PageRequest(page, size, new Sort(Direction.fromString(sort), order));
+        Pageable pageable = new PageRequest(page, size, new Sort(Direction.fromString(order), sort));
         Page<DumpFileEntry> pageContent = dumpFileEntryRepository.findAll(pageable);
-        return ResponseEntity.ok().body(pageContent.getContent());
+        
+        DumpFileEntryPagingContextResponse response = new DumpFileEntryPagingContextResponse();
+        response.setDumpFileEntries(pageContent.getContent());
+        response.setTotalFileEntries(pageContent.getTotalElements());
+        response.setTotalFileEntryPages((long)pageContent.getTotalPages());
+        response.setRequestedPageNumber((long)page);
+        response.setRequestedPageSize((long)size);
+        
+        return ResponseEntity.ok().body(response);
     }
     
     @GetMapping("dump/list/{dumps}")
