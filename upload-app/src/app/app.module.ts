@@ -10,7 +10,7 @@ import {MatCardModule} from '@angular/material/card';
 import { FileUploadModule } from "ng2-file-upload";
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
-import {MatGridListModule, MatListModule, MatTabsModule, MatTableModule, MatProgressSpinnerModule, MatPaginatorModule, MatSortModule} from '@angular/material';
+import {MatGridListModule, MatListModule, MatTabsModule, MatTableModule, MatProgressSpinnerModule, MatPaginatorModule, MatSortModule, MatCheckboxModule} from '@angular/material';
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {HttpModule, Http} from "@angular/http";
 import { UploadDumpProcessComponent } from './upload-dump-process/upload-dump-process.component';
@@ -42,6 +42,7 @@ import { DumpEntryListComponent } from './dump-entry-list/dump-entry-list.compon
     MatProgressSpinnerModule,
     MatPaginatorModule,
     MatSortModule,
+    MatCheckboxModule,
     HttpModule,
     HttpClientModule 
   ],

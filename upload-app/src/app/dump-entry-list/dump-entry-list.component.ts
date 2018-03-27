@@ -10,6 +10,7 @@ import {map} from 'rxjs/operators/map';
 import {startWith} from 'rxjs/operators/startWith';
 import {switchMap} from 'rxjs/operators/switchMap';
 import {Globals} from "../globals";
+import {SelectionModel} from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-dump-entry-list',
@@ -17,7 +18,7 @@ import {Globals} from "../globals";
   styleUrls: ['./dump-entry-list.component.css']
 })
 export class DumpEntryListComponent implements OnInit, AfterViewInit {
-  displayedColumns = ['id', 'fileName', 'dumpEntryGroup', 'enteredDateTime'];
+  displayedColumns = ['select', 'id', 'fileName', 'dumpEntryGroup', 'enteredDateTime'];
   exampleDatabase: ExampleHttpDao | null;
   dataSource = new MatTableDataSource();
 
@@ -27,6 +28,21 @@ export class DumpEntryListComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
+  selection = new SelectionModel<Element>(true, []);
+
+  /** Whether the number of selected elements matches the total number of rows. */
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
+  }
+
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  masterToggle() {
+    this.isAllSelected() ?
+        this.selection.clear() :
+        this.dataSource.data.forEach(row => this.selection.select(row));
+  }
 
   constructor(private http: HttpClient, private globals: Globals) { }
 
