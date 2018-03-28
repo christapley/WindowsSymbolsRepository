@@ -30,6 +30,19 @@ export class DumpEntryListComponent implements OnInit, AfterViewInit {
 
   selection = new SelectionModel<IDumpFileEntry>(true, []);
   
+  refresh() {
+    this.paginator._changePageSize(this.paginator.pageSize);
+    this.paginator.firstPage();
+  }
+
+  public onItemSelected(id: number) {
+
+  }
+
+  public onItemUnSelected(id: number) {
+
+  }
+
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
     const numSelected = this.selection.selected.length;
@@ -37,11 +50,23 @@ export class DumpEntryListComponent implements OnInit, AfterViewInit {
     return numSelected === numRows;
   }
 
+  onTableRowToggle(row: IDumpFileEntry) {
+    this.selection.toggle(row);
+    if(this.selection.isSelected(row)) {
+      this.onItemSelected(row.id);
+    } else {
+      this.onItemUnSelected(row.id);
+    }
+  }
+
   /** Selects all rows if they are not all selected; otherwise clear selection. */
   masterToggle() {
     this.isAllSelected() ?
         this.selection.clear() :
-        this.dataSource.data.forEach(row => this.selection.select(row));
+        this.dataSource.data.forEach(row => {
+          this.selection.select(row);
+          this.onItemSelected(row.id);
+        });
   }
 
   constructor(private http: HttpClient, private globals: Globals) { 
@@ -76,7 +101,6 @@ export class DumpEntryListComponent implements OnInit, AfterViewInit {
           return observableOf([]);
         })
       ).subscribe(data => this.dataSource.data = data);
-    
   }
 }
 

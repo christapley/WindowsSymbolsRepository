@@ -35,6 +35,14 @@ export class DumpEntrySearchResultsComponent implements OnInit {
     }
   }
 
+  public removeDumpEntryId(id: number): void {
+    const index: number = this.searchQuery.indexOf(id);
+    if(index >= 0) {
+      this.searchQuery.splice(index, 1);
+      this.getSearchResults();
+    }
+  }
+
   onDownloadFile(blob: Blob, fileName: string) {
     var link=document.createElement('a');
     link.href=window.URL.createObjectURL(blob);

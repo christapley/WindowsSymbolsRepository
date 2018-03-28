@@ -4,6 +4,7 @@ import {Observable} from "rxjs/Observable";
 import "rxjs/Rx";
 import {IDumpFileEntry, IDumpEntryGroup, IDumpType} from "./search.results";
 import {Globals} from '../globals'
+import {of as observableOf} from 'rxjs/observable/of';
 
 @Injectable()
 export class SearchService {
@@ -11,14 +12,17 @@ export class SearchService {
     constructor(private http: Http, private globals: Globals) {
     }
 
-    getSearchResults(dumpEntryIds): Observable<IDumpType[]> {
-
-         return this.http
-             .get(this.globals.dumpsUrlHost + this.globals.dumpsListUrlPath + dumpEntryIds.join(","))
-             .map((response: Response) => {
-                 return <IDumpType[]>response.json();
-             })
-             .catch(this.handleError);
+    getSearchResults(dumpEntryIds: Array<number>): Observable<IDumpType[]> {
+      if(dumpEntryIds.length == 0) {
+        return observableOf([]);
+      } else {
+        return this.http
+          .get(this.globals.dumpsUrlHost + this.globals.dumpsListUrlPath + dumpEntryIds.join(","))
+          .map((response: Response) => {
+            return <IDumpType[]>response.json();
+          })
+          .catch(this.handleError);
+      }
     }
 
     setMultipartHeader(localHeaders:Headers){
