@@ -20,7 +20,7 @@ import {SelectionModel} from '@angular/cdk/collections';
 export class DumpEntryListComponent implements OnInit, AfterViewInit {
   displayedColumns = ['select', 'id', 'fileName', 'dumpEntryGroup', 'enteredDateTime'];
   exampleDatabase: ExampleHttpDao | null;
-  dataSource = new MatTableDataSource();
+  dataSource = new MatTableDataSource<IDumpFileEntry>();
 
   resultsLength = 0;
   isLoadingResults = true;
@@ -28,8 +28,8 @@ export class DumpEntryListComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  selection = new SelectionModel<Element>(true, []);
-
+  selection = new SelectionModel<IDumpFileEntry>(true, []);
+  
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
     const numSelected = this.selection.selected.length;
@@ -44,7 +44,9 @@ export class DumpEntryListComponent implements OnInit, AfterViewInit {
         this.dataSource.data.forEach(row => this.selection.select(row));
   }
 
-  constructor(private http: HttpClient, private globals: Globals) { }
+  constructor(private http: HttpClient, private globals: Globals) { 
+    
+  }
 
   ngOnInit() {
     this.exampleDatabase = new ExampleHttpDao(this.http, this.globals);
