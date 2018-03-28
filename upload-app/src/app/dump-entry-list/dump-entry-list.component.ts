@@ -87,7 +87,7 @@ export class DumpEntryListComponent implements OnInit, AfterViewInit {
         switchMap(() => {
           this.isLoadingResults = true;
           return this.exampleDatabase!.getDumpEntryList(
-            this.sort.active, this.sort.direction, this.paginator.pageIndex);
+            this.sort.active, this.sort.direction, this.paginator.pageIndex, this.paginator.pageSize);
         }),
         map(data => {
           // Flip flag to show that loading has finished.
@@ -108,9 +108,9 @@ export class DumpEntryListComponent implements OnInit, AfterViewInit {
 export class ExampleHttpDao {
   constructor(private http: HttpClient, private globals: Globals) {}
 
-  getDumpEntryList(sort: string, order: string, page: number): Observable<IDumpFileEntryListResponse> {
+  getDumpEntryList(sort: string, order: string, page: number, pageSize: number): Observable<IDumpFileEntryListResponse> {
     const href = this.globals.dumpsUrlHost + this.globals.dumpFileEntryList;
-    const requestUrl = `${href}?sort=${sort}&order=${order}&page=${page}`;
+    const requestUrl = `${href}?sort=${sort}&order=${order}&page=${page}&size=${pageSize}`;
     //const requestUrl = `${href}?sort=enteredDateTime&order=${order}&page=${page}`;
     return this.http.get<IDumpFileEntryListResponse>(requestUrl);
   }
